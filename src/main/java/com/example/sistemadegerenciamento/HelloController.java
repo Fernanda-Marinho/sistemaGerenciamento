@@ -9,6 +9,6 @@ public class HelloController {
 
     @FXML
     protected void onHelloButtonClick() {
-        welcomeText.setText("Interface em manutenção!");
+        welcomeText.setText("Interface em manutenção!\nVolte mais tarde.");
     }
 }
