@@ -12,6 +12,18 @@ public class Servico {
     private Peca peca;
     private String descricao;
 
+    //construtor
+    public Servico(CategoriaServico categoria, double valor, Calendar horarioAbertura, Calendar horarioFinalizacao, double avaliacaoCliente, int ordemID, Peca peca, String descricao){
+        this.categoria = categoria;
+        this.valor = valor;
+        this.horarioAbertura = horarioAbertura;
+        this.horarioFinalizacao = horarioFinalizacao;
+        this.avaliacaoCliente = avaliacaoCliente;
+        this.ordemID = ordemID;
+        this.peca = peca;
+        this.descricao = descricao;
+    }
+
     public CategoriaServico getCategoria() {
         return categoria;
     }

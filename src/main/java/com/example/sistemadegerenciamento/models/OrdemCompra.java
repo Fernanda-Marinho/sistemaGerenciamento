@@ -6,6 +6,13 @@ public class OrdemCompra {
     private int quantidade;
     private double valorUnitario;
 
+    //construtor
+    public OrdemCompra(Peca peca, int quantidade, double valorUnitario){
+        this.peca = peca;
+        this.quantidade = quantidade;
+        this.valorUnitario = valorUnitario;
+    }
+
     public Peca getPeca() {
         return peca;
     }

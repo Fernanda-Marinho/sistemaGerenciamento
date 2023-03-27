@@ -11,6 +11,15 @@ public class    Cliente {
         return nome;
     }
 
+    //construtor
+    public Cliente(String nome, String endereco, String telefone, Ordem ordens, int clienteID){
+        this.nome = nome;
+        this.endereco = endereco;
+        this.telefone = telefone;
+        this.ordens = ordens;
+        this.clienteID = clienteID;
+    }
+
     public void setNome(String nome) {
         this.nome = nome;
     }

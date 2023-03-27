@@ -10,6 +10,17 @@ public class Ordem {
     private int ordemID;
     private String avaliacaoFinal; //satisfação
 
+    //construtor
+    public Ordem(Servico servicos, StatusOrdem status, Fatura fatura, int clienteID, int tecnicoID, int ordemID, String avaliacaoFinal){
+        this.servicos = servicos;
+        this.status = status;
+        this.fatura = fatura;
+        this.clienteID = clienteID;
+        this.tecnicoID = tecnicoID;
+        this.ordemID = ordemID;
+        this.avaliacaoFinal = avaliacaoFinal;
+    }
+
     public StatusOrdem getStatus() {
         return status;
     }

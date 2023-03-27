@@ -8,6 +8,15 @@ public class Fatura {
     private double valorPago;
     private int faturaID;
 
+    //construtor
+    public Fatura(double valorTotal, Pagamento pagamentos, int ordemID, double valorPago, int faturaID){
+        this.valorTotal = valorTotal;
+        this.pagamentos = pagamentos;
+        this.ordemID = ordemID;
+        this.valorPago = valorPago;
+        this.faturaID = faturaID;
+    }
+
     public double getValorTotal() {
         return valorTotal;
     }

@@ -5,6 +5,12 @@ public class Peca {
     private String nome;
     private double valor;
 
+    //construtor
+    public Peca(String nome, double valor){
+        this.nome = nome;
+        this.valor = valor;
+    }
+
     public String getNome() {
         return nome;
     }
