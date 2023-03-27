@@ -1,6 +1,6 @@
 package com.example.sistemadegerenciamento.models;
 
-public class Cliente {
+public class    Cliente {
     private String nome;
     private String endereco;
     private String telefone;
