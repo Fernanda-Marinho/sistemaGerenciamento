@@ -1,21 +1,28 @@
 package com.example.sistemadegerenciamento.models;
+import java.util.ArrayList;
+
+//Alterações: definição da coleção de pagamentos e alteração no construtor.
 
 public class Fatura {
 
     private double valorTotal;
-    private Pagamento pagamentos;
+	//Definição da coleção de pagamentos.
+	private ArrayList<Pagamento> pagamentos = new ArrayList();
     private int ordemID;
     private double valorPago;
     private int faturaID;
 
     //construtor
-    public Fatura(double valorTotal, Pagamento pagamentos, int ordemID, double valorPago, int faturaID){
+	//Para gerar a fatura, adiciona um pagamento. Se for adicionar mais pagamentos, chama um método para isso.
+    public Fatura(double valorTotal, Pagamento pagamento, int ordemID, double valorPago, int faturaID){
         this.valorTotal = valorTotal;
-        this.pagamentos = pagamentos;
+        this.pagamentos.add(pagamento);
         this.ordemID = ordemID;
         this.valorPago = valorPago;
         this.faturaID = faturaID;
     }
+
+	//Falta adicionar novos pagamentos na coleção pagamentos
 
     public double getValorTotal() {
         return valorTotal;

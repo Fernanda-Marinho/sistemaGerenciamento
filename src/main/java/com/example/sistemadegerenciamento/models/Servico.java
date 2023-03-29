@@ -12,6 +12,58 @@ public class Servico {
     private Peca peca;
     private String descricao;
 
+    //construtor
+	//A avalição do cliente não pode ser no momento da instância. Só após finalizar o serviço/ordem.
+	//Possa ser que não tenha uma descrição?
+    public Servico (CategoriaServico categoria, double valor, Calendar horarioAbertura, Calendar horarioFinalizacao, int ordemID, Peca peca, String descricao){
+        this.categoria = categoria;
+        this.valor = valor;
+        this.horarioAbertura = horarioAbertura;
+        this.horarioFinalizacao = horarioFinalizacao;
+        this.ordemID = ordemID;
+        this.peca = peca;
+        this.descricao = descricao;
+    }
+
+    public CategoriaServico getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(CategoriaServico categoria) {
+        this.categoria = categoria;
+    }
+
+    public double getValor() {
+        return valor;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
+    }
+
+    public Calendar getHorarioAbertura() {
+        return horarioAbertura;
+    }
+
+    public void setHorarioAbertura(Calendar horarioAbertura) {
+        this.horarioAbertura = horarioAbertura;
+    }
+
+    public Calendar getHorarioFinalizacao() {
+        return horarioFinalizacao;
+    }
+
+    public void setHorarioFinalizacao(Calendar horarioFinalizacao) {
+        this.horarioFinalizacao = horarioFinalizacao;
+    }
+
+    public double getAvaliacaoCliente() {
+        return avaliacaoCliente;
+    }
+
+    public void setAvaliacaoCliente(double avaliacaoCliente) {
+        this.avaliacaoCliente = avaliacaoCliente;
+    }
 
     public int getOrdemID() {
         return ordemID;
