@@ -13,4 +13,27 @@ public class Servico {
     private String descricao;
 
 
+    public int getOrdemID() {
+        return ordemID;
+    }
+
+    public void setOrdemID(int ordemID) {
+        this.ordemID = ordemID;
+    }
+
+    public Peca getPeca() {
+        return peca;
+    }
+
+    public void setPeca(Peca peca) {
+        this.peca = peca;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
 }
