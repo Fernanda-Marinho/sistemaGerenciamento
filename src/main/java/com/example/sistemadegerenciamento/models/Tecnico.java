@@ -1,4 +1,10 @@
 package com.example.sistemadegerenciamento.models;
+<<<<<<< HEAD
+=======
+import java.util.ArrayList;
+
+//Alterações: mudança no construtor e definição da coleção de historicoOrdens
+>>>>>>> fc4fb0f7e0a540b44104c7c19a4c2641d7138dc4
 
 public class Tecnico {
 
@@ -6,6 +12,7 @@ public class Tecnico {
     private String nome;
     private String senha;
     private int tecnicoID;
+<<<<<<< HEAD
     private Ordem historicoOrdens;
     private Estoque estoque;
 
@@ -18,6 +25,22 @@ public class Tecnico {
         this.estoque = estoque;
     }
 
+=======
+    private ArrayList<Ordem> historicoOrdens = new ArrayList();
+    private Estoque estoque;
+
+    //construtor
+	//Um técnico não tem histórico de ordens quando é criado.
+    public  Tecnico(boolean adm, String nome, String senha, int tecnicoID, Estoque estoque){
+        this.adm = adm;
+        this.senha = senha;
+        this.tecnicoID = tecnicoID;
+        this.estoque = estoque;
+    }
+
+	//Falta adicionar ordens no historico de ordens
+
+>>>>>>> fc4fb0f7e0a540b44104c7c19a4c2641d7138dc4
     public boolean isAdm() {
         return adm;
     }
