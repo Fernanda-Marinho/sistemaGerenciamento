@@ -1,8 +1,4 @@
 package com.example.sistemadegerenciamento.models;
-
-public class Ordem {
-
-    private Servico servicos;
 import java.util.ArrayList;
 
 //Alterações: modificações no construtor e definição da coleção de serviços.
@@ -17,15 +13,6 @@ public class Ordem {
     private int ordemID;
     private String avaliacaoFinal; //satisfação
 
-    //construtor
-    public Ordem(Servico servicos, StatusOrdem status, Fatura fatura, int clienteID, int tecnicoID, int ordemID, String avaliacaoFinal){
-        this.servicos = servicos;
-        this.status = status;
-        this.fatura = fatura;
-        this.clienteID = clienteID;
-        this.tecnicoID = tecnicoID;
-        this.ordemID = ordemID;
-        this.avaliacaoFinal = avaliacaoFinal;
 	//Como a ordem pode ter nenhum técnico, então não deve ser colocado no construtor. Adiciona um serviço na construção. Se for adicionar mais depois, utiliza um método para isso.
 	//Dúvida: a ordem precisa ter 0..1 fatura?
 	//Como a ordem pode ter nenhuma fatura, então não deve entrar no construtor.
@@ -87,9 +74,6 @@ public class Ordem {
         this.avaliacaoFinal = avaliacaoFinal;
     }
 
-    public Servico getServicos() {
-        return servicos;
-    }
     /*public Servico getServicos() {
         return servicos;
     }*/

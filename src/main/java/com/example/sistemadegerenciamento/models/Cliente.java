@@ -2,7 +2,6 @@ package com.example.sistemadegerenciamento.models;
 import java.util.ArrayList;
 
 //Alterações: coleção de ordens definido, alteração no construtor e criação de método para adicionar ordem ao cliente.
-
 public class    Cliente {
     private String nome;
     private String endereco;
@@ -26,6 +25,8 @@ public class    Cliente {
 	//Ordens é uma coleção. Do tipo ArrayList.
 	private ArrayList<Ordem> ordens = new ArrayList();
     private int clienteID;
+    //Ordens é uma coleção. Do tipo ArrayList.
+    private ArrayList<Ordem> ordens = new ArrayList();
 
     //construtor
 	//Como Cliente pode ser instanciado sem Ordem, ele não vem no construtor.
@@ -39,7 +40,6 @@ public class    Cliente {
 	public String getNome() {
         return nome;
     }
-
     public void setNome(String nome) {
         this.nome = nome;
     }
