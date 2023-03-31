@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Ordem {
 
 	//Definição da coleção de serviços.
-    private ArrayList<Servico> servicos = new Arraylist();
+    private ArrayList<Servico> servicos = new ArrayList();
     private StatusOrdem status;
     private Fatura fatura;
     private int clienteID;
@@ -75,7 +75,7 @@ public class Ordem {
         this.avaliacaoFinal = avaliacaoFinal;
     }
 
-    public Servico getServicos() {
+    /*public Servico getServicos() {
         return servicos;
-    }
+    }*/
 }

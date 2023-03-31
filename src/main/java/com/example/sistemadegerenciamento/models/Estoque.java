@@ -11,6 +11,7 @@ public class Estoque {
 
 	//Estoque pode surgir sem peças e sem ordemDeCompra.
     public Estoque(){
+
     }
 
 	//Falta definir adicionar peças ao estoque através da ordemDeCompra.

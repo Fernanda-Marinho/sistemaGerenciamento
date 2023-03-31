@@ -32,9 +32,9 @@ public class Fatura {
         this.valorTotal = valorTotal;
     }
 
-    public Pagamento getPagamentos() {
+    /*public Pagamento getPagamentos() {
         return pagamentos;
-    }
+    }*/
 
     public int getOrdemID() {
         return ordemID;

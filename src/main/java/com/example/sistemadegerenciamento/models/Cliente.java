@@ -44,9 +44,9 @@ public class    Cliente {
         this.telefone = telefone;
     }
 
-    public Ordem getOrdens() {
-        return ordens;
-    }
+    /*public Ordem getOrdem(int ordemID) {
+        return this.ordens.get(ordemID);
+    }*/
 
     public void addOrdem(Ordem ordem) {
         this.ordens.add(ordem);
