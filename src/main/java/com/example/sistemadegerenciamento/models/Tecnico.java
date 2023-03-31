@@ -1,10 +1,7 @@
 package com.example.sistemadegerenciamento.models;
-<<<<<<< HEAD
-=======
 import java.util.ArrayList;
 
 //Alterações: mudança no construtor e definição da coleção de historicoOrdens
->>>>>>> fc4fb0f7e0a540b44104c7c19a4c2641d7138dc4
 
 public class Tecnico {
 
@@ -12,7 +9,6 @@ public class Tecnico {
     private String nome;
     private String senha;
     private int tecnicoID;
-<<<<<<< HEAD
     private Ordem historicoOrdens;
     private Estoque estoque;
 
@@ -25,7 +21,6 @@ public class Tecnico {
         this.estoque = estoque;
     }
 
-=======
     private ArrayList<Ordem> historicoOrdens = new ArrayList();
     private Estoque estoque;
 
@@ -40,7 +35,6 @@ public class Tecnico {
 
 	//Falta adicionar ordens no historico de ordens
 
->>>>>>> fc4fb0f7e0a540b44104c7c19a4c2641d7138dc4
     public boolean isAdm() {
         return adm;
     }

@@ -7,10 +7,7 @@ public class OrdemCompra {
     private double valorUnitario;
 
     //construtor
-<<<<<<< HEAD
-=======
 	//Precisa receber como parâmetro o estoque para adicionar a ordem de compra nele?
->>>>>>> fc4fb0f7e0a540b44104c7c19a4c2641d7138dc4
     public OrdemCompra(Peca peca, int quantidade, double valorUnitario){
         this.peca = peca;
         this.quantidade = quantidade;
