@@ -27,3 +27,4 @@ Requisitos de desenvolvimento:
 - 📝Persistência dos dados.
 - 📝Construção da interface gráfica com JavaFX.
 
+
