@@ -13,21 +13,13 @@ public class Servico {
     private String descricao;
 
     //construtor
-<<<<<<< HEAD
-    public Servico(CategoriaServico categoria, double valor, Calendar horarioAbertura, Calendar horarioFinalizacao, double avaliacaoCliente, int ordemID, Peca peca, String descricao){
-=======
 	//A avalição do cliente não pode ser no momento da instância. Só após finalizar o serviço/ordem.
 	//Possa ser que não tenha uma descrição?
     public Servico (CategoriaServico categoria, double valor, Calendar horarioAbertura, Calendar horarioFinalizacao, int ordemID, Peca peca, String descricao){
->>>>>>> fc4fb0f7e0a540b44104c7c19a4c2641d7138dc4
         this.categoria = categoria;
         this.valor = valor;
         this.horarioAbertura = horarioAbertura;
         this.horarioFinalizacao = horarioFinalizacao;
-<<<<<<< HEAD
-        this.avaliacaoCliente = avaliacaoCliente;
-=======
->>>>>>> fc4fb0f7e0a540b44104c7c19a4c2641d7138dc4
         this.ordemID = ordemID;
         this.peca = peca;
         this.descricao = descricao;

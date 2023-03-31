@@ -12,9 +12,5 @@
     </padding>
 
     <Label fx:id="welcomeText"/>
-<<<<<<< HEAD
     <Button text="Assistência EXA863" onAction="#onHelloButtonClick"/>
-=======
-    <Button text="Hello World!" onAction="#onHelloButtonClick"/>
->>>>>>> fc4fb0f7e0a540b44104c7c19a4c2641d7138dc4
 </VBox>
