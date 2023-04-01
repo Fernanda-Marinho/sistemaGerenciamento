@@ -6,24 +6,6 @@ public class    Cliente {
     private String nome;
     private String endereco;
     private String telefone;
-    private Ordem ordens;
-    private int clienteID;
-
-    public String getNome() {
-        return nome;
-    }
-
-    //construtor
-    public Cliente(String nome, String endereco, String telefone, Ordem ordens, int clienteID){
-        this.nome = nome;
-        this.endereco = endereco;
-        this.telefone = telefone;
-        this.ordens = ordens;
-        this.clienteID = clienteID;
-    }
-
-	//Ordens é uma coleção. Do tipo ArrayList.
-	private ArrayList<Ordem> ordens = new ArrayList();
     private int clienteID;
     //Ordens é uma coleção. Do tipo ArrayList.
     private ArrayList<Ordem> ordens = new ArrayList();
@@ -60,12 +42,6 @@ public class    Cliente {
         this.telefone = telefone;
     }
 
-    public Ordem getOrdens() {
-        return ordens;
-    }
-
-    public void setOrdens(Ordem ordens) {
-        this.ordens = ordens;
     /*public Ordem getOrdem(int ordemID) {
         return this.ordens.get(ordemID);
     }*/

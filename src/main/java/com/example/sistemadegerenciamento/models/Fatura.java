@@ -6,7 +6,6 @@ import java.util.ArrayList;
 public class Fatura {
 
     private double valorTotal;
-    private Pagamento pagamentos;
 	//Definição da coleção de pagamentos.
 	private ArrayList<Pagamento> pagamentos = new ArrayList();
     private int ordemID;
@@ -14,9 +13,6 @@ public class Fatura {
     private int faturaID;
 
     //construtor
-    public Fatura(double valorTotal, Pagamento pagamentos, int ordemID, double valorPago, int faturaID){
-        this.valorTotal = valorTotal;
-        this.pagamentos = pagamentos;
 	//Para gerar a fatura, adiciona um pagamento. Se for adicionar mais pagamentos, chama um método para isso.
     public Fatura(double valorTotal, Pagamento pagamento, int ordemID, double valorPago, int faturaID){
         this.valorTotal = valorTotal;
@@ -36,9 +32,6 @@ public class Fatura {
         this.valorTotal = valorTotal;
     }
 
-    public Pagamento getPagamentos() {
-        return pagamentos;
-    }
     /*public Pagamento getPagamentos() {
         return pagamentos;
     }*/

@@ -9,20 +9,8 @@ public class Tecnico {
     private String nome;
     private String senha;
     private int tecnicoID;
-    private Ordem historicoOrdens;
     private Estoque estoque;
-
-    //construtor
-    public  Tecnico(boolean adm, String nome, String senha, int tecnicoID, Ordem historicoOrdens, Estoque estoque){
-        this.adm = adm;
-        this.senha = senha;
-        this.tecnicoID = tecnicoID;
-        this.historicoOrdens = historicoOrdens;
-        this.estoque = estoque;
-    }
-
     private ArrayList<Ordem> historicoOrdens = new ArrayList();
-    private Estoque estoque;
 
     //construtor
 	//Um técnico não tem histórico de ordens quando é criado.

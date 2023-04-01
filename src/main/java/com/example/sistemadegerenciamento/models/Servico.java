@@ -12,8 +12,6 @@ public class Servico {
     private Peca peca;
     private String descricao;
 
-    //construtor
-    public Servico(CategoriaServico categoria, double valor, Calendar horarioAbertura, Calendar horarioFinalizacao, double avaliacaoCliente, int ordemID, Peca peca, String descricao){
 	//A avalição do cliente não pode ser no momento da instância. Só após finalizar o serviço/ordem.
 	//Possa ser que não tenha uma descrição?
     public Servico (CategoriaServico categoria, double valor, Calendar horarioAbertura, Calendar horarioFinalizacao, int ordemID, Peca peca, String descricao){
