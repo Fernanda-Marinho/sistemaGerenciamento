@@ -19,7 +19,6 @@ public class Ordem {
 	//Status começa em aberta
 	//Não tem como ter avaliação final no momento da instância da ordem. Somente quando é finalizada.
     public Ordem(Servico servico, int clienteID, int ordemID){
-        this.servicos = servicos;
 		//Status começa em aberta
         this.status = StatusOrdem.ABERTA;
         this.clienteID = clienteID;
