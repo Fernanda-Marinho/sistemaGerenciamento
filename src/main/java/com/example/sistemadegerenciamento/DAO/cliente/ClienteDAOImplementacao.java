@@ -32,13 +32,12 @@ public class ClienteDAOImplementacao implements ClienteDAO{
     public void update(Cliente cliente) throws Exception{}
     //Update seria o similar de "atualizar na persistência".
     @Override
-    public void update(Cliente cliente, String nome, String endereco, String telefone, int id){
+    public void update(Cliente cliente, String nome, String endereco, String telefone){
         for (int i=0; i<clientes.size(); i++){
             if (clientes.get(i) == cliente){
                 clientes.get(i).setNome(nome);
                 clientes.get(i).setEndereco(endereco);
                 clientes.get(i).setTelefone(telefone);
-                clientes.get(i).setClienteID(id);
             }
         }
     }

@@ -10,6 +10,6 @@ import com.example.sistemadegerenciamento.models.Cliente;
 
 public interface ClienteDAO extends CRUD<Cliente, Exception> {
 
-    public void update(Cliente cliente, String nome, String endereco, String telefone, int id);
+    public void update(Cliente cliente, String nome, String endereco, String telefone);
 
 }
