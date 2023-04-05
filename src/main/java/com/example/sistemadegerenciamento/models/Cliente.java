@@ -7,16 +7,19 @@ public class    Cliente {
     private String endereco;
     private String telefone;
     private int clienteID;
+    private static int ID = 1;
+
     //Ordens é uma coleção. Do tipo ArrayList.
     private ArrayList<Ordem> ordens = new ArrayList();
 
     //construtor
 	//Como Cliente pode ser instanciado sem Ordem, ele não vem no construtor.
-    public Cliente(String nome, String endereco, String telefone, int clienteID){
+    public Cliente(String nome, String endereco, String telefone){
         this.nome = nome;
         this.endereco = endereco;
         this.telefone = telefone;
-        this.clienteID = clienteID;
+        this.clienteID = ID;
+        ID = ID+1;
     }
 
 	public String getNome() {
