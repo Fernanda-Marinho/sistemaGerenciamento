@@ -2,52 +2,50 @@ package com.example.sistemadegerenciamento.DAO.cliente;
 
 import com.example.sistemadegerenciamento.models.Cliente;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class ClienteDAOImplementacao implements ClienteDAO{
-    ArrayList<Cliente> clientes = new ArrayList<>();
+    HashMap<Integer, Cliente> clientes = new HashMap<Integer, Cliente>();
 
     //Create seria o similar de "salvar na persistência".
     @Override
     public Cliente create(Cliente cliente) {
-        this.clientes.add(cliente);
+        this.clientes.put(cliente.getClienteID(), cliente);
         return cliente;
     }
 
     @Override
     public Cliente findById(int id) {
-        for (int i=0; i<clientes.size(); i++){
-            if (clientes.get(i).getClienteID() == id){
-                return clientes.get(i);
-            }
-        }
-        return null;
+        if (this.clientes.get(id) != null)
+            return this.clientes.get(id);
+        else
+            return null;
     }
 
     @Override
-    public ArrayList<Cliente> findMany() {
+    public HashMap<Integer, Cliente> findMany() {
         return clientes;
     }
 
     public void update(Cliente cliente) throws Exception{}
+
     //Update seria o similar de "atualizar na persistência".
     @Override
-    public void update(Cliente cliente, String nome, String endereco, String telefone){
-        for (int i=0; i<clientes.size(); i++){
-            if (clientes.get(i) == cliente){
-                clientes.get(i).setNome(nome);
-                clientes.get(i).setEndereco(endereco);
-                clientes.get(i).setTelefone(telefone);
-            }
+    public void update(int clienteID, String nome, String endereco, String telefone){
+        if (clientes.get(clienteID) != null){
+            Cliente cliente = clientes.get(clienteID);
+            cliente.setNome(nome);
+            cliente.setTelefone(telefone);
+            cliente.setEndereco(endereco);
+            clientes.put(clienteID, cliente);
         }
     }
 
     @Override
-    public void delete(int id) throws Exception {
-        for (int i=0; i<clientes.size(); i++){
-            if (clientes.get(i).getClienteID() == id){
-                clientes.remove(clientes.get(i));
-            }
+    public void delete(int clienteID) throws Exception {
+        if (clientes.get(clienteID) != null){
+            clientes.remove(clienteID);
         }
     }
 
