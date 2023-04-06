@@ -3,6 +3,7 @@ package com.example.sistemadegerenciamento.controller;
 import com.example.sistemadegerenciamento.DAO.DAO;
 import com.example.sistemadegerenciamento.models.CategoriaServico;
 import com.example.sistemadegerenciamento.models.Cliente;
+import com.example.sistemadegerenciamento.models.Fatura;
 import com.example.sistemadegerenciamento.models.Servico;
 
 import java.util.ArrayList;
@@ -16,6 +17,13 @@ import java.util.ArrayList;
 // manipulação de DAO. 
 public class MainController {
     public static void main(String[] args) {
+        Fatura fatura = new Fatura(19.0, 1);
+        System.out.println(fatura.getFaturaID());
+        Fatura fatura2 = new Fatura(19.0, 2);
+        System.out.println(fatura2.getFaturaID());
+        Fatura fatura3 = new Fatura(19.0, 3);
+        System.out.println(fatura3.getFaturaID());
+
         Servico servico = new Servico(CategoriaServico.MONTAGEM,12.5,002,null,"nada");
         System.out.println("Controller criado!");
         Cliente cliente = new Cliente("Douglas", "Muchila", "75982071696");
