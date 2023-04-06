@@ -4,12 +4,10 @@ import java.util.ArrayList;
 //Alterações: mudança no construtor e definição da coleção de historicoOrdens
 
 public class Tecnico {
-
     private boolean adm;
     private String nome;
     private String senha;
     private int tecnicoID;
-    private Estoque estoque;
     private ArrayList<Ordem> historicoOrdens = new ArrayList();
     public static int ID=1;
 

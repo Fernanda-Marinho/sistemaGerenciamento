@@ -20,18 +20,22 @@ public class TecnicoDAOImplementacao implements TecnicoDAO{
         return tecnicos.get(tecnicoID);
     }
 
-    @Override
-    public void update(Tecnico obj) throws Exception {
-
+    public void update(int tecnicoID, String nome, String senha){
+        if (tecnicos.get(tecnicoID) != null) {
+            Tecnico tecnico = tecnicos.get(tecnicoID);
+            tecnico.setNome(nome);
+            tecnico.setSenha(senha);
+            tecnicos.put(tecnicoID, tecnico);
+        }
     }
-
     @Override
-    public void delete(int id) throws Exception {
-
+    public void delete(int tecnicoID) throws Exception {
+        if (tecnicos.get(tecnicoID) != null) {
+            tecnicos.remove(tecnicoID);
+        }
     }
-
     @Override
     public void deleteMany() {
-
+        tecnicos.clear();
     }
 }

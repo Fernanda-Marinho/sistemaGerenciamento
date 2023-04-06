@@ -12,18 +12,14 @@ public class Ordem {
     private int tecnicoID;
     private int ordemID;
     private String avaliacaoFinal; //satisfação
+    private static int ID=1;
 
-	//Como a ordem pode ter nenhum técnico, então não deve ser colocado no construtor. Adiciona um serviço na construção. Se for adicionar mais depois, utiliza um método para isso.
-	//Dúvida: a ordem precisa ter 0..1 fatura?
-	//Como a ordem pode ter nenhuma fatura, então não deve entrar no construtor.
-	//Status começa em aberta
-	//Não tem como ter avaliação final no momento da instância da ordem. Somente quando é finalizada.
     public Ordem(Servico servico, int clienteID){
-		//Status começa em aberta
         this.status = StatusOrdem.ESPERA;
         this.clienteID = clienteID;
         this.servicos.add(servico);
-
+        this.ordemID = ID;
+        this.ID++;
     }
 
     public StatusOrdem getStatus() {

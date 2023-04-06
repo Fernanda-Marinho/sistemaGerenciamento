@@ -2,9 +2,6 @@ package com.example.sistemadegerenciamento.controller;
 
 import com.example.sistemadegerenciamento.DAO.DAO;
 import com.example.sistemadegerenciamento.models.*;
-import java.util.HashMap;
-
-import java.util.ArrayList;
 
 /*
 * No controller, utilizaremos da classe DAO para chamar o método que dá get na classe DAO necessária.
@@ -33,6 +30,31 @@ public class MainController {
         }
     }
 
+    public void realizarOrdemCompra(){
+
+    }
+    public Cliente criaCliente(){
+
+    }
+    public String geraRelatorio(){
+
+    }
+
+    public void gerarFatura(Ordem ordem){
+        
+    }
+
+    public Ordem pegarOrdem(){
+
+    }
+
+    public void cancelarOrdem(){
+
+    }
+
+    public void finalizarOrdem(){
+
+    }
 
     public static void main(String[] args) {
         MainController mainC = new MainController();

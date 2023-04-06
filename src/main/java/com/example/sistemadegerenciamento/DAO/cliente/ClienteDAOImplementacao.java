@@ -25,8 +25,6 @@ public class ClienteDAOImplementacao implements ClienteDAO{
         return clientes;
     }
 
-    public void update(Cliente cliente) throws Exception{}
-
     //Update seria o similar de "atualizar na persistência".
     @Override
     public void update(int clienteID, String nome, String endereco, String telefone){
