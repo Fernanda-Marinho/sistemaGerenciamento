@@ -21,9 +21,9 @@ public class MainController {
         return tecnico;
     }
 
-    public boolean validaLogin(HashMap<String, Tecnico> tecnicos, String nome, String senha){
+    public boolean validaLogin(int tecnicoID, String nome, String senha){
         try {
-            if (tecnicos.get(nome).getSenha() == senha) {
+            if (DAO.getTecnico().findById(tecnicoID).getSenha() == senha) {
                 return true;
             }
             return false;
@@ -36,9 +36,7 @@ public class MainController {
 
     public static void main(String[] args) {
         MainController mainC = new MainController();
-        HashMap<String, Tecnico> tecnicos = new HashMap<String, Tecnico>();
-        HashMap<String, Cliente> clientes = new HashMap<String, Cliente>();
-        tecnicos.put("Douglas", mainC.criaTecnico(true, "Douglas", "123456789"));
-        System.out.println(mainC.validaLogin(tecnicos, "Douglas", "123456789"));
+        mainC.criaTecnico(true, "Douglas", "123456789");
+        System.out.println(mainC.validaLogin(DAO.getTecnico().findById(1).getTecnicoID(), "Douglas", "123456789"));
     }
 }

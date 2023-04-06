@@ -17,10 +17,7 @@ public class ClienteDAOImplementacao implements ClienteDAO{
 
     @Override
     public Cliente findById(int id) {
-        if (this.clientes.get(id) != null)
-            return this.clientes.get(id);
-        else
-            return null;
+        return this.clientes.get(id);
     }
 
     @Override

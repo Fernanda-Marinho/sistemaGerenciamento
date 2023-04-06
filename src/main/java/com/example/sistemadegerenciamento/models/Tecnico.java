@@ -11,6 +11,7 @@ public class Tecnico {
     private int tecnicoID;
     private Estoque estoque;
     private ArrayList<Ordem> historicoOrdens = new ArrayList();
+    public static int ID=1;
 
     //construtor
 	//Um técnico não tem histórico de ordens quando é criado.
@@ -19,6 +20,8 @@ public class Tecnico {
         this.adm = adm;
         this.senha = senha;
         this.nome = nome;
+        this.tecnicoID = this.ID;
+        this.ID++;
     }
 
 	//Falta adicionar ordens no historico de ordens
