@@ -17,11 +17,6 @@ public class OrdemDAOImplementacao implements OrdemDAO{
     }
 
     @Override
-    public List<Ordem> findMany() {
-        return null;
-    }
-
-    @Override
     public void update(Ordem obj) throws Exception {
 
     }

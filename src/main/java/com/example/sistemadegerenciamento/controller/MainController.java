@@ -1,10 +1,8 @@
 package com.example.sistemadegerenciamento.controller;
 
 import com.example.sistemadegerenciamento.DAO.DAO;
-import com.example.sistemadegerenciamento.models.CategoriaServico;
-import com.example.sistemadegerenciamento.models.Cliente;
-import com.example.sistemadegerenciamento.models.Fatura;
-import com.example.sistemadegerenciamento.models.Servico;
+import com.example.sistemadegerenciamento.models.*;
+import java.util.HashMap;
 
 import java.util.ArrayList;
 
@@ -16,30 +14,31 @@ import java.util.ArrayList;
 //falta manipular estoque, criação de técnico, criação de clientes, manipulação de ordens
 // manipulação de DAO. 
 public class MainController {
-    public static void main(String[] args) {
-        Fatura fatura = new Fatura(19.0, 1);
-        System.out.println(fatura.getFaturaID());
-        Fatura fatura2 = new Fatura(19.0, 2);
-        System.out.println(fatura2.getFaturaID());
-        Fatura fatura3 = new Fatura(19.0, 3);
-        System.out.println(fatura3.getFaturaID());
 
-        Servico servico = new Servico(CategoriaServico.MONTAGEM,12.5,002,null,"nada");
-        System.out.println("Controller criado!");
-        Cliente cliente = new Cliente("Douglas", "Muchila", "75982071696");
-        DAO.getCliente().create(cliente);
-        cliente = new Cliente("Roberta", "Muchila", "75982071696");
-        DAO.getCliente().create(cliente);
-        cliente = new Cliente("Juan", "Muchila", "75982071696");
-        DAO.getCliente().create(cliente);
+    public Tecnico criaTecnico(boolean adm, String nome, String senha){
+        Tecnico tecnico = new Tecnico(adm, nome, senha);
+        DAO.getTecnico().create(tecnico);
+        return tecnico;
+    }
 
-        if (DAO.getCliente() != null) {
-            ArrayList<Cliente> clientes = (ArrayList<Cliente>) DAO.getCliente().findMany();
-            for (int i=0; i<clientes.size(); i++){
-                System.out.println(clientes.get(i).getClienteID() + " " + clientes.get(i).getNome());
+    public boolean validaLogin(HashMap<String, Tecnico> tecnicos, String nome, String senha){
+        try {
+            if (tecnicos.get(nome).getSenha() == senha) {
+                return true;
             }
-        } else {
-            System.out.println("Nulo!");
+            return false;
+        } catch (NullPointerException e){
+            System.out.println("Este usuário não está cadastrado.");
+            return false;
         }
+    }
+
+
+    public static void main(String[] args) {
+        MainController mainC = new MainController();
+        HashMap<String, Tecnico> tecnicos = new HashMap<String, Tecnico>();
+        HashMap<String, Cliente> clientes = new HashMap<String, Cliente>();
+        tecnicos.put("Douglas", mainC.criaTecnico(true, "Douglas", "123456789"));
+        System.out.println(mainC.validaLogin(tecnicos, "Douglas", "123456789"));
     }
 }

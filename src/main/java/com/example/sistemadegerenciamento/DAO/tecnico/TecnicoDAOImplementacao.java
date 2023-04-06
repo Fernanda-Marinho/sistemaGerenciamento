@@ -16,11 +16,6 @@ public class TecnicoDAOImplementacao implements TecnicoDAO{
     }
 
     @Override
-    public List<Tecnico> findMany() {
-        return null;
-    }
-
-    @Override
     public void update(Tecnico obj) throws Exception {
 
     }
