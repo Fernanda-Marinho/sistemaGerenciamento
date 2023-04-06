@@ -1,6 +1,10 @@
 package com.example.sistemadegerenciamento.models;
 import java.util.ArrayList;
 
+
+/**
+ * Classe responsável por armazenar dados e comportamentos do cliente.
+ * */
 //Alterações: coleção de ordens definido, alteração no construtor e criação de método para adicionar ordem ao cliente.
 public class    Cliente {
     private String nome;
@@ -52,8 +56,6 @@ public class    Cliente {
         ID = ID+1;
     }
 
-
-
     public String getNome() {
         return nome;
     }
@@ -85,9 +87,21 @@ public class    Cliente {
         }
     }
 
-    /*public Ordem getOrdem(int ordemID) {
-        return this.ordens.get(ordemID);
-    }*/
+    /**
+     * Método que recebe um ID de ordem e retorna a ordem do cliente de mesmo ID. Caso não haja, retorna nulo.
+     * */
+    public Ordem getOrdem(int ordemID) {
+        for (int i=0; i<this.ordens.size(); i++){
+            if (this.ordens.get(i).getOrdemID() == ordemID){
+                return this.ordens.get(i);
+            }
+        }
+        return null;
+    }
+
+    public ArrayList<Ordem> getOrdens(){
+        return this.ordens;
+    }
 
     public void addOrdem(Ordem ordem) {
         this.ordens.add(ordem);
@@ -99,5 +113,4 @@ public class    Cliente {
 
 }
 
-//faltando: pegar ordem (get)
 
