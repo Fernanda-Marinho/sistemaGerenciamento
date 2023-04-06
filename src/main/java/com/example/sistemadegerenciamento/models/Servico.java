@@ -1,4 +1,5 @@
 package com.example.sistemadegerenciamento.models;
+//importar Calendar e definir hora da instância
 
 import java.util.Calendar;
 public class Servico {
@@ -7,19 +8,20 @@ public class Servico {
     private double valor;
     private Calendar horarioAbertura;
     private Calendar horarioFinalizacao;
-    private double avaliacaoCliente;
+    //private double avaliacaoCliente; (?)
     private int ordemID;
     private Peca peca;
     private String descricao;
 
 	//A avalição do cliente não pode ser no momento da instância. Só após finalizar o serviço/ordem.
 	//Possa ser que não tenha uma descrição?
-    public Servico (CategoriaServico categoria, double valor, Calendar horarioAbertura, Calendar horarioFinalizacao, int ordemID, Peca peca, String descricao){
+
+    //se a categoria for MONTAGEM, define PEÇA
+
+    public Servico (CategoriaServico categoria, double valor, int ordemID, Peca peca, String descricao){
         this.categoria = categoria;
         this.valor = valor;
-        this.horarioAbertura = horarioAbertura;
-        this.horarioFinalizacao = horarioFinalizacao;
-        this.avaliacaoCliente = avaliacaoCliente;
+        //this.avaliacaoCliente = avaliacaoCliente;
         this.ordemID = ordemID;
         this.peca = peca;
         this.descricao = descricao;
@@ -57,13 +59,13 @@ public class Servico {
         this.horarioFinalizacao = horarioFinalizacao;
     }
 
-    public double getAvaliacaoCliente() {
+    /*public double getAvaliacaoCliente() {
         return avaliacaoCliente;
-    }
+    }*/
 
-    public void setAvaliacaoCliente(double avaliacaoCliente) {
+    /*public void setAvaliacaoCliente(double avaliacaoCliente) {
         this.avaliacaoCliente = avaliacaoCliente;
-    }
+    }*/
 
     public int getOrdemID() {
         return ordemID;

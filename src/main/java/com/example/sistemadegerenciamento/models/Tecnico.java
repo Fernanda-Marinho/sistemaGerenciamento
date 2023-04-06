@@ -14,11 +14,11 @@ public class Tecnico {
 
     //construtor
 	//Um técnico não tem histórico de ordens quando é criado.
-    public  Tecnico(boolean adm, String nome, String senha, int tecnicoID, Estoque estoque){
+    //falta criar ID do técnico
+    public  Tecnico(boolean adm, String nome, String senha){
         this.adm = adm;
         this.senha = senha;
-        this.tecnicoID = tecnicoID;
-        this.estoque = estoque;
+        this.nome = nome;
     }
 
 	//Falta adicionar ordens no historico de ordens
@@ -51,15 +51,4 @@ public class Tecnico {
         return tecnicoID;
     }
 
-    public void setTecnicoID(int tecnicoID) {
-        this.tecnicoID = tecnicoID;
-    }
-
-    public Estoque getEstoque() {
-        return estoque;
-    }
-
-    public void setEstoque(Estoque estoque) {
-        this.estoque = estoque;
-    }
 }

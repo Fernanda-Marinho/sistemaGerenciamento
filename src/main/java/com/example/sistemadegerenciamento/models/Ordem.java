@@ -18,11 +18,12 @@ public class Ordem {
 	//Como a ordem pode ter nenhuma fatura, então não deve entrar no construtor.
 	//Status começa em aberta
 	//Não tem como ter avaliação final no momento da instância da ordem. Somente quando é finalizada.
-    public Ordem(Servico servico, int clienteID, int ordemID){
+    public Ordem(Servico servico, int clienteID){
 		//Status começa em aberta
-        this.status = StatusOrdem.ABERTA;
+        this.status = StatusOrdem.ESPERA;
         this.clienteID = clienteID;
-        this.ordemID = ordemID;
+        this.servicos.add(servico);
+
     }
 
     public StatusOrdem getStatus() {
@@ -77,3 +78,5 @@ public class Ordem {
         return servicos;
     }*/
 }
+
+//falta: ID da ordem, adicionar serviços e remover serviços, falta um método de gerar fatura

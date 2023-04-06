@@ -1,7 +1,9 @@
 package com.example.sistemadegerenciamento.controller;
 
 import com.example.sistemadegerenciamento.DAO.DAO;
+import com.example.sistemadegerenciamento.models.CategoriaServico;
 import com.example.sistemadegerenciamento.models.Cliente;
+import com.example.sistemadegerenciamento.models.Servico;
 
 import java.util.ArrayList;
 
@@ -9,8 +11,12 @@ import java.util.ArrayList;
 * No controller, utilizaremos da classe DAO para chamar o método que dá get na classe DAO necessária.
 * Por exemplo, DAO.getCliente() irá retornar um ClienteDAOImplementacao, para que possa realizar o CRUD na persistência.
 * */
+
+//falta manipular estoque, criação de técnico, criação de clientes, manipulação de ordens
+// manipulação de DAO. 
 public class MainController {
     public static void main(String[] args) {
+        Servico servico = new Servico(CategoriaServico.MONTAGEM,12.5,002,null,"nada");
         System.out.println("Controller criado!");
         Cliente cliente = new Cliente("Douglas", "Muchila", "75982071696");
         DAO.getCliente().create(cliente);

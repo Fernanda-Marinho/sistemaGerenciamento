@@ -1,5 +1,5 @@
 package com.example.sistemadegerenciamento.models;
-
+//vai pra controller?
 public class OrdemCompra {
 
     private Peca peca;
@@ -11,6 +11,7 @@ public class OrdemCompra {
         this.peca = peca;
         this.quantidade = quantidade;
         this.valorUnitario = valorUnitario;
+
     }
 
     public Peca getPeca() {

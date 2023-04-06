@@ -14,22 +14,14 @@ public class Fatura {
 
     //construtor
 	//Para gerar a fatura, adiciona um pagamento. Se for adicionar mais pagamentos, chama um método para isso.
-    public Fatura(double valorTotal, Pagamento pagamento, int ordemID, double valorPago, int faturaID){
+    public Fatura(double valorTotal, int ordemID){
         this.valorTotal = valorTotal;
-        this.pagamentos.add(pagamento);
         this.ordemID = ordemID;
-        this.valorPago = valorPago;
-        this.faturaID = faturaID;
     }
 
-	//Falta adicionar novos pagamentos na coleção pagamentos
 
     public double getValorTotal() {
         return valorTotal;
-    }
-
-    public void setValorTotal(double valorTotal) {
-        this.valorTotal = valorTotal;
     }
 
     /*public Pagamento getPagamentos() {
@@ -56,7 +48,7 @@ public class Fatura {
         return faturaID;
     }
 
-    public void setFaturaID(int faturaID) {
-        this.faturaID = faturaID;
-    }
 }
+//faltando criar ID de fatura
+//Falta adicionar novos pagamentos na coleção pagamentos: atualizar valor pago
+

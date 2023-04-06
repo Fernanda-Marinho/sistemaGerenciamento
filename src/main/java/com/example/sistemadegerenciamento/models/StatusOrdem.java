@@ -4,5 +4,7 @@ public enum StatusOrdem {
     PAGAMENTO,
     ABERTA,
     FINALIZADA,
-    CANCELADA;
+    CANCELADA,
+
+    ESPERA;
 }

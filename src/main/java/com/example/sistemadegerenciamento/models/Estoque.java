@@ -17,3 +17,4 @@ public class Estoque {
 	//Falta definir adicionar peças ao estoque através da ordemDeCompra.
 	//Falta remover peça de acordo com retirada.
 }
+ // falta construtor no padrão singleton
