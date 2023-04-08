@@ -20,6 +20,10 @@ public class TecnicoDAOImplementacao implements TecnicoDAO{
         return tecnicos.get(tecnicoID);
     }
 
+    public HashMap<Integer, Tecnico> findMany(){
+        return tecnicos;
+    }
+
     public void update(int tecnicoID, String nome, String senha){
         if (tecnicos.get(tecnicoID) != null) {
             Tecnico tecnico = tecnicos.get(tecnicoID);

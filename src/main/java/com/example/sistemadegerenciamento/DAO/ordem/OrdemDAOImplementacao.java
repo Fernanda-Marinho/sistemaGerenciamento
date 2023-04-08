@@ -1,32 +1,86 @@
 package com.example.sistemadegerenciamento.DAO.ordem;
 
+import com.example.sistemadegerenciamento.DAO.DAO;
 import com.example.sistemadegerenciamento.models.Ordem;
+import com.example.sistemadegerenciamento.models.StatusOrdem;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class OrdemDAOImplementacao implements OrdemDAO{
-    HashMap<Integer, Ordem> ordens = new HashMap<Integer, Ordem>();
+    //Ordens em aberto e em espera
+    HashMap<Integer, Ordem> ordensEmEspera = new HashMap<Integer, Ordem>();
+    HashMap<Integer, Ordem> ordensAberta = new HashMap<>();
+    HashMap<Integer, Ordem> ordensFinalizadas = new HashMap<>();
+    HashMap<Integer, Ordem> ordensCanceladas = new HashMap<>();
 
     @Override
     public Ordem create(Ordem ordem) {
-        ordens.put(ordem.getOrdemID(), ordem);
+        ordensEmEspera.put(ordem.getOrdemID(), ordem);
         return null;
     }
 
     @Override
     public Ordem findById(int ordemID) {
-        return ordens.get(ordemID);
+        return ordensEmEspera.get(ordemID);
     }
-
     @Override
     public void delete(int ordemID) throws Exception {
-        if (ordens.get(ordemID) != null){
-            ordens.remove(ordemID);
+        if (ordensEmEspera.get(ordemID) != null){
+            ordensEmEspera.remove(ordemID);
         }
     }
 
     @Override
     public void deleteMany() {
-        ordens.clear();
+        ordensEmEspera.clear();
     }
+
+    public void cancelarOrdem(int ordemID){
+        this.ordensCanceladas.put(ordemID, this.ordensAberta.get(ordemID));
+        this.ordensAberta.remove(ordemID);
+    }
+
+    public Ordem finalizarOrdem(int ordemID){
+        //Só pode finalizar ordem se todos os serviços forem finalizados
+        this.ordensFinalizadas.put(ordemID, this.ordensAberta.get(ordemID));
+        this.ordensAberta.remove(ordemID);
+        return this.ordensFinalizadas.get(ordemID);
+    }
+
+    public void abrirOrdem(int ordemID, int tecnicoID){
+        this.ordensAberta.put(ordemID, this.ordensEmEspera.get(ordemID));
+        this.ordensEmEspera.remove(ordemID);
+        this.ordensAberta.get(ordemID).setStatus(StatusOrdem.ABERTA);
+        this.ordensAberta.get(ordemID).setTecnicoID(tecnicoID);
+    }
+
+    public long gerarTempoMedioDeOrdensFinalizadas(){
+        long tempoMedioDeOrdensFinalizadas = 0;
+        for (Map.Entry<Integer, Ordem> valor : ordensFinalizadas.entrySet()){
+            tempoMedioDeOrdensFinalizadas = tempoMedioDeOrdensFinalizadas + valor.getValue().getTempoMedioDeServicos();
+        }
+        return tempoMedioDeOrdensFinalizadas;
+    }
+
+    public String gerarMediaSatisfacaoPorOrdem(){
+        String satisfacaoGeral = new String();
+        String nomeCliente;
+        double mediaCliente;
+        for (Map.Entry<Integer, Ordem> valor : ordensFinalizadas.entrySet()){
+            nomeCliente = DAO.getCliente().findById(valor.getValue().getClienteID()).getNome();
+            mediaCliente = valor.getValue().gerarMediaDeSatisfacaoDoCliente();
+            satisfacaoGeral = "Ordem ID: " + valor.getValue().getOrdemID() + " - Cliente: " + nomeCliente + " - Média da satisfação por serviços: " + mediaCliente + ";\n";
+        }
+        return satisfacaoGeral;
+    }
+
+    public String verOrdensEmEspera(){
+        String ordensEspera = new String();
+        for (Map.Entry<Integer, Ordem> valor : ordensEmEspera.entrySet()){
+            ordensEspera = ordensEspera + "Ordem: " + valor.getKey() + "\n";
+        }
+        return ordensEspera;
+    }
+
 }
