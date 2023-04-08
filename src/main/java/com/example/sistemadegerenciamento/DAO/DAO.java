@@ -2,6 +2,8 @@ package com.example.sistemadegerenciamento.DAO;
 
 import com.example.sistemadegerenciamento.DAO.cliente.ClienteDAO;
 import com.example.sistemadegerenciamento.DAO.cliente.ClienteDAOImplementacao;
+import com.example.sistemadegerenciamento.DAO.estoque.EstoqueDAO;
+import com.example.sistemadegerenciamento.DAO.estoque.EstoqueDAOImplementacao;
 import com.example.sistemadegerenciamento.DAO.ordem.OrdemDAO;
 import com.example.sistemadegerenciamento.DAO.ordem.OrdemDAOImplementacao;
 import com.example.sistemadegerenciamento.DAO.tecnico.TecnicoDAO;
@@ -18,6 +20,7 @@ public class DAO {
     private static ClienteDAO clienteDAO;
     private static OrdemDAO ordemDAO;
     private static TecnicoDAO tecnicoDAO;
+    private static EstoqueDAO estoqueDAO;
 
     /*
     * Método estático que retorna um clienteDAOImplementacao. Isso é possível pois ClienteDAO é implementado por
@@ -43,5 +46,12 @@ public class DAO {
             tecnicoDAO = new TecnicoDAOImplementacao();
         }
         return tecnicoDAO;
+    }
+
+    public static EstoqueDAO getEstoque() {
+        if (estoqueDAO == null){
+            estoqueDAO = new EstoqueDAOImplementacao();
+        }
+        return estoqueDAO;
     }
 }
