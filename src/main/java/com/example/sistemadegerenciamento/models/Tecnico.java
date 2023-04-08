@@ -22,8 +22,9 @@ public class Tecnico {
         this.ID++;
     }
 
-	//Falta adicionar ordens no historico de ordens
-
+    public void addOrdem(Ordem ordem){
+        historicoOrdens.add(ordem);
+    }
     public boolean isAdm() {
         return adm;
     }
