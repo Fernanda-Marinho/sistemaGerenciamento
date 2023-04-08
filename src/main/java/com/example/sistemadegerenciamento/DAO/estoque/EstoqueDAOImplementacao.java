@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class EstoqueDAOImplementacao implements EstoqueDAO {
+    //implementação da interface de estoque
     private HashMap<Peca, Integer> quantidadePecas = new HashMap<Peca, Integer>();
     private ArrayList<OrdemCompra> ordensCompra = new ArrayList();
     @Override
