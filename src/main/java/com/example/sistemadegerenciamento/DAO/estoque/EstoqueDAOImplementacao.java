@@ -57,4 +57,7 @@ public class EstoqueDAOImplementacao implements EstoqueDAO {
         }
         return estoquef;
     }
+    public void devolucaoPeca(Peca peca, int quantidade){
+        quantidadePecas.put(peca, quantidadePecas.get(peca) + quantidade);
+    }
 }

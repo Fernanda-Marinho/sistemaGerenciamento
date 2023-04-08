@@ -14,5 +14,6 @@ public interface EstoqueDAO {
     public boolean verDisponibilidadeDePeca(Peca peca);
     public double gerarCustoTotalOrdensCompra();
     public String verEstoqueFormatado();
+    public void devolucaoPeca(Peca peca, int quantidade);
 
 }

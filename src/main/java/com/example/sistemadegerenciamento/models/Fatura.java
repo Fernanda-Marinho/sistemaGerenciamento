@@ -35,23 +35,18 @@ public class Fatura {
     public double getValorTotal() {
         return valorTotal;
     }
-
     public ArrayList<Pagamento> getPagamentos() {
         return pagamentos;
     }
-
     public int getOrdemID() {
         return ordemID;
     }
-
     public void setOrdemID(int ordemID) {
         this.ordemID = ordemID;
     }
-
     public double getValorPago() {
         return valorPago;
     }
-
     public double getSaldoDevedor(){
         return valorTotal - valorPago;
     }

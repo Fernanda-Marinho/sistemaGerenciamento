@@ -5,6 +5,5 @@ public enum StatusOrdem {
     ABERTA,
     FINALIZADA,
     CANCELADA,
-
     ESPERA;
 }

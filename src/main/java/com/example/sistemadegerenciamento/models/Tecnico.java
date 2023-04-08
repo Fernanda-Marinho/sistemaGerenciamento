@@ -8,6 +8,7 @@ public class Tecnico {
     private String nome;
     private String senha;
     private int tecnicoID;
+    private boolean comOrdem;
     private ArrayList<Ordem> historicoOrdens = new ArrayList();
     public static int ID=1;
 
@@ -25,6 +26,7 @@ public class Tecnico {
     public void addOrdem(Ordem ordem){
         historicoOrdens.add(ordem);
     }
+
     public boolean isAdm() {
         return adm;
     }
@@ -51,6 +53,14 @@ public class Tecnico {
 
     public int getTecnicoID() {
         return tecnicoID;
+    }
+
+    public boolean isComOrdem(){
+        if (this.comOrdem){
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }

@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+//Cada tecnico so pode pegar uma ordem
+
+
 /*
 * Barema:
 * CRUD das classes
@@ -32,12 +35,6 @@ import java.util.Map;
 //falta manipular estoque, criação de técnico, criação de clientes, manipulação de ordens
 // manipulação de DAO. 
 public class MainController {
-
-    public Estoque criaEstoque(){
-        Estoque estoque = Estoque.getInstance();
-        DAO.getEstoque().
-        return estoque;
-    }
     public Tecnico criaTecnico(boolean adm, String nome, String senha){
         Tecnico tecnico = new Tecnico(adm, nome, senha);
         DAO.getTecnico().create(tecnico);
@@ -120,9 +117,12 @@ public class MainController {
     public void removeServico(Servico servico, int ordemID){
         DAO.getOrdem().findById(ordemID).removerServico(servico);
     }
-
-    public void relacionaOrdemATecnico(int ordemID, int tecnicoID){
-        DAO.getOrdem().abrirOrdem(ordemID, tecnicoID);
+    public boolean relacionaOrdemATecnico(int ordemID, int tecnicoID){
+        if (!(DAO.getTecnico().findById(tecnicoID).isComOrdem())) {
+            DAO.getOrdem().abrirOrdem(ordemID, tecnicoID);
+            return true;
+        }
+        return false;
     }
     public Fatura gerarFatura(Ordem ordem){
         return ordem.gerarFatura();

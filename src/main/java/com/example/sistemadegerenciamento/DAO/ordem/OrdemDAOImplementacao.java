@@ -1,9 +1,12 @@
 package com.example.sistemadegerenciamento.DAO.ordem;
 
 import com.example.sistemadegerenciamento.DAO.DAO;
+import com.example.sistemadegerenciamento.models.CategoriaServico;
 import com.example.sistemadegerenciamento.models.Ordem;
+import com.example.sistemadegerenciamento.models.Servico;
 import com.example.sistemadegerenciamento.models.StatusOrdem;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,12 +38,18 @@ public class OrdemDAOImplementacao implements OrdemDAO{
     public void deleteMany() {
         ordensEmEspera.clear();
     }
-
+    //Se a ordem for cancelada, as peças que foram utilizadas, são devolvidas.
     public void cancelarOrdem(int ordemID){
+        //Quando cancelar, tem que devolver as peças para o estoque
         this.ordensCanceladas.put(ordemID, this.ordensAberta.get(ordemID));
         this.ordensAberta.remove(ordemID);
+        ArrayList<Servico> servicos = this.ordensCanceladas.get(ordemID).getServicos();
+        for (int i=0; i<servicos.size(); i++){
+            if (servicos.get(i).getCategoria() == CategoriaServico.MONTAGEM){
+                DAO.getEstoque().devolucaoPeca(servicos.get(i).getPeca(), 1);
+            }
+        }
     }
-
     public Ordem finalizarOrdem(int ordemID){
         //Só pode finalizar ordem se todos os serviços forem finalizados
         this.ordensFinalizadas.put(ordemID, this.ordensAberta.get(ordemID));
