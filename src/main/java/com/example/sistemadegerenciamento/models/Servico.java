@@ -1,11 +1,12 @@
 package com.example.sistemadegerenciamento.models;
-//importar Calendar e definir hora da instância
-
 import com.example.sistemadegerenciamento.DAO.DAO;
 
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * Classe responsável por armazenar dados e comportamentos dos serviços.
+ * */
 public class Servico {
 
     private CategoriaServico categoria;
@@ -18,10 +19,6 @@ public class Servico {
     private String descricao;
     private boolean finalizado;
 
-	//A avalição do cliente não pode ser no momento da instância. Só após finalizar o serviço/ordem.
-	//Possa ser que não tenha uma descrição?
-
-    //se a categoria for MONTAGEM, define PEÇA
 
     public Servico (CategoriaServico categoria, double valor, int ordemID, Peca peca, String descricao) throws Exception {
         if (categoria == CategoriaServico.MONTAGEM){
@@ -33,7 +30,6 @@ public class Servico {
         }
         this.categoria = categoria;
         this.valor = valor;
-        //this.avaliacaoCliente = avaliacaoCliente;
         this.ordemID = ordemID;
         this.peca = peca;
         this.descricao = descricao;
@@ -67,7 +63,9 @@ public class Servico {
     public Calendar getHorarioFechamento() {
         return horarioFechamento;
     }
-
+    /**
+     * Método que finaliza o serviço, registrando o horário de fechamento do serviço.
+     * */
     public void finalizarServico(int avaliacaoCliente) {
         Calendar fechamento = Calendar.getInstance();
         fechamento.setTime(new Date());

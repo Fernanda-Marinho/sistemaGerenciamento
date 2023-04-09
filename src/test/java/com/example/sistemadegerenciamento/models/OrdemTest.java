@@ -12,6 +12,10 @@ class OrdemTest {
 
     @Test
     void setStatus() {
+        Ordem ordem = new Ordem(1);
+        ordem.setStatus(StatusOrdem.ABERTA);
+        assertEquals(ordem.getStatus(), StatusOrdem.ABERTA);
+        assertNotEquals(ordem.getStatus(), StatusOrdem.ESPERA);
     }
 
     @Test
@@ -40,6 +44,7 @@ class OrdemTest {
 
     @Test
     void getOrdemID() {
+
     }
 
     @Test

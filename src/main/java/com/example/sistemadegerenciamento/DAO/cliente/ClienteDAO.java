@@ -10,6 +10,10 @@ import java.util.HashMap;
 * de implementação da persistência.
 * */
 
+/**
+ * Interface que adiciona funcionalidades que não há no CRUD, especificando casos que só o Cliente possui.
+ * */
+
 public interface ClienteDAO extends CRUD<Cliente, Exception> {
 
     public void update(int clienteID, String nome, String endereco, String telefone);

@@ -208,5 +208,9 @@ public class MainController {
         //Técnico ADM: login = Admin, senha = Admin
         MainController mainC = new MainController();
         mainC.criaTecnico(true, "Admin", "Admin");
+        Peca peca = new Peca("RAM", 128.0);
+        mainC.realizaOrdemCompra(peca, 10, peca.getValor());
+        mainC.realizaOrdemCompra(new Peca("HD", 218.50), 8, 329.4);
+        System.out.println(mainC.geraRelatorio());
     }
 }

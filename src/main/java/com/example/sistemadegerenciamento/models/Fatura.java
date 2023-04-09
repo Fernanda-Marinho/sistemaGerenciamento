@@ -1,8 +1,10 @@
 package com.example.sistemadegerenciamento.models;
 import java.util.ArrayList;
 
-//Alterações: definição da coleção de pagamentos e alteração no construtor.
 
+/**
+ * Classe responsável por armazenar dados e comportamentos da fatura.
+ * */
 public class Fatura {
 
     private double valorTotal;
@@ -21,7 +23,7 @@ public class Fatura {
         this.ID++;
     }
     /**
-     * Método de adicionar pagamento. Se o valor pago for menor que o total,
+     * Método de adicionar pagamento a fatura, incluindo método de pagamento e valor. Se o valor pago for menor que o total,
      * retorna true. Caso o valor pago fique maior que o valor total, retorna false.
      * */
     public boolean addPagamento(Pagamento pagamento){
@@ -47,6 +49,9 @@ public class Fatura {
     public double getValorPago() {
         return valorPago;
     }
+    /**
+     * Método que retorna o valor total devedor;
+     * */
     public double getSaldoDevedor(){
         return valorTotal - valorPago;
     }

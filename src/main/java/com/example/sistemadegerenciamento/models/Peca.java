@@ -1,5 +1,8 @@
 package com.example.sistemadegerenciamento.models;
 
+/**
+ * Classe responsável por armazenar dados e comportamentos da peça.
+ * */
 public class Peca {
 
     private String nome;

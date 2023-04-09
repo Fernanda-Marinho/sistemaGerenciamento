@@ -1,5 +1,9 @@
 package com.example.sistemadegerenciamento.models;
 
+
+/**
+ * Classe responsável por armazenar dados e comportamentos do pagamento.
+ * */
 public class Pagamento {
 
     private String tipoPagamento;
@@ -16,7 +20,6 @@ public class Pagamento {
     public String getTipoPagamento() {
         return tipoPagamento;
     }
-
     public double getValor() {
         return valor;
     }

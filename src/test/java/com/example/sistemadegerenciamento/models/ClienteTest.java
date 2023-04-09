@@ -9,15 +9,15 @@ class ClienteTest {
 
     @Test
     void validarNome() {
-        Cliente cliente = new Cliente("Maria", "Endereço, 123", "99999999");
-        assertTrue(cliente.validarNome("Maria"));
+        Cliente cliente = new Cliente("Maria da Silva", "Endereço, 123", "99999999");
+        assertTrue(cliente.validarNome("Maria da Silva"));
         assertFalse(cliente.validarNome("Pedro123"));
     }
 
     @Test
     void validarTelefone() {
         Cliente cliente = new Cliente("Maria", "Endereço, 123", "99999999");
-        assertTrue(cliente.validarTelefone("12345678"));
+        assertTrue(cliente.validarTelefone("7512345678"));
         assertFalse(cliente.validarTelefone("123-456-789"));
     }
     @Test
@@ -63,8 +63,10 @@ class ClienteTest {
 
     @Test
     void getOrdem() {
-
-
+        Cliente cliente = new Cliente("Maria", "Endereço, 123", "99999999");
+        Ordem ordem = new Ordem(10);
+        cliente.addOrdem(ordem);
+        assertEquals(cliente.getOrdem(1).getOrdemID(), 1);
     }
 
     @Test

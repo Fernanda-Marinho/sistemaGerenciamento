@@ -1,7 +1,10 @@
 package com.example.sistemadegerenciamento.models;
 
+/**
+ * Enum dos estados das ordens disponíveis;
+ * */
+
 public enum StatusOrdem {
-    PAGAMENTO,
     ABERTA,
     FINALIZADA,
     CANCELADA,

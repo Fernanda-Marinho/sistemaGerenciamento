@@ -1,7 +1,9 @@
 package com.example.sistemadegerenciamento.models;
 import java.util.ArrayList;
 
-//Alterações: mudança no construtor e definição da coleção de historicoOrdens
+/**
+ * Classe responsável por armazenar dados e comportamentos do técnico.
+ * */
 
 public class Tecnico {
     private boolean adm;
@@ -12,19 +14,25 @@ public class Tecnico {
     private ArrayList<Ordem> historicoOrdens = new ArrayList();
     public static int ID=1;
 
-    //construtor
-	//Um técnico não tem histórico de ordens quando é criado.
-    //falta criar ID do técnico
     public  Tecnico(boolean adm, String nome, String senha){
         this.adm = adm;
         this.senha = senha;
         this.nome = nome;
+        this.comOrdem = false;
         this.tecnicoID = this.ID;
         this.ID++;
     }
 
+    /**
+     * Método que adiciona uma ordem para a coleção de ordens do técnico;
+     * */
     public void addOrdem(Ordem ordem){
+        this.comOrdem = true;
         historicoOrdens.add(ordem);
+    }
+
+    public void fechaOrdem(){
+        this.comOrdem = false;
     }
 
     public boolean isAdm() {
@@ -56,11 +64,7 @@ public class Tecnico {
     }
 
     public boolean isComOrdem(){
-        if (this.comOrdem){
-            return true;
-        } else {
-            return false;
-        }
+        return this.comOrdem;
     }
 
 }

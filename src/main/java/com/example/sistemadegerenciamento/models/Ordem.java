@@ -2,7 +2,9 @@ package com.example.sistemadegerenciamento.models;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-//Alterações: modificações no construtor e definição da coleção de serviços.
+/**
+ * Classe responsável por armazenar dados e comportamentos da ordem.
+ * */
 public class Ordem {
 
 	//Definição da coleção de serviços.
@@ -35,10 +37,16 @@ public class Ordem {
         return fatura;
     }
 
+    /**
+     * Método que adiciona o serviço no ArrayList de serviços;
+     * */
     public void addServico(Servico servico){
         this.servicos.add(servico);
     }
 
+    /**
+     * Método que remove o serviço informado do ArrayList;
+     * */
     public void removerServico(Servico servico){
         for (int i=0; i<servicos.size(); i++){
             if (servicos.get(i) == servico){
@@ -47,6 +55,9 @@ public class Ordem {
             }
         }
     }
+    /**
+     * Método que finaliza o serviço informado da ArrayList;
+     * */
     public void finalizarServico(Servico servico, int avaliacaoCliente){
         for (int i=0; i<servicos.size(); i++){
             if (servicos.get(i) == servico){
@@ -55,6 +66,9 @@ public class Ordem {
             }
         }
     }
+    /**
+     * Método que retorna o valor total de todos os serviços da ArrayList;
+     * */
     public double gerarValorTotal(){
         double valor = 0.0;
         for (int i=0; i<this.servicos.size(); i++){
@@ -62,12 +76,17 @@ public class Ordem {
         }
         return valor;
     }
-
+    /**
+     * Método que gera e retorna a fatura da ordem;
+     * */
     public Fatura gerarFatura(){
         Fatura fatura = new Fatura(gerarValorTotal(), this.getOrdemID());
         this.fatura = fatura;
         return fatura;
     }
+    /**
+     * Método que verifica o tempo de espera de cada serviço e retorna uma média deles;
+     * */
     public void gerarTempoMedioDeServicos(){
         long tempoTotal = 0;
         long diferencaMinutos;
@@ -92,6 +111,9 @@ public class Ordem {
         this.tempoMedioDeServicos = tempoMedio;
     }
 
+    /**
+     * Método que gera uma média da safistação de todos os serviços da ordem;
+     * */
     public double gerarMediaDeSatisfacaoDoCliente(){
         double media;
         int soma = 0;
@@ -144,5 +166,3 @@ public class Ordem {
         return tempoMedioDeServicos;
     }
 }
-
-//falta: ID da ordem, adicionar serviços e remover serviços, falta um método de gerar fatura

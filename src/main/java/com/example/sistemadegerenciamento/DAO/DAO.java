@@ -9,12 +9,12 @@ import com.example.sistemadegerenciamento.DAO.ordem.OrdemDAOImplementacao;
 import com.example.sistemadegerenciamento.DAO.tecnico.TecnicoDAO;
 import com.example.sistemadegerenciamento.DAO.tecnico.TecnicoDAOImplementacao;
 
-/*
-* Esta classe serve para armazenar a chamada de todas as implementações dos DAOs dos modelos.
-* Como esta classe só tem atributos e métodos estáticos, consegue ser utilizado em qualquer lugar.
-* Sendo assim, possibilita que a persistência seja manipulada de qualquer classe.
-* Por fim, ela mantém o contato entre os models e a persistência.
-* */
+/**
+ * Classe responsável por salvar e chamar todas as implementações dos DAOs dos modelos (padrão singleton).
+ * Como esta classe só tem atributos e métodos estáticos, consegue ser utilizado em qualquer lugar.
+ * Sendo assim, possibilita que a persistência seja manipulada de qualquer classe.
+ * Por fim, ela mantém o contato entre os models e a persistência.
+ * */
 
 public class DAO {
     private static ClienteDAO clienteDAO;
@@ -28,26 +28,36 @@ public class DAO {
     * Por sua vez, ClienteDAO extende o CRUD. Por isso, ClienteDAOImplementacao também extende CRUD.
     * */
 
+    /**
+     * Método estático que retorna o ClienteDAO.
+     * */
     public static ClienteDAO getCliente() {
         if (clienteDAO == null) {
             clienteDAO = new ClienteDAOImplementacao();
         }
         return clienteDAO;
     }
+    /**
+     * Método estático que retorna a OrdemDAO.
+     * */
     public static OrdemDAO getOrdem() {
         if (ordemDAO == null){
             ordemDAO = new OrdemDAOImplementacao();
         }
         return ordemDAO;
     }
-
+    /**
+     * Método estático que retorna o TecnicoDAO.
+     * */
     public static TecnicoDAO getTecnico() {
         if (tecnicoDAO == null){
             tecnicoDAO = new TecnicoDAOImplementacao();
         }
         return tecnicoDAO;
     }
-
+    /**
+     * Método estático que retorna o EstoqueDAO.
+     * */
     public static EstoqueDAO getEstoque() {
         if (estoqueDAO == null){
             estoqueDAO = new EstoqueDAOImplementacao();

@@ -10,6 +10,9 @@ import java.util.HashMap;
  * de implementação da persistência.
  * */
 
+/**
+ * Interface que adiciona funcionalidades que não há no CRUD, especificando casos que só o Técnico possui.
+ * */
 public interface TecnicoDAO extends CRUD<Tecnico, Exception> {
     public void update(int tecnicoID, String nome, String senha);
 
