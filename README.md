@@ -27,4 +27,18 @@ Requisitos de desenvolvimento:
 - 📝Persistência dos dados.
 - 📝Construção da interface gráfica com JavaFX.
 
+Ferramentas:
+- 🔧OpenJDK
+- 🔧JavaFX
+- 🔧Maven
+- 🔧Intellij IDEA
+
+Padrões de commit utilizados: https://github.com/rafatosta/padroes-de-commits
+
+Para clonar este repositório:
+1. $ git clone https://github.com/Fernanda-Marinho/sistemaGerenciamento
+
+2. Abra com o Intellij e espere a configuração.
+
+3. Rode a classe HelloApplication.java e utilize do sistema!
 
