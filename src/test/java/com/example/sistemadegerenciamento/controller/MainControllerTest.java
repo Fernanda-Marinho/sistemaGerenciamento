@@ -56,10 +56,19 @@ class MainControllerTest {
 
     @Test
     void buscaTecnico() {
+        Tecnico tec = new Tecnico(false, "Maria", "mdemdime");
+        DAO.getTecnico().create(tec);
+        assertEquals(tec, DAO.getTecnico().findById(tec.getTecnicoID()));
     }
 
     @Test
     void validaLogin() {
+        Tecnico tec = new Tecnico(false, "Maria", "mdemdime");
+        DAO.getTecnico().create(tec);
+        String login = new String("Maria");
+        String senha = new String("mdemdime");
+        assertEquals(senha, DAO.getTecnico().findById(tec.getTecnicoID()).getSenha());
+        assertEquals(login, DAO.getTecnico().findById(tec.getTecnicoID()).getNome());
     }
 
     @Test
