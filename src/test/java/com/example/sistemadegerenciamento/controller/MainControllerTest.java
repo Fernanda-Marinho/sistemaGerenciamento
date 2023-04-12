@@ -1,6 +1,7 @@
 package com.example.sistemadegerenciamento.controller;
 
 import com.example.sistemadegerenciamento.DAO.DAO;
+import com.example.sistemadegerenciamento.models.Cliente;
 import com.example.sistemadegerenciamento.models.Tecnico;
 import org.junit.jupiter.api.Test;
 
@@ -73,22 +74,47 @@ class MainControllerTest {
 
     @Test
     void criaCliente() {
+        Cliente cliente = new Cliente("Douglas", "rua bla bla", "759812312");
+        DAO.getCliente().create(cliente);
+        assertEquals(DAO.getCliente().findById(cliente.getClienteID()), cliente);
     }
 
     @Test
     void atualizaCliente() {
+        Cliente cliente = new Cliente("Douglas", "rua bla bla", "759812312");
+        DAO.getCliente().create(cliente);
+        DAO.getCliente().update(1, "Douglas Oliveira", "rua ble ble", "750293432");
+        assertEquals(DAO.getCliente().findById(1).getNome(), "Douglas Oliveira");
+        assertEquals(DAO.getCliente().findById(1).getEndereco(), "rua ble ble");
+        assertEquals(DAO.getCliente().findById(1).getTelefone(), "750293432");
+        assertNotEquals(DAO.getCliente().findById(1).getNome(), "Douglas");
     }
 
     @Test
-    void deletaCliente() {
+    void deletaCliente() throws Exception {
+        Cliente cliente = new Cliente("Douglas", "rua bla bla", "759812312");
+        DAO.getCliente().create(cliente);
+        DAO.getCliente().delete(cliente.getClienteID());
+        assertEquals(null, DAO.getCliente().findById(1));
     }
 
     @Test
     void buscaTodosClientes() {
+        Cliente cliente = new Cliente("Douglas", "rua bla bla", "759812312");
+        Cliente cliente2 = new Cliente("Jorge Silva", "malamamalam", "24234324");
+        HashMap<Integer, Cliente> clientes = new HashMap<>();
+        clientes.put(cliente.getClienteID(), cliente);
+        clientes.put(cliente2.getClienteID(), cliente2);
+        DAO.getCliente().create(cliente);
+        DAO.getCliente().create(cliente2);
+        assertEquals(clientes, DAO.getCliente().findMany());
     }
 
     @Test
     void buscaCliente() {
+        Cliente cliente = new Cliente("Douglas", "rua bla bla", "759812312");
+        DAO.getCliente().create(cliente);
+        assertEquals(cliente, DAO.getCliente().findById(cliente.getClienteID()));
     }
 
     @Test
