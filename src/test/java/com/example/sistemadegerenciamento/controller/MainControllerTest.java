@@ -44,6 +44,14 @@ class MainControllerTest {
 
     @Test
     void buscaTodosTecnicos() {
+        Tecnico tec = new Tecnico(false, "Roberto", "12345");
+        Tecnico tec2 = new Tecnico(true, "Juliana Passos", "admin");
+        DAO.getTecnico().create(tec);
+        DAO.getTecnico().create(tec2);
+        HashMap <Integer, Tecnico> tecnicos = new HashMap<>();
+        tecnicos.put(tec.getTecnicoID(), tec);
+        tecnicos.put(tec2.getTecnicoID(), tec2);
+        assertEquals(DAO.getTecnico().findMany(), tecnicos);
     }
 
     @Test
