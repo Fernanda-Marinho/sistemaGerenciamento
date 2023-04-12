@@ -2,6 +2,8 @@ package com.example.sistemadegerenciamento.models;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 //Não ta aceitando nome com espaços e nem com acento
@@ -71,10 +73,23 @@ class ClienteTest {
 
     @Test
     void getOrdens() {
+        Cliente cliente = new Cliente("Maria", "Endereço, 123", "99999999");
+        Ordem ordem = new Ordem(10);
+        cliente.addOrdem(ordem);
+        Ordem ordem2 = new Ordem(10);
+        cliente.addOrdem(ordem2);
+        ArrayList<Ordem> ordens = new ArrayList<>();
+        ordens.add(ordem);
+        ordens.add(ordem2);
+        assertEquals(cliente.getOrdens(), ordens);
     }
 
     @Test
     void addOrdem() {
+        Cliente cliente = new Cliente("Maria", "Endereço, 123", "99999999");
+        Ordem ordem = new Ordem(10);
+        cliente.addOrdem(ordem);
+        assertEquals(cliente.getOrdem(1).getOrdemID(), 1);
     }
 
 }
