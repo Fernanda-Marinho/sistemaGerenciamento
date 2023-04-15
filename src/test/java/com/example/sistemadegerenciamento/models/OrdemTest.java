@@ -8,6 +8,8 @@ class OrdemTest {
 
     @Test
     void getStatus() {
+        Ordem ordem = new Ordem(1);
+        assertEquals(StatusOrdem.ESPERA, ordem.getStatus());
     }
 
     @Test
@@ -20,42 +22,54 @@ class OrdemTest {
 
     @Test
     void getFatura() {
-    }
-
-    @Test
-    void setFatura() {
+        Ordem ordem = new Ordem(1);
+        assertNull(ordem.getFatura());
     }
 
     @Test
     void getClienteID() {
-    }
-
-    @Test
-    void setClienteID() {
+        Ordem ordem = new Ordem(1);
+        assertEquals(1, ordem.getClienteID());
     }
 
     @Test
     void getTecnicoID() {
+        Ordem ordem = new Ordem(1);
+        ordem.setTecnicoID(10);
+        assertEquals(10, ordem.getTecnicoID());
     }
 
     @Test
     void setTecnicoID() {
+        int clienteID = 1;
+        int tecnicoID = 2;
+        Ordem ordem = new Ordem(clienteID);
+        ordem.setTecnicoID(tecnicoID);
+        int result = ordem.getTecnicoID();
+        assertEquals(tecnicoID, result);
     }
 
     @Test
     void getOrdemID() {
-
-    }
-
-    @Test
-    void setOrdemID() {
+        int clienteID = 1;
+        Ordem ordem = new Ordem(clienteID);
+        assertEquals(1, ordem.getOrdemID());
     }
 
     @Test
     void getAvaliacaoFinal() {
+        Ordem ordem = new Ordem(1);
+        ordem.setAvaliacaoFinal("OK");
+        assertEquals("OK", ordem.getAvaliacaoFinal());
     }
 
     @Test
     void setAvaliacaoFinal() {
+        Ordem ordem = new Ordem(1);
+        String novaAvaliacao = "OK";
+        ordem.setAvaliacaoFinal(novaAvaliacao);
+        assertEquals(novaAvaliacao, ordem.getAvaliacaoFinal());
     }
+
+
 }
