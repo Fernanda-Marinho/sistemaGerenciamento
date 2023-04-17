@@ -39,46 +39,18 @@ class ServicoTest {
     }
 
     @Test
-    void getHorarioAbertura() throws Exception {
-        Calendar abertura = Calendar.getInstance();
-        abertura.setTime(new Date());
-        Servico servico2 = new Servico(CategoriaServico.LIMPEZA, 123.2, 1, null, "Descrição2");
-        assertEquals(abertura, servico2.getHorarioAbertura());
+    void getOrdemID() throws Exception {
+        double valor = 321.98;
+        Servico servico2 = new Servico(CategoriaServico.LIMPEZA, valor, 1, null, "Descrição2");
+        assertEquals(servico2.getOrdemID(), 1);
     }
 
     @Test
-    void setHorarioAbertura() {
-    }
-
-    @Test
-    void getHorarioFinalizacao() {
-    }
-
-    @Test
-    void setHorarioFinalizacao() {
-    }
-
-    @Test
-    void getOrdemID() {
-    }
-
-    @Test
-    void setOrdemID() {
-    }
-
-    @Test
-    void getPeca() {
-    }
-
-    @Test
-    void setPeca() {
-    }
-
-    @Test
-    void getDescricao() {
-    }
-
-    @Test
-    void setDescricao() {
+    void setOrdemID() throws Exception {
+        double valor = 321.98;
+        Servico servico2 = new Servico(CategoriaServico.LIMPEZA, valor, 1, null, "Descrição2");
+        assertEquals(servico2.getOrdemID(), 1);
+        servico2.setOrdemID(2);
+        assertEquals(servico2.getOrdemID(), 2);
     }
 }
