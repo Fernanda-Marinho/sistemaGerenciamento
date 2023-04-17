@@ -45,6 +45,18 @@ public class OrdemDAOImplementacao implements OrdemDAO{
     public Ordem findById(int ordemID) {
         return ordensEmEspera.get(ordemID);
     }
+
+    public Ordem findByIdAberta(int ordemID) {
+        return ordensAberta.get(ordemID);
+    }
+    public Ordem findByIdFinalizada(int ordemID) {
+        return ordensFinalizadas.get(ordemID);
+    }
+
+    public Ordem findByIdCancelada(int ordemID) {
+        return ordensCanceladas.get(ordemID);
+    }
+
     /**
      * Método que deleta a ordem enviada do HashMap;
      * */
@@ -67,8 +79,13 @@ public class OrdemDAOImplementacao implements OrdemDAO{
      * */
     public void cancelarOrdem(int ordemID){
         //Quando cancelar, tem que devolver as peças para o estoque
-        this.ordensCanceladas.put(ordemID, this.ordensAberta.get(ordemID));
-        this.ordensAberta.remove(ordemID);
+        if (this.ordensAberta.get(ordemID) != null){
+            this.ordensCanceladas.put(ordemID, this.ordensAberta.get(ordemID));
+            this.ordensAberta.remove(ordemID);
+        } else if (this.ordensEmEspera.get(ordemID) != null){
+            this.ordensCanceladas.put(ordemID, this.ordensEmEspera.get(ordemID));
+            this.ordensEmEspera.remove(ordemID);
+        }
         ArrayList<Servico> servicos = this.ordensCanceladas.get(ordemID).getServicos();
         for (int i=0; i<servicos.size(); i++){
             if (servicos.get(i).getCategoria() == CategoriaServico.MONTAGEM){
@@ -80,11 +97,15 @@ public class OrdemDAOImplementacao implements OrdemDAO{
      * Método que finaliza a ordem;
      * */
     public Ordem finalizarOrdem(int ordemID){
-        //Só pode finalizar ordem se todos os serviços forem finalizados
-        this.ordensFinalizadas.put(ordemID, this.ordensAberta.get(ordemID));
-        this.ordensAberta.remove(ordemID);
-        this.ordensFinalizadas.get(ordemID).gerarTempoMedioDeServicos();
-        return this.ordensFinalizadas.get(ordemID);
+        //Só pode finalizar ordem se todos os serviços forem finalizados e se a ordem tiver aberta
+        Ordem ordem = this.ordensAberta.get(ordemID);
+        if (ordem != null){
+            ordem.gerarTempoMedioDeServicos();
+            this.ordensFinalizadas.put(ordemID, ordem);
+            this.ordensAberta.remove(ordemID);
+            return this.ordensFinalizadas.get(ordem.getOrdemID());
+        }
+        return null;
     }
     /**
      * Método que tira a ordem de espera e a abre para relacioná-la com o técnico;

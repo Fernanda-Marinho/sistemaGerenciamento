@@ -1,10 +1,10 @@
 package com.example.sistemadegerenciamento.controller;
 
 import com.example.sistemadegerenciamento.DAO.DAO;
-import com.example.sistemadegerenciamento.models.Cliente;
-import com.example.sistemadegerenciamento.models.Tecnico;
+import com.example.sistemadegerenciamento.models.*;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -31,27 +31,28 @@ class MainControllerTest {
     }
     @Test
     void atualizaTecnico() {
+        DAO.getTecnico().deleteMany();
         Tecnico tecnico = new Tecnico(true, "admin", "admin");
         Tecnico tecnico2 = new Tecnico(false, "robert", "blabla");
         DAO.getTecnico().create(tecnico);
         DAO.getTecnico().create(tecnico2);
         if (tecnico.isAdm())
             DAO.getTecnico().update(tecnico2.getTecnicoID(), "manuela", "bleble");
-        HashMap<Integer, Tecnico> dict = DAO.getTecnico().findMany();
-        System.out.println(dict.get(1).getNome());
-        System.out.println(dict.get(2).getNome());
+        assertEquals(DAO.getTecnico().findById(tecnico2.getTecnicoID()).getNome(), "manuela");
+        assertEquals(DAO.getTecnico().findById(tecnico2.getTecnicoID()).getSenha(), "bleble");
 
     }
 
     @Test
     void buscaTodosTecnicos() {
-        Tecnico tec = new Tecnico(false, "Roberto", "12345");
-        Tecnico tec2 = new Tecnico(true, "Juliana Passos", "admin");
-        DAO.getTecnico().create(tec);
-        DAO.getTecnico().create(tec2);
+        DAO.getTecnico().deleteMany();
+        Tecnico tecnico = new Tecnico(false, "Roberto", "12345");
+        Tecnico tecnico2 = new Tecnico(true, "Juliana Passos", "admin");
+        DAO.getTecnico().create(tecnico);
+        DAO.getTecnico().create(tecnico2);
         HashMap <Integer, Tecnico> tecnicos = new HashMap<>();
-        tecnicos.put(tec.getTecnicoID(), tec);
-        tecnicos.put(tec2.getTecnicoID(), tec2);
+        tecnicos.put(tecnico.getTecnicoID(), tecnico);
+        tecnicos.put(tecnico2.getTecnicoID(), tecnico2);
         assertEquals(DAO.getTecnico().findMany(), tecnicos);
     }
 
@@ -83,11 +84,11 @@ class MainControllerTest {
     void atualizaCliente() {
         Cliente cliente = new Cliente("Douglas", "rua bla bla", "759812312");
         DAO.getCliente().create(cliente);
-        DAO.getCliente().update(1, "Douglas Oliveira", "rua ble ble", "750293432");
-        assertEquals(DAO.getCliente().findById(1).getNome(), "Douglas Oliveira");
-        assertEquals(DAO.getCliente().findById(1).getEndereco(), "rua ble ble");
-        assertEquals(DAO.getCliente().findById(1).getTelefone(), "750293432");
-        assertNotEquals(DAO.getCliente().findById(1).getNome(), "Douglas");
+        DAO.getCliente().update(cliente.getClienteID(), "Douglas Oliveira", "rua ble ble", "750293432");
+        assertEquals(DAO.getCliente().findById(cliente.getClienteID()).getNome(), "Douglas Oliveira");
+        assertEquals(DAO.getCliente().findById(cliente.getClienteID()).getEndereco(), "rua ble ble");
+        assertEquals(DAO.getCliente().findById(cliente.getClienteID()).getTelefone(), "750293432");
+        assertNotEquals(DAO.getCliente().findById(cliente.getClienteID()).getNome(), "Douglas");
     }
 
     @Test
@@ -100,6 +101,7 @@ class MainControllerTest {
 
     @Test
     void buscaTodosClientes() {
+        DAO.getCliente().deleteMany();
         Cliente cliente = new Cliente("Douglas", "rua bla bla", "759812312");
         Cliente cliente2 = new Cliente("Jorge Silva", "malamamalam", "24234324");
         HashMap<Integer, Cliente> clientes = new HashMap<>();
@@ -119,54 +121,117 @@ class MainControllerTest {
 
     @Test
     void criaOrdem() {
+        Ordem ordem = new Ordem(1);
+        DAO.getOrdem().create(ordem);
+        assertEquals(DAO.getOrdem().findById(ordem.getOrdemID()), ordem);
     }
 
     @Test
     void finalizaOrdem() {
+        Ordem ordem = new Ordem(1);
+        DAO.getOrdem().create(ordem);
+        DAO.getOrdem().abrirOrdem(ordem.getOrdemID(), 1);
+        DAO.getOrdem().finalizarOrdem(ordem.getOrdemID());
+        assertEquals(DAO.getOrdem().findByIdFinalizada(ordem.getOrdemID()), ordem);
     }
 
     @Test
     void cancelaOrdem() {
+        Ordem ordem = new Ordem(1);
+        DAO.getOrdem().create(ordem);
+        DAO.getOrdem().cancelarOrdem(ordem.getOrdemID());
+        assertEquals(DAO.getOrdem().findByIdCancelada(ordem.getOrdemID()), ordem);
     }
 
     @Test
-    void addServico() {
+    void addServico() throws Exception {
+        Ordem ordem = new Ordem(1);
+        Servico serv = new Servico(CategoriaServico.FORMATACAO, 4342.3, 1, null, "sem descr");
+        ordem.addServico(serv);
+        DAO.getOrdem().create(ordem);
+        assertEquals(DAO.getOrdem().findById(ordem.getOrdemID()).getServicos().get(0), serv);
     }
 
     @Test
-    void finalizaServico() {
+    void finalizaServico() throws Exception {
+        Ordem ordem = new Ordem(1);
+        Servico serv = new Servico(CategoriaServico.FORMATACAO, 4342.3, 1, null, "sem descr");
+        ordem.addServico(serv);
+        DAO.getOrdem().create(ordem);
+        ordem.finalizarServico(serv, 5);
+        assertEquals(ordem.gerarMediaDeSatisfacaoDoCliente(), 5.0);
     }
 
     @Test
-    void buscaServicosPorOrdem() {
+    void buscaServicosPorOrdem() throws Exception {
+        Ordem ordem = new Ordem(1);
+        Servico serv = new Servico(CategoriaServico.FORMATACAO, 4342.3, 1, null, "sem descr");
+        Servico serv2 = new Servico(CategoriaServico.FORMATACAO, 4342.3, 1, null, "sem descr");
+        ArrayList<Servico> servicos = new ArrayList<>();
+        servicos.add(serv);
+        servicos.add(serv2);
+        ordem.addServico(serv);
+        ordem.addServico(serv2);
+        DAO.getOrdem().create(ordem);
+        assertEquals(DAO.getOrdem().findById(ordem.getOrdemID()).getServicos(), servicos);
     }
 
     @Test
-    void removeServico() {
+    void removeServico() throws Exception {
+        Ordem ordem = new Ordem(1);
+        Servico serv = new Servico(CategoriaServico.FORMATACAO, 4342.3, 1, null, "sem descr");
+        Servico serv2 = new Servico(CategoriaServico.FORMATACAO, 4342.3, 1, null, "sem descr");
+        ArrayList<Servico> servicos = new ArrayList<>();
+        servicos.add(serv);
+        servicos.add(serv2);
+        ordem.addServico(serv);
+        ordem.addServico(serv2);
+        ordem.removerServico(serv);
+        DAO.getOrdem().create(ordem);
+        assertNotEquals(DAO.getOrdem().findById(ordem.getOrdemID()).getServicos(), servicos);
     }
 
     @Test
     void relacionaOrdemATecnico() {
+        Ordem ordem = new Ordem(2);
+        Tecnico tecnico = new Tecnico(true, "admin", "admin");
+        DAO.getTecnico().create(tecnico);
+        DAO.getOrdem().create(ordem);
+        DAO.getOrdem().abrirOrdem(ordem.getOrdemID(), tecnico.getTecnicoID());
+        DAO.getTecnico().findById(tecnico.getTecnicoID()).addOrdem(DAO.getOrdem().findById(ordem.getOrdemID()));
+        assertEquals(DAO.getOrdem().findByIdAberta(ordem.getOrdemID()).getTecnicoID(), tecnico.getTecnicoID());
+        assertEquals(DAO.getTecnico().findById(tecnico.getTecnicoID()).isComOrdem(), true);
     }
 
     @Test
-    void gerarFatura() {
+    void gerarFatura() throws Exception {
+        Ordem ordem = new Ordem(1);
+        DAO.getOrdem().create(ordem);
+        Servico serv = new Servico(CategoriaServico.LIMPEZA, 123, 1, null, "sem");
+        DAO.getOrdem().findById(ordem.getOrdemID()).addServico(serv);
+        DAO.getOrdem().abrirOrdem(ordem.getOrdemID(), 1);
+        DAO.getOrdem().finalizarOrdem(ordem.getOrdemID());
+        Fatura fat = DAO.getOrdem().findByIdFinalizada(ordem.getOrdemID()).gerarFatura();
+        assertEquals(fat.getValorTotal(), 123);
     }
 
     @Test
     void verEstoque() {
+        Peca peca = new Peca("RAM", 123);
+        OrdemCompra ordemCompra = new OrdemCompra(peca, 10, 123);
+        DAO.getEstoque().addOrdemCompra(ordemCompra);
+        Peca peca2 = new Peca("RAM", 123);
+        OrdemCompra ordemCompra2 = new OrdemCompra(peca, 10, 123);
+        DAO.getEstoque().addOrdemCompra(ordemCompra2);
+        assertEquals(DAO.getEstoque().verEstoque().get(peca), 20);
     }
 
     @Test
     void realizaOrdemCompra() {
-    }
-
-    @Test
-    void geraRelatorio() {
-    }
-
-    @Test
-    void verAgendaDeAtendimento() {
+        Peca peca = new Peca("RAM", 123);
+        OrdemCompra ordemCompra = new OrdemCompra(peca, 10, 123);
+        DAO.getEstoque().addOrdemCompra(ordemCompra);
+        assertEquals(true, DAO.getEstoque().verDisponibilidadeDePeca(peca));
     }
 
     @Test

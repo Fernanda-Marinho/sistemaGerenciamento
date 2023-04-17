@@ -41,7 +41,7 @@ public class Servico {
     }
 
     public CategoriaServico getCategoria() {
-        return categoria;
+        return this.categoria;
     }
 
     public double getValor() {
@@ -54,10 +54,6 @@ public class Servico {
 
     public Calendar getHorarioAbertura() {
         return horarioAbertura;
-    }
-
-    public void setHorarioAbertura(Calendar horarioAbertura) {
-        this.horarioAbertura = horarioAbertura;
     }
 
     public Calendar getHorarioFechamento() {

@@ -21,4 +21,7 @@ public interface OrdemDAO extends CRUD<Ordem, Exception> {
     public String gerarMediaSatisfacaoPorOrdem();
     public String verOrdensEmEspera();
     public void abrirOrdem(int ordemID, int tecnicoID);
+    public Ordem findByIdFinalizada(int ordemID);
+    public Ordem findByIdCancelada(int ordemID);
+    public Ordem findByIdAberta(int ordemID);
 }

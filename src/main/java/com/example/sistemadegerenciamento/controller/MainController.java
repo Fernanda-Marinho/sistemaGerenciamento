@@ -158,7 +158,7 @@ public class MainController {
     public boolean relacionaOrdemATecnico(int ordemID, int tecnicoID){
         if (!(DAO.getTecnico().findById(tecnicoID).isComOrdem())) {
             DAO.getOrdem().abrirOrdem(ordemID, tecnicoID);
-            DAO.getTecnico().findById(tecnicoID).addOrdem(DAO.getOrdem().findById(ordemID));
+            DAO.getTecnico().findById(tecnicoID).addOrdem(DAO.getOrdem().findByIdAberta(ordemID));
             return true;
         }
         return false;
