@@ -11,6 +11,18 @@ import java.util.HashMap;
 * Por exemplo, DAO.getCliente() irá retornar um ClienteDAOImplementacao, para que possa realizar o CRUD na persistência.
 * */
 
+//Item do barema: CRUD das classes -> FEITO
+//Item do barema: Padrão de projeto DAO -> FEITO
+//Item do barema: Criação e uso correto das Entidades (ex: Cliente, técnico, ...) -> FEITO
+//Item do barema: Gerenciamento de ordens de serviço -> FEITO
+//Item do barema: Agenda de atendimento -> FEITO
+//Item do barema: Gerenciamento de peças e estoque -> FEITO
+//Item do barema: Faturamento e pagamento -> FEITO
+//Item do barema: Testes de unidade das classes do CRUD -> FEITO
+//Item do barema: Testes das outras operações de sistema -> FEITO
+//Item do barema: Documentação do código em Javadoc -> FEITO
+//Item do barema: Commits estruturados adequadamente -> FEITO
+
 public class MainController {
     /**
      * Método que salva o técnico na implementação do DAO; Recebe como parâmetro o boolean adm, o login e a senha de acesso;
