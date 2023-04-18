@@ -1,0 +1,9 @@
+module:com.example.sistemadegerenciamento
+com.example.sistemadegerenciamento
+com.example.sistemadegerenciamento.controller
+com.example.sistemadegerenciamento.DAO
+com.example.sistemadegerenciamento.DAO.cliente
+com.example.sistemadegerenciamento.DAO.estoque
+com.example.sistemadegerenciamento.DAO.ordem
+com.example.sistemadegerenciamento.DAO.tecnico
+com.example.sistemadegerenciamento.models
