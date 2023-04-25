@@ -1,9 +1,11 @@
 package com.example.sistemadegerenciamento.models;
 
+import java.io.Serializable;
+
 /**
  * Classe responsável por armazenar dados e comportamentos da peça.
  * */
-public class Peca {
+public class Peca implements Serializable {
 
     private String nome;
     private double valor;

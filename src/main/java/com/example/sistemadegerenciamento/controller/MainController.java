@@ -6,6 +6,7 @@ import com.example.sistemadegerenciamento.models.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -243,6 +244,24 @@ public class MainController {
     public void carregaArquivoClienteDAO() throws IOException, ClassNotFoundException {
         DAO.getCliente().atualizaColecaoDoArquivo(lerArquivoClienteDAO());
     }
+    /**
+     * Método que faz a persistência de dados do estoque em um arquivo binário através da serialização.
+     * */
+    public void salvarArquivoEstoque() throws IOException{
+        DAO.getEstoqueDAOArquivo().salvarArquivo();
+    }
+    /**
+     * Método que faz a leitura da persistênia de dados do estoque de uma arquivo binário através da desserialização.
+     * */
+    public HashMap<Peca, Integer> lerArquivoEstoque() throws IOException, ClassNotFoundException {
+        return DAO.getEstoqueDAOArquivo().lerArquivo();
+    }
+    /**
+     * Método que atualiza a coleção de clientes em tempo de execução.
+     * */
+    public void carregaArquivoEstoque() throws IOException, ClassNotFoundException {
+        DAO.getEstoque().atualizaColecaoDoArquivo(lerArquivoEstoque());
+    }
 
     /**
      * Main do MainController. O técnico "admin" já deve ser criado na primeira instância do técnico.
@@ -251,10 +270,17 @@ public class MainController {
         //Primeiro passo é realizar login
         //Técnico ADM: login = Admin, senha = Admin
         MainController mainC = new MainController();
-        mainC.criaTecnico(true, "Admin", "Admin");
+        /*mainC.criaTecnico(true, "Admin", "Admin");
         Peca peca = new Peca("RAM", 128.0);
         mainC.realizaOrdemCompra(peca, 10, peca.getValor());
         mainC.realizaOrdemCompra(new Peca("HD", 218.50), 8, 329.4);
         System.out.println(mainC.geraRelatorio());
+        mainC.salvarArquivoEstoque();*/
+
+        HashMap<Peca, Integer> pecas = DAO.getEstoqueDAOArquivo().lerArquivo();
+        for (Map.Entry<Peca, Integer> valor : pecas.entrySet()){
+            System.out.println(valor.getKey().getNome() + " " + valor.getValue());
+        }
+
     }
 }

@@ -17,5 +17,6 @@ public interface EstoqueDAO {
     public double gerarCustoTotalOrdensCompra();
     public String verEstoqueFormatado();
     public void devolucaoPeca(Peca peca, int quantidade);
+    public void atualizaColecaoDoArquivo(HashMap<Peca, Integer> pecas);
 
 }

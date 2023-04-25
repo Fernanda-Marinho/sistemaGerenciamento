@@ -1,5 +1,6 @@
 package com.example.sistemadegerenciamento.DAO.estoque;
 
+import com.example.sistemadegerenciamento.models.Cliente;
 import com.example.sistemadegerenciamento.models.OrdemCompra;
 import com.example.sistemadegerenciamento.models.Peca;
 
@@ -87,5 +88,8 @@ public class EstoqueDAOImplementacao implements EstoqueDAO {
      * */
     public void devolucaoPeca(Peca peca, int quantidade){
         quantidadePecas.put(peca, quantidadePecas.get(peca) + quantidade);
+    }
+    public void atualizaColecaoDoArquivo(HashMap<Peca, Integer> pecas){
+        this.quantidadePecas = pecas;
     }
 }
