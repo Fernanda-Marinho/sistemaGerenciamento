@@ -66,4 +66,8 @@ public class ClienteDAOImplementacao implements ClienteDAO{
     public void deleteMany() {
         clientes.clear();
     }
+
+    public void atualizaColecaoDoArquivo(HashMap<Integer, Cliente> clientes){
+        this.clientes = clientes;
+    }
 }

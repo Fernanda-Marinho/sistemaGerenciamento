@@ -3,26 +3,15 @@ package com.example.sistemadegerenciamento.controller;
 import com.example.sistemadegerenciamento.DAO.DAO;
 import com.example.sistemadegerenciamento.models.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+
 
 /**
 * No controller, utilizaremos da classe DAO para chamar o método que dá get nas interfaces DAO necessárias e suas implementações.
 * Por exemplo, DAO.getCliente() irá retornar um ClienteDAOImplementacao, para que possa realizar o CRUD na persistência.
 * */
-
-//Item do barema: CRUD das classes -> FEITO
-//Item do barema: Padrão de projeto DAO -> FEITO
-//Item do barema: Criação e uso correto das Entidades (ex: Cliente, técnico, ...) -> FEITO
-//Item do barema: Gerenciamento de ordens de serviço -> FEITO
-//Item do barema: Agenda de atendimento -> FEITO
-//Item do barema: Gerenciamento de peças e estoque -> FEITO
-//Item do barema: Faturamento e pagamento -> FEITO
-//Item do barema: Testes de unidade das classes do CRUD -> FEITO
-//Item do barema: Testes das outras operações de sistema -> FEITO
-//Item do barema: Documentação do código em Javadoc -> FEITO
-//Item do barema: Commits estruturados adequadamente -> FEITO
-
 public class MainController {
     /**
      * Método que salva o técnico na implementação do DAO; Recebe como parâmetro o boolean adm, o login e a senha de acesso;
@@ -212,10 +201,18 @@ public class MainController {
         return DAO.getOrdem().verOrdensEmEspera();
     }
 
+    public void salvarArquivoClienteDAO() throws IOException {
+        DAO.getClienteDAOArquivo().salvarArquivo();
+    }
+
+    public HashMap<Integer, Cliente> lerArquivoClienteDAO() throws IOException, ClassNotFoundException {
+        return DAO.getClienteDAOArquivo().lerArquivo();
+    }
+
     /**
      * Main do MainController. O técnico "admin" já deve ser criado na primeira instância do técnico.
      * */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
         //Primeiro passo é realizar login
         //Técnico ADM: login = Admin, senha = Admin
         MainController mainC = new MainController();
@@ -225,4 +222,3 @@ public class MainController {
         mainC.realizaOrdemCompra(new Peca("HD", 218.50), 8, 329.4);
         System.out.println(mainC.geraRelatorio());
     }
-}

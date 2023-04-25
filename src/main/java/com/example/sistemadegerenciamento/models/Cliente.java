@@ -1,4 +1,5 @@
 package com.example.sistemadegerenciamento.models;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
@@ -6,7 +7,7 @@ import java.util.ArrayList;
  * Classe responsável por armazenar dados e comportamentos do cliente.
  * */
 //Alterações: coleção de ordens definido, alteração no construtor e criação de método para adicionar ordem ao cliente.
-public class    Cliente {
+public class Cliente implements Serializable {
     private String nome;
     private String endereco;
     private String telefone;
