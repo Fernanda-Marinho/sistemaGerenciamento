@@ -18,5 +18,6 @@ public interface ClienteDAO extends CRUD<Cliente, Exception> {
 
     public void update(int clienteID, String nome, String endereco, String telefone);
     public HashMap<Integer, Cliente> findMany();
+    public void atualizaColecaoDoArquivo(HashMap<Integer, Cliente> clientes);
 
 }
