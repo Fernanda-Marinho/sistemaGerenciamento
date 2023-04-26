@@ -24,4 +24,12 @@ public interface OrdemDAO extends CRUD<Ordem, Exception> {
     public Ordem findByIdFinalizada(int ordemID);
     public Ordem findByIdCancelada(int ordemID);
     public Ordem findByIdAberta(int ordemID);
+    public HashMap<Integer, Ordem> findManyEmEspera();
+    public HashMap<Integer, Ordem> findManyEmAberto();
+    public HashMap<Integer, Ordem> findManyCanceladas();
+    public HashMap<Integer, Ordem> findManyFinalizadas();
+    public void atualizaColecaoDoArquivoOrdensAbertas(HashMap<Integer, Ordem> ordens);
+    public void atualizaColecaoDoArquivoOrdensEmEspera(HashMap<Integer, Ordem> ordens);
+    public void atualizaColecaoDoArquivoOrdensFinalizadas(HashMap<Integer, Ordem> ordens);
+    public void atualizaColecaoDoArquivoOrdensCanceladas(HashMap<Integer, Ordem> ordens);
 }

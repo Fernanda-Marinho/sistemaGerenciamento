@@ -262,6 +262,48 @@ public class MainController {
     public void carregaArquivoEstoque() throws IOException, ClassNotFoundException {
         DAO.getEstoque().atualizaColecaoDoArquivo(lerArquivoEstoque());
     }
+    /**
+     * Método que faz a persistência de dados da ordem em um arquivo binário através da serialização.
+     * */
+    public void salvarArquivoOrdem() throws IOException{
+        DAO.getOrdemDAOArquivo().salvarArquivoOrdensCanceladas();
+        DAO.getOrdemDAOArquivo().salvarArquivoOrdensEmAberto();
+        DAO.getOrdemDAOArquivo().salvarArquivoOrdensEmEspera();
+        DAO.getOrdemDAOArquivo().salvarArquivoOrdensFinalizadas();
+    }
+    /**
+     * Método que faz a leitura da persistênia de dados das ordens em aberto de uma arquivo binário através da desserialização.
+     * */
+    public HashMap<Integer, Ordem> lerArquivoOrdemEmAberto() throws IOException, ClassNotFoundException {
+        return DAO.getOrdemDAOArquivo().lerArquivoOrdensEmAberto();
+    }
+    /**
+     * Método que faz a leitura da persistênia de dados das ordens em espera de uma arquivo binário através da desserialização.
+     * */
+    public HashMap<Integer, Ordem> lerArquivoOrdemEmEspera() throws IOException, ClassNotFoundException {
+        return DAO.getOrdemDAOArquivo().lerArquivoOrdensEmEspera();
+    }
+    /**
+     * Método que faz a leitura da persistênia de dados das ordens finalizadas de uma arquivo binário através da desserialização.
+     * */
+    public HashMap<Integer, Ordem> lerArquivoOrdemFinalizadas() throws IOException, ClassNotFoundException {
+        return DAO.getOrdemDAOArquivo().lerArquivoOrdensFinalizadas();
+    }
+    /**
+     * Método que faz a leitura da persistênia de dados das ordens canceladas de uma arquivo binário através da desserialização.
+     * */
+    public HashMap<Integer, Ordem> lerArquivoOrdemCanceladas() throws IOException, ClassNotFoundException {
+        return DAO.getOrdemDAOArquivo().lerArquivoOrdensCanceladas();
+    }
+    /**
+     * Método que atualiza a coleção de ordens em tempo de execução.
+     * */
+    public void carregaArquivosOrdem() throws IOException, ClassNotFoundException {
+        DAO.getOrdem().atualizaColecaoDoArquivoOrdensAbertas(lerArquivoOrdemEmAberto());
+        DAO.getOrdem().atualizaColecaoDoArquivoOrdensEmEspera(lerArquivoOrdemEmEspera());
+        DAO.getOrdem().atualizaColecaoDoArquivoOrdensCanceladas(lerArquivoOrdemCanceladas());
+        DAO.getOrdem().atualizaColecaoDoArquivoOrdensFinalizadas(lerArquivoOrdemFinalizadas());
+    }
 
     /**
      * Main do MainController. O técnico "admin" já deve ser criado na primeira instância do técnico.
@@ -276,11 +318,7 @@ public class MainController {
         mainC.realizaOrdemCompra(new Peca("HD", 218.50), 8, 329.4);
         System.out.println(mainC.geraRelatorio());
         mainC.salvarArquivoEstoque();*/
-
-        HashMap<Peca, Integer> pecas = DAO.getEstoqueDAOArquivo().lerArquivo();
-        for (Map.Entry<Peca, Integer> valor : pecas.entrySet()){
-            System.out.println(valor.getKey().getNome() + " " + valor.getValue());
-        }
+        
 
     }
 }

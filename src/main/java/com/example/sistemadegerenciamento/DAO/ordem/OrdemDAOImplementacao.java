@@ -1,10 +1,7 @@
 package com.example.sistemadegerenciamento.DAO.ordem;
 
 import com.example.sistemadegerenciamento.DAO.DAO;
-import com.example.sistemadegerenciamento.models.CategoriaServico;
-import com.example.sistemadegerenciamento.models.Ordem;
-import com.example.sistemadegerenciamento.models.Servico;
-import com.example.sistemadegerenciamento.models.StatusOrdem;
+import com.example.sistemadegerenciamento.models.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -45,16 +42,26 @@ public class OrdemDAOImplementacao implements OrdemDAO{
     public Ordem findById(int ordemID) {
         return ordensEmEspera.get(ordemID);
     }
-
     public Ordem findByIdAberta(int ordemID) {
         return ordensAberta.get(ordemID);
     }
     public Ordem findByIdFinalizada(int ordemID) {
         return ordensFinalizadas.get(ordemID);
     }
-
     public Ordem findByIdCancelada(int ordemID) {
         return ordensCanceladas.get(ordemID);
+    }
+    public HashMap<Integer, Ordem> findManyEmEspera(){
+        return this.ordensEmEspera;
+    }
+    public HashMap<Integer, Ordem> findManyEmAberto(){
+        return this.ordensAberta;
+    }
+    public HashMap<Integer, Ordem> findManyCanceladas(){
+        return this.ordensCanceladas;
+    }
+    public HashMap<Integer, Ordem> findManyFinalizadas(){
+        return this.ordensFinalizadas;
     }
 
     /**
@@ -149,6 +156,19 @@ public class OrdemDAOImplementacao implements OrdemDAO{
             ordensEspera = ordensEspera + "Ordem: " + valor.getKey() + "\n";
         }
         return ordensEspera;
+    }
+
+    public void atualizaColecaoDoArquivoOrdensAbertas(HashMap<Integer, Ordem> ordens){
+        this.ordensAberta = ordens;
+    }
+    public void atualizaColecaoDoArquivoOrdensEmEspera(HashMap<Integer, Ordem> ordens){
+        this.ordensEmEspera = ordens;
+    }
+    public void atualizaColecaoDoArquivoOrdensCanceladas(HashMap<Integer, Ordem> ordens){
+        this.ordensCanceladas = ordens;
+    }
+    public void atualizaColecaoDoArquivoOrdensFinalizadas(HashMap<Integer, Ordem> ordens){
+        this.ordensFinalizadas = ordens;
     }
 
 }

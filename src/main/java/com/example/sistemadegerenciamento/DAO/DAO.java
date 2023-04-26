@@ -7,6 +7,7 @@ import com.example.sistemadegerenciamento.DAO.estoque.EstoqueDAO;
 import com.example.sistemadegerenciamento.DAO.estoque.EstoqueDAOArquivo;
 import com.example.sistemadegerenciamento.DAO.estoque.EstoqueDAOImplementacao;
 import com.example.sistemadegerenciamento.DAO.ordem.OrdemDAO;
+import com.example.sistemadegerenciamento.DAO.ordem.OrdemDAOArquivo;
 import com.example.sistemadegerenciamento.DAO.ordem.OrdemDAOImplementacao;
 import com.example.sistemadegerenciamento.DAO.tecnico.TecnicoDAO;
 import com.example.sistemadegerenciamento.DAO.tecnico.TecnicoDAOImplementacao;
@@ -22,6 +23,7 @@ public class DAO {
     private static ClienteDAO clienteDAO;
     private static ClienteDAOArquivo clienteDAOArquivo;
     private static OrdemDAO ordemDAO;
+    private static OrdemDAOArquivo ordemDAOArquivo;
     private static TecnicoDAO tecnicoDAO;
     private static EstoqueDAO estoqueDAO;
     private static EstoqueDAOArquivo estoqueDAOArquivo;
@@ -41,7 +43,9 @@ public class DAO {
         }
         return clienteDAO;
     }
-
+    /**
+     * Método estático que retorna o ClienteDAOArquivo.
+     * */
     public static ClienteDAOArquivo getClienteDAOArquivo() {
         if (clienteDAOArquivo == null) {
             clienteDAOArquivo = new ClienteDAOArquivo();
@@ -56,6 +60,15 @@ public class DAO {
             ordemDAO = new OrdemDAOImplementacao();
         }
         return ordemDAO;
+    }
+    /**
+     * Método estático que retorna o OrdemDAOArquivo.
+     * */
+    public static OrdemDAOArquivo getOrdemDAOArquivo(){
+        if (ordemDAOArquivo == null){
+            ordemDAOArquivo = new OrdemDAOArquivo();
+        }
+        return ordemDAOArquivo;
     }
     /**
      * Método estático que retorna o TecnicoDAO.
@@ -75,7 +88,9 @@ public class DAO {
         }
         return estoqueDAO;
     }
-
+    /**
+     * Método estático que retorna o EstoqueDAOArquivo.
+     * */
     public static  EstoqueDAOArquivo getEstoqueDAOArquivo() {
         if (estoqueDAOArquivo == null){
             estoqueDAOArquivo = new EstoqueDAOArquivo();

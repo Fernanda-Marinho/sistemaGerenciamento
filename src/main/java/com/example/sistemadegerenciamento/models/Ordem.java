@@ -1,11 +1,12 @@
 package com.example.sistemadegerenciamento.models;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
  * Classe responsável por armazenar dados e comportamentos da ordem.
  * */
-public class Ordem {
+public class Ordem implements Serializable {
 
 	//Definição da coleção de serviços.
     private ArrayList<Servico> servicos = new ArrayList();
