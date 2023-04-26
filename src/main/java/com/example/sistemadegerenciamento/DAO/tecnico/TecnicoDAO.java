@@ -17,4 +17,5 @@ public interface TecnicoDAO extends CRUD<Tecnico, Exception> {
     public void update(int tecnicoID, String nome, String senha);
 
     public HashMap<Integer, Tecnico> findMany();
+    public void atualizaColecaoDoArquivo(HashMap<Integer, Tecnico> tecnicos);
 }

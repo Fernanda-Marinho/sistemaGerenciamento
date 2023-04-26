@@ -304,6 +304,24 @@ public class MainController {
         DAO.getOrdem().atualizaColecaoDoArquivoOrdensCanceladas(lerArquivoOrdemCanceladas());
         DAO.getOrdem().atualizaColecaoDoArquivoOrdensFinalizadas(lerArquivoOrdemFinalizadas());
     }
+    /**
+     * Método que faz a persistência de dados do técnico em um arquivo binário através da serialização.
+     * */
+    public void salvarArquivoTecnico() throws IOException{
+        DAO.getTecnicoDAOArquivo().salvarArquivo();
+    }
+    /**
+     * Método que faz a leitura da persistênia de dados do técnico de uma arquivo binário através da desserialização.
+     * */
+    public HashMap<Integer, Tecnico> lerArquivoTecnico() throws IOException, ClassNotFoundException {
+        return DAO.getTecnicoDAOArquivo().lerArquivo();
+    }
+    /**
+     * Método que atualiza a coleção de técnicos em tempo de execução.
+     * */
+    public void carregaArquivoTécnico() throws IOException, ClassNotFoundException {
+        DAO.getTecnico().atualizaColecaoDoArquivo(lerArquivoTecnico());
+    }
 
     /**
      * Main do MainController. O técnico "admin" já deve ser criado na primeira instância do técnico.
@@ -318,7 +336,8 @@ public class MainController {
         mainC.realizaOrdemCompra(new Peca("HD", 218.50), 8, 329.4);
         System.out.println(mainC.geraRelatorio());
         mainC.salvarArquivoEstoque();*/
-        
+        System.out.println(mainC.lerArquivoTecnico().get(1).getNome());
+
 
     }
 }

@@ -10,6 +10,7 @@ import com.example.sistemadegerenciamento.DAO.ordem.OrdemDAO;
 import com.example.sistemadegerenciamento.DAO.ordem.OrdemDAOArquivo;
 import com.example.sistemadegerenciamento.DAO.ordem.OrdemDAOImplementacao;
 import com.example.sistemadegerenciamento.DAO.tecnico.TecnicoDAO;
+import com.example.sistemadegerenciamento.DAO.tecnico.TecnicoDAOArquivo;
 import com.example.sistemadegerenciamento.DAO.tecnico.TecnicoDAOImplementacao;
 
 /**
@@ -25,6 +26,7 @@ public class DAO {
     private static OrdemDAO ordemDAO;
     private static OrdemDAOArquivo ordemDAOArquivo;
     private static TecnicoDAO tecnicoDAO;
+    private static TecnicoDAOArquivo tecnicoDAOArquivo;
     private static EstoqueDAO estoqueDAO;
     private static EstoqueDAOArquivo estoqueDAOArquivo;
 
@@ -78,6 +80,15 @@ public class DAO {
             tecnicoDAO = new TecnicoDAOImplementacao();
         }
         return tecnicoDAO;
+    }
+    /**
+     * Método estático que retorna o TecnicoDAOArquivo.
+     * */
+    public static TecnicoDAOArquivo getTecnicoDAOArquivo(){
+        if (tecnicoDAOArquivo == null){
+            tecnicoDAOArquivo = new TecnicoDAOArquivo();
+        }
+        return tecnicoDAOArquivo;
     }
     /**
      * Método estático que retorna o EstoqueDAO.

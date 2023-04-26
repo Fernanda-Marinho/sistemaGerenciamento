@@ -1,5 +1,6 @@
 package com.example.sistemadegerenciamento.DAO.tecnico;
 
+import com.example.sistemadegerenciamento.models.Peca;
 import com.example.sistemadegerenciamento.models.Tecnico;
 
 import java.util.HashMap;
@@ -59,5 +60,8 @@ public class TecnicoDAOImplementacao implements TecnicoDAO{
     @Override
     public void deleteMany() {
         tecnicos.clear();
+    }
+    public void atualizaColecaoDoArquivo(HashMap<Integer, Tecnico> tecnicos){
+        this.tecnicos = tecnicos;
     }
 }

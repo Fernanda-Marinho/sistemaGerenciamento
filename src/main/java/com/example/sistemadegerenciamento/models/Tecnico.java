@@ -1,11 +1,12 @@
 package com.example.sistemadegerenciamento.models;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Classe responsável por armazenar dados e comportamentos do técnico.
  * */
 
-public class Tecnico {
+public class Tecnico implements Serializable {
     private boolean adm;
     private String nome;
     private String senha;
