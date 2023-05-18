@@ -1,9 +1,12 @@
 package com.example.sistemadegerenciamento.DAO.cliente;
 
 import com.example.sistemadegerenciamento.models.Cliente;
+import com.example.sistemadegerenciamento.models.Peca;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Classe que implementa todos os métodos de ClienteDAO;
@@ -35,6 +38,17 @@ public class ClienteDAOImplementacao implements ClienteDAO{
      * */
     @Override
     public HashMap<Integer, Cliente> findMany() {
+        return clientes;
+    }
+    /**
+     * Método que retorna todos os clientes em ArrayList;
+     * */
+    @Override
+    public ArrayList<Cliente> findManyArrayList(){
+        ArrayList<Cliente> clientes = new ArrayList<>();
+        for (Map.Entry<Integer, Cliente> valor : this.clientes.entrySet()){
+            clientes.add(valor.getValue());
+        }
         return clientes;
     }
     /**

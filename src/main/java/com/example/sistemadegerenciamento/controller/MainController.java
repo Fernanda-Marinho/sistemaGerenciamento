@@ -4,6 +4,7 @@ import com.example.sistemadegerenciamento.DAO.DAO;
 import com.example.sistemadegerenciamento.models.*;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -336,8 +337,12 @@ public class MainController {
         mainC.realizaOrdemCompra(new Peca("HD", 218.50), 8, 329.4);
         System.out.println(mainC.geraRelatorio());
         mainC.salvarArquivoEstoque();*/
-        System.out.println(mainC.lerArquivoTecnico().get(1).getNome());
-
+        mainC.carregaArquivoClienteDAO();
+        ArrayList<Cliente> clientes = DAO.getCliente().findManyArrayList();
+        for (int i=0; i<clientes.size(); i++){
+            System.out.println(clientes.get(i).getClienteID() + " " + clientes.get(i).getNome());
+        }
+        DAO.getClienteDAOArquivo().salvarArquivo();
 
     }
 }

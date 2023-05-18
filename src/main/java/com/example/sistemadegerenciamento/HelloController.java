@@ -9,6 +9,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.io.IOException;
+import java.util.HashMap;
+
 public class HelloController {
 
     @FXML
@@ -19,6 +22,9 @@ public class HelloController {
 
     @FXML
     private Button btnExcluir;
+
+    @FXML
+    private MenuItem btnSalvar;
 
     @FXML
     private TextField endereco;
@@ -38,10 +44,25 @@ public class HelloController {
     //Collections do JavaFX
     private ObservableList<Cliente> clientesData;
 
+    /**
+     * Método que faz a leitura da persistênia de dados dos clientes de uma arquivo binário através da desserialização.
+     * */
+    public HashMap<Integer, Cliente> lerArquivoClienteDAO() throws IOException, ClassNotFoundException {
+        return DAO.getClienteDAOArquivo().lerArquivo();
+    }
+
+    /**
+     * Método que atualiza a coleção de clientes em tempo de execução.
+     * */
+    public void carregaArquivoClienteDAO() throws IOException, ClassNotFoundException {
+        DAO.getCliente().atualizaColecaoDoArquivo(lerArquivoClienteDAO());
+    }
     @FXML
     //Carrega todos os dados a serem mostrados no View.
-    void initialize(){
+    void initialize() throws IOException, ClassNotFoundException {
+        carregaArquivoClienteDAO();
         this.clientesData = FXCollections.observableArrayList();
+        this.clientesData.addAll(DAO.getCliente().findManyArrayList());
         //Cria a coluna para usar na tabela, de maneira manual.
         TableColumn coluna1 = new TableColumn("ID");
         TableColumn coluna2 = new TableColumn("NOME");
@@ -79,17 +100,20 @@ public class HelloController {
     void btnAltera(ActionEvent event) {
         try {
             //.getSelectionModel().getSelectedIndex() pega o índice do item selecionado da tabela.
-            Cliente selecionadoTabela = this.tabela.getSelectionModel().getSelectedItem();
             int selecionadoTabelaIndice = this.tabela.getSelectionModel().getSelectedIndex();
-            int clienteID = selecionadoTabela.getClienteID();
-            //.getText() pega o texto em String do textfield.
-            DAO.getCliente().update(clienteID, this.nomeCliente.getText(), this.endereco.getText(), this.telefone.getText());
-            this.clientesData.set(selecionadoTabelaIndice, DAO.getCliente().findById(clienteID));
-            //Para limpar o conteúdo do textfield.
-            this.nomeCliente.clear();
-            this.endereco.clear();
-            this.telefone.clear();
-            this.labelErro.setText("");
+            if (selecionadoTabelaIndice>=0) {
+                Cliente selecionadoTabela = this.tabela.getSelectionModel().getSelectedItem();
+
+                int clienteID = selecionadoTabela.getClienteID();
+                //.getText() pega o texto em String do textfield.
+                DAO.getCliente().update(clienteID, this.nomeCliente.getText(), this.endereco.getText(), this.telefone.getText());
+                this.clientesData.set(selecionadoTabelaIndice, DAO.getCliente().findById(clienteID));
+                //Para limpar o conteúdo do textfield.
+                this.nomeCliente.clear();
+                this.endereco.clear();
+                this.telefone.clear();
+                this.labelErro.setText("");
+            }
         } catch (Exception e){
             //O setText no label carrega uma String na interface.
             this.labelErro.setText("Erro ao digitar os dados.");
@@ -100,11 +124,18 @@ public class HelloController {
     @FXML
     void btnExclui(ActionEvent event) throws Exception {
         //.getSelectionModel().getSelectedIndex() pega o índice do item selecionado da tabela.
-        Cliente selecionadoTabela = this.tabela.getSelectionModel().getSelectedItem();
         int selecionadoTabelaIndice = this.tabela.getSelectionModel().getSelectedIndex();
-        int clienteID = selecionadoTabela.getClienteID();
-        DAO.getCliente().delete(clienteID);
-        this.clientesData.remove(selecionadoTabelaIndice);
+        if (selecionadoTabelaIndice>=0) {
+            Cliente selecionadoTabela = this.tabela.getSelectionModel().getSelectedItem();
+            int clienteID = selecionadoTabela.getClienteID();
+            DAO.getCliente().delete(clienteID);
+            this.clientesData.remove(selecionadoTabelaIndice);
+        }
+    }
+
+    @FXML
+    void btnSalvaArquivo(ActionEvent event) throws IOException {
+        DAO.getClienteDAOArquivo().salvarArquivo();
     }
 
 }

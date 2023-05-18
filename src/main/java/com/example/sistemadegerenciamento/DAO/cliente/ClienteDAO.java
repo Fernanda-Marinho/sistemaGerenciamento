@@ -3,6 +3,7 @@ package com.example.sistemadegerenciamento.DAO.cliente;
 import com.example.sistemadegerenciamento.DAO.CRUD;
 import com.example.sistemadegerenciamento.models.Cliente;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /*
@@ -19,5 +20,7 @@ public interface ClienteDAO extends CRUD<Cliente, Exception> {
     public void update(int clienteID, String nome, String endereco, String telefone);
     public HashMap<Integer, Cliente> findMany();
     public void atualizaColecaoDoArquivo(HashMap<Integer, Cliente> clientes);
+
+    public ArrayList<Cliente> findManyArrayList();
 
 }

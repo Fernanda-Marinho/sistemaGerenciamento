@@ -1,4 +1,6 @@
 package com.example.sistemadegerenciamento.models;
+import com.example.sistemadegerenciamento.DAO.DAO;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -12,7 +14,7 @@ public class Cliente implements Serializable {
     private String endereco;
     private String telefone;
     private int clienteID;
-    private static int ID = 1;
+    public static int ID = 0;
     private ArrayList<Ordem> ordens = new ArrayList();
 
     /**
@@ -41,8 +43,11 @@ public class Cliente implements Serializable {
             throw new IllegalArgumentException("O número de telefone deve ter apenas números.");
         }
         this.endereco = endereco;
-        this.clienteID = ID;
-        ID = ID+1;
+        //Para pegar o último ID cadastrado
+        if (!DAO.getCliente().findManyArrayList().isEmpty()) {
+            this.ID = DAO.getCliente().findManyArrayList().get(DAO.getCliente().findManyArrayList().size() - 1).getClienteID();
+        }
+        this.clienteID = ID+1;
     }
 
     public String getNome() {
