@@ -117,8 +117,8 @@ public class MainController {
     /**
      * Método que registra uma nova ordem no DAO;
      */
-    public Ordem criaOrdem(int clienteID) {
-        Ordem ordem = new Ordem(clienteID);
+    public Ordem criaOrdem(Cliente cliente) {
+        Ordem ordem = new Ordem(cliente);
         DAO.getOrdem().create(ordem);
         return ordem;
     }
@@ -337,12 +337,14 @@ public class MainController {
         mainC.realizaOrdemCompra(new Peca("HD", 218.50), 8, 329.4);
         System.out.println(mainC.geraRelatorio());
         mainC.salvarArquivoEstoque();*/
-        mainC.carregaArquivoClienteDAO();
-        ArrayList<Cliente> clientes = DAO.getCliente().findManyArrayList();
-        for (int i=0; i<clientes.size(); i++){
-            System.out.println(clientes.get(i).getClienteID() + " " + clientes.get(i).getNome());
-        }
-        DAO.getClienteDAOArquivo().salvarArquivo();
+        /*DAO.getTecnico().create(new Tecnico(false, "Jorge", "12345"));
+        DAO.getOrdem().create(new Ordem(new Cliente("Douglas", "Rua Calumbi", "75894564185")));
+        DAO.getOrdem().create(new Ordem(new Cliente("Ana", "Feira V", "758977864185")));
+        mainC.relacionaOrdemATecnico(1, 1);
+        System.out.println(DAO.getOrdem().findManyEmAberto().get(0).getClienteID());
+        mainC.salvarArquivoOrdem();*/
+        /*HashMap<Integer, Ordem> ordem = mainC.lerArquivoOrdemEmAberto();
+        System.out.println(ordem.get(1).getNomeCliente());*/
 
     }
 }

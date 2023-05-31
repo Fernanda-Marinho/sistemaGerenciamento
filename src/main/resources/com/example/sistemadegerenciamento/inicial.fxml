@@ -22,7 +22,7 @@
                   <Font name="Swis721 Lt BT Light" size="17.0" />
                </font>
             </Label>
-            <TableView fx:id="ordensEmAberto" prefHeight="372.0" prefWidth="414.0">
+            <TableView fx:id="tabelaOrdensEmAberto" prefHeight="372.0" prefWidth="414.0">
                <effect>
                   <DropShadow />
                </effect></TableView>
@@ -31,7 +31,7 @@
                   <Font name="Swis721 Lt BT Light" size="17.0" />
                </font>
             </Label>
-            <TableView fx:id="ordensEmEspera" prefHeight="370.0" prefWidth="414.0">
+            <TableView fx:id="tabelaOrdensEmEspera" prefHeight="370.0" prefWidth="414.0">
                <effect>
                   <DropShadow />
                </effect></TableView>

@@ -46,24 +46,11 @@ public class clienteController {
     //Collections do JavaFX
     private ObservableList<Cliente> clientesData;
 
-    /**
-     * Método que faz a leitura da persistênia de dados dos clientes de uma arquivo binário através da desserialização.
-     * */
-    public HashMap<Integer, Cliente> lerArquivoClienteDAO() throws IOException, ClassNotFoundException {
-        return DAO.getClienteDAOArquivo().lerArquivo();
-    }
-
-    /**
-     * Método que atualiza a coleção de clientes em tempo de execução.
-     * */
-    public void carregaArquivoClienteDAO() throws IOException, ClassNotFoundException {
-        DAO.getCliente().atualizaColecaoDoArquivo(lerArquivoClienteDAO());
-    }
 
     @FXML
     //Carrega todos os dados a serem mostrados no View.
     void initialize() throws IOException, ClassNotFoundException {
-        carregaArquivoClienteDAO();
+        DAO.getCliente().atualizaColecaoDoArquivo(DAO.getClienteDAOArquivo().lerArquivo());
         this.clientesData = FXCollections.observableArrayList();
         this.clientesData.addAll(DAO.getCliente().findManyArrayList());
         //Cria a coluna para usar na tabela, de maneira manual.

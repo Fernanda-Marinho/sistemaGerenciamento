@@ -32,19 +32,14 @@ public class inicialController {
 
     @FXML
     private Button btnSceneClientes;
-
     @FXML
     private Button btnSceneEstoque;
-
     @FXML
     private Button btnSceneHome;
-
     @FXML
     private Button btnSceneTecnicos;
-
     @FXML
     private TableView<Ordem> tabelaOrdensEmAberto;
-
     @FXML
     private TableView<Ordem> tabelaOrdensEmEspera;
 
@@ -52,11 +47,11 @@ public class inicialController {
 
     private ObservableList<Ordem> ordensEmEsperaData;
 
-    /*@FXML
+    @FXML
     void initialize() throws IOException, ClassNotFoundException {
-        DAO.getOrdem().atualizaColecaoDoArquivoOrdensAbertas(DAO.getOrdemDAOArquivo().lerArquivoOrdensEmAberto());
-        DAO.getOrdem().atualizaColecaoDoArquivoOrdensEmEspera(DAO.getOrdemDAOArquivo().lerArquivoOrdensEmEspera());
         //Em Aberto
+        DAO.getOrdem().atualizaColecaoDoArquivoOrdensAbertas(DAO.getOrdemDAOArquivo().lerArquivoOrdensEmAberto());
+
         this.ordensEmAbertoData = FXCollections.observableArrayList();
         this.ordensEmAbertoData.addAll(DAO.getOrdem().findManyEmAberto());
 
@@ -73,6 +68,8 @@ public class inicialController {
         this.tabelaOrdensEmAberto.setItems(ordensEmAbertoData);
 
         //Em espera
+        DAO.getOrdem().atualizaColecaoDoArquivoOrdensEmEspera(DAO.getOrdemDAOArquivo().lerArquivoOrdensEmEspera());
+
         this.ordensEmEsperaData = FXCollections.observableArrayList();
         this.ordensEmEsperaData.addAll(DAO.getOrdem().findManyEmEspera());
 
@@ -87,7 +84,7 @@ public class inicialController {
 
         this.tabelaOrdensEmEspera.getColumns().addAll(coluna1EmEspera, coluna2EmEspera, coluna3EmEspera);
         this.tabelaOrdensEmEspera.setItems(ordensEmEsperaData);
-    }*/
+    }
 
     @FXML
     void btnCriaOrdemDeServico(ActionEvent event) {
@@ -105,10 +102,8 @@ public class inicialController {
     void btnPegaOrdemServico(ActionEvent event) {
 
     }
-    @FXML
-    void btnSalvaDados(ActionEvent event) throws IOException {}
 
-    /*@FXML
+    @FXML
     void btnSalvaDados(ActionEvent event) throws IOException {
         DAO.getClienteDAOArquivo().salvarArquivo();
         DAO.getEstoqueDAOArquivo().salvarArquivo();
@@ -117,7 +112,7 @@ public class inicialController {
         DAO.getOrdemDAOArquivo().salvarArquivoOrdensEmAberto();
         DAO.getOrdemDAOArquivo().salvarArquivoOrdensEmEspera();
         DAO.getOrdemDAOArquivo().salvarArquivoOrdensFinalizadas();
-    }*/
+    }
 
     @FXML
     void btnSceneClientesAction(ActionEvent event) {

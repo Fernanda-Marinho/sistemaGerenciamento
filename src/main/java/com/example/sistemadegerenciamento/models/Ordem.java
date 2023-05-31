@@ -23,10 +23,11 @@ public class Ordem implements Serializable {
     private String avaliacaoFinal; //satisfação
     private static int ID=0;
 
-    public Ordem(int clienteID){
+
+    public Ordem(Cliente cliente){
         this.status = StatusOrdem.ESPERA;
-        this.clienteID = clienteID;
-        this.nomeCliente = DAO.getCliente().findById(clienteID).getNome();
+        this.clienteID = cliente.getClienteID();
+        this.nomeCliente = cliente.getNome();
 
         //Para pegar o último ID cadastrado
         if (!DAO.getOrdem().findManyEmEspera().isEmpty()) {
@@ -39,6 +40,7 @@ public class Ordem implements Serializable {
             this.ID = DAO.getOrdem().findManyCanceladas().get(DAO.getOrdem().findManyCanceladas().size() - 1).getOrdemID();
         }
         this.ordemID = ID+1;
+        this.nomeCliente = cliente.getNome();
     }
 
     public StatusOrdem getStatus() {
@@ -185,5 +187,9 @@ public class Ordem implements Serializable {
 
     public long getTempoMedioDeServicos(){
         return tempoMedioDeServicos;
+    }
+
+    public String getNomeCliente(){
+        return this.nomeCliente;
     }
 }

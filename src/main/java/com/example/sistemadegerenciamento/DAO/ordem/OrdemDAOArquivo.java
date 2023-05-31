@@ -11,6 +11,7 @@ public class OrdemDAOArquivo implements Serializable {
 
     private static final long serialVersion = 1l;
 
+
     public void salvarArquivoOrdensEmAberto() throws IOException {
         String diretorioAtual = Paths.get(".").toAbsolutePath().normalize().toString();
         HashMap<Integer, Ordem> pecas = DAO.getOrdem().findManyEmAbertoHashMap();
