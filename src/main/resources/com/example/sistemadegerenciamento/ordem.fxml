@@ -35,7 +35,7 @@
                 </Label>
                 <Separator prefWidth="200.0" />
                 <Label prefHeight="24.0" prefWidth="102.0" text="Id do cliente" />
-                <TextField fx:id="userTecnicoAtual" />
+                <TextField fx:id="idCliente" />
                 <Label fx:id="labelErro" prefHeight="26.0" prefWidth="308.0" textAlignment="CENTER" textFill="#df1111">
                     <font>
                         <Font size="17.0" />
@@ -59,7 +59,7 @@
                 <Font name="Rockwell" size="21.0" />
             </font>
         </Label>
-            <Button fx:id="btnCadastrarTecnico" layoutX="1095.0" layoutY="89.0" mnemonicParsing="false" onAction="#btnRealizaOrdemCompra" text="Cadastrar">
+            <Button fx:id="btnCadastrarOrdem" layoutX="1095.0" layoutY="89.0" mnemonicParsing="false" onAction="#btnCadastraOrdem" text="Cadastrar">
          <font>
             <Font size="14.0" />
          </font>
