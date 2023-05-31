@@ -9,4 +9,6 @@ module com.example.sistemadegerenciamento {
     opens com.example.sistemadegerenciamento to javafx.fxml, javafx.graphics;
     opens com.example.sistemadegerenciamento.models;
     exports com.example.sistemadegerenciamento;
+    exports com.example.sistemadegerenciamento.controller;
+    opens com.example.sistemadegerenciamento.controller to javafx.fxml, javafx.graphics;
 }

@@ -1,4 +1,6 @@
 package com.example.sistemadegerenciamento.models;
+import com.example.sistemadegerenciamento.DAO.DAO;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -13,17 +15,30 @@ public class Ordem implements Serializable {
     private StatusOrdem status;
     private Fatura fatura;
     private int clienteID;
+    private String nomeCliente;
+    private String servicosEmString;
     private int tecnicoID;
     private int ordemID;
     private long tempoMedioDeServicos;
     private String avaliacaoFinal; //satisfação
-    private static int ID=1;
+    private static int ID=0;
 
     public Ordem(int clienteID){
         this.status = StatusOrdem.ESPERA;
         this.clienteID = clienteID;
-        this.ordemID = ID;
-        this.ID++;
+        this.nomeCliente = DAO.getCliente().findById(clienteID).getNome();
+
+        //Para pegar o último ID cadastrado
+        if (!DAO.getOrdem().findManyEmEspera().isEmpty()) {
+            this.ID = DAO.getOrdem().findManyEmEspera().get(DAO.getOrdem().findManyEmEspera().size() - 1).getOrdemID();
+        } else if (!DAO.getOrdem().findManyEmAberto().isEmpty()) {
+            this.ID = DAO.getOrdem().findManyEmAberto().get(DAO.getOrdem().findManyEmAberto().size() - 1).getOrdemID();
+        } else if (!DAO.getOrdem().findManyFinalizadas().isEmpty()){
+            this.ID = DAO.getOrdem().findManyFinalizadas().get(DAO.getOrdem().findManyFinalizadas().size() - 1).getOrdemID();
+        } else if (!DAO.getOrdem().findManyCanceladas().isEmpty()){
+            this.ID = DAO.getOrdem().findManyCanceladas().get(DAO.getOrdem().findManyCanceladas().size() - 1).getOrdemID();
+        }
+        this.ordemID = ID+1;
     }
 
     public StatusOrdem getStatus() {
@@ -42,6 +57,11 @@ public class Ordem implements Serializable {
      * Método que adiciona o serviço no ArrayList de serviços;
      * */
     public void addServico(Servico servico){
+        if (servicos == null){
+            this.servicosEmString = servico.getCategoria().toString();
+        } else {
+            this.servicosEmString = ", " + servico.getCategoria().toString();
+        }
         this.servicos.add(servico);
     }
 

@@ -3,6 +3,7 @@ package com.example.sistemadegerenciamento.DAO.ordem;
 import com.example.sistemadegerenciamento.DAO.CRUD;
 import com.example.sistemadegerenciamento.models.Ordem;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /*
@@ -24,10 +25,14 @@ public interface OrdemDAO extends CRUD<Ordem, Exception> {
     public Ordem findByIdFinalizada(int ordemID);
     public Ordem findByIdCancelada(int ordemID);
     public Ordem findByIdAberta(int ordemID);
-    public HashMap<Integer, Ordem> findManyEmEspera();
-    public HashMap<Integer, Ordem> findManyEmAberto();
-    public HashMap<Integer, Ordem> findManyCanceladas();
-    public HashMap<Integer, Ordem> findManyFinalizadas();
+    public HashMap<Integer, Ordem> findManyEmEsperaHashMap();
+    public HashMap<Integer, Ordem> findManyEmAbertoHashMap();
+    public HashMap<Integer, Ordem> findManyFinalizadasHashMap();
+    public HashMap<Integer, Ordem> findManyCanceladasHashMap();
+    public ArrayList<Ordem> findManyEmEspera();
+    public ArrayList<Ordem> findManyEmAberto();
+    public ArrayList<Ordem> findManyCanceladas();
+    public ArrayList<Ordem> findManyFinalizadas();
     public void atualizaColecaoDoArquivoOrdensAbertas(HashMap<Integer, Ordem> ordens);
     public void atualizaColecaoDoArquivoOrdensEmEspera(HashMap<Integer, Ordem> ordens);
     public void atualizaColecaoDoArquivoOrdensFinalizadas(HashMap<Integer, Ordem> ordens);

@@ -51,17 +51,38 @@ public class OrdemDAOImplementacao implements OrdemDAO{
     public Ordem findByIdCancelada(int ordemID) {
         return ordensCanceladas.get(ordemID);
     }
-    public HashMap<Integer, Ordem> findManyEmEspera(){
-        return this.ordensEmEspera;
+    public HashMap<Integer, Ordem> findManyEmEsperaHashMap(){return this.ordensEmEspera;}
+    public HashMap<Integer, Ordem> findManyEmAbertoHashMap(){return this.ordensAberta;}
+    public HashMap<Integer, Ordem> findManyFinalizadasHashMap(){return this.ordensFinalizadas;}
+    public HashMap<Integer, Ordem> findManyCanceladasHashMap(){return this.ordensCanceladas;}
+
+    public ArrayList<Ordem> findManyEmEspera(){
+        ArrayList<Ordem> ordens = new ArrayList<>();
+        for (Map.Entry<Integer, Ordem> valor : this.ordensEmEspera.entrySet()){
+            ordens.add((valor.getValue()));
+        }
+        return ordens;
     }
-    public HashMap<Integer, Ordem> findManyEmAberto(){
-        return this.ordensAberta;
+    public ArrayList<Ordem> findManyEmAberto(){
+        ArrayList<Ordem> ordens = new ArrayList<>();
+        for (Map.Entry<Integer, Ordem> valor : this.ordensAberta.entrySet()){
+            ordens.add((valor.getValue()));
+        }
+        return ordens;
     }
-    public HashMap<Integer, Ordem> findManyCanceladas(){
-        return this.ordensCanceladas;
+    public  ArrayList<Ordem> findManyCanceladas(){
+        ArrayList<Ordem> ordens = new ArrayList<>();
+        for (Map.Entry<Integer, Ordem> valor : this.ordensCanceladas.entrySet()){
+            ordens.add((valor.getValue()));
+        }
+        return ordens;
     }
-    public HashMap<Integer, Ordem> findManyFinalizadas(){
-        return this.ordensFinalizadas;
+    public  ArrayList<Ordem> findManyFinalizadas(){
+        ArrayList<Ordem> ordens = new ArrayList<>();
+        for (Map.Entry<Integer, Ordem> valor : this.ordensFinalizadas.entrySet()){
+            ordens.add((valor.getValue()));
+        }
+        return ordens;
     }
 
     /**

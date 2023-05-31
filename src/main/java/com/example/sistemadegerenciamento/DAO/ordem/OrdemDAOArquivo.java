@@ -13,7 +13,7 @@ public class OrdemDAOArquivo implements Serializable {
 
     public void salvarArquivoOrdensEmAberto() throws IOException {
         String diretorioAtual = Paths.get(".").toAbsolutePath().normalize().toString();
-        HashMap<Integer, Ordem> pecas = DAO.getOrdem().findManyEmAberto();
+        HashMap<Integer, Ordem> pecas = DAO.getOrdem().findManyEmAbertoHashMap();
         ObjectOutputStream objectOutput = new ObjectOutputStream(
                 new FileOutputStream(diretorioAtual + "\\src\\main\\java\\com\\example\\sistemadegerenciamento\\DAO\\ordem\\ordemEmAberto.bin")
         );
@@ -33,7 +33,7 @@ public class OrdemDAOArquivo implements Serializable {
 
     public void salvarArquivoOrdensEmEspera() throws IOException {
         String diretorioAtual = Paths.get(".").toAbsolutePath().normalize().toString();
-        HashMap<Integer, Ordem> pecas = DAO.getOrdem().findManyEmEspera();
+        HashMap<Integer, Ordem> pecas = DAO.getOrdem().findManyEmEsperaHashMap();
         ObjectOutputStream objectOutput = new ObjectOutputStream(
                 new FileOutputStream(diretorioAtual + "\\src\\main\\java\\com\\example\\sistemadegerenciamento\\DAO\\ordem\\ordemEmEspera.bin")
         );
@@ -53,7 +53,7 @@ public class OrdemDAOArquivo implements Serializable {
 
     public void salvarArquivoOrdensCanceladas() throws IOException {
         String diretorioAtual = Paths.get(".").toAbsolutePath().normalize().toString();
-        HashMap<Integer, Ordem> pecas = DAO.getOrdem().findManyCanceladas();
+        HashMap<Integer, Ordem> pecas = DAO.getOrdem().findManyCanceladasHashMap();
         ObjectOutputStream objectOutput = new ObjectOutputStream(
                 new FileOutputStream(diretorioAtual + "\\src\\main\\java\\com\\example\\sistemadegerenciamento\\DAO\\ordem\\ordemCancelada.bin")
         );
@@ -73,7 +73,7 @@ public class OrdemDAOArquivo implements Serializable {
 
     public void salvarArquivoOrdensFinalizadas() throws IOException {
         String diretorioAtual = Paths.get(".").toAbsolutePath().normalize().toString();
-        HashMap<Integer, Ordem> pecas = DAO.getOrdem().findManyFinalizadas();
+        HashMap<Integer, Ordem> pecas = DAO.getOrdem().findManyFinalizadasHashMap();
         ObjectOutputStream objectOutput = new ObjectOutputStream(
                 new FileOutputStream(diretorioAtual + "\\src\\main\\java\\com\\example\\sistemadegerenciamento\\DAO\\ordem\\ordemFinalizada.bin")
         );
