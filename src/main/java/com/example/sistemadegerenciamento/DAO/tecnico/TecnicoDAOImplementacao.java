@@ -1,9 +1,12 @@
 package com.example.sistemadegerenciamento.DAO.tecnico;
 
+import com.example.sistemadegerenciamento.models.Cliente;
 import com.example.sistemadegerenciamento.models.Peca;
 import com.example.sistemadegerenciamento.models.Tecnico;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Classe que implementa todos os métodos de TecnicoDAO;
@@ -33,6 +36,13 @@ public class TecnicoDAOImplementacao implements TecnicoDAO{
      * */
     public HashMap<Integer, Tecnico> findMany(){
         return tecnicos;
+    }
+    public ArrayList<Tecnico> findManyArrayList(){
+        ArrayList<Tecnico> tecnicosArray = new ArrayList<>();
+        for (Map.Entry<Integer, Tecnico> valor : this.tecnicos.entrySet()){
+            tecnicosArray.add(valor.getValue());
+        }
+        return tecnicosArray;
     }
     /**
      * Método que atualiza um técnico no HashMap;

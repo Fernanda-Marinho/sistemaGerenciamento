@@ -1,4 +1,6 @@
 package com.example.sistemadegerenciamento.models;
+import com.example.sistemadegerenciamento.DAO.DAO;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -13,15 +15,23 @@ public class Tecnico implements Serializable {
     private int tecnicoID;
     private boolean comOrdem;
     private ArrayList<Ordem> historicoOrdens = new ArrayList();
-    public static int ID=1;
+    private int idOrdemAtual;
+
+
+    public static int ID=0;
+
+
 
     public  Tecnico(boolean adm, String nome, String senha){
         this.adm = adm;
         this.senha = senha;
         this.nome = nome;
         this.comOrdem = false;
-        this.tecnicoID = this.ID;
-        this.ID++;
+        //Para pegar o último ID cadastrado
+        if (!DAO.getTecnico().findManyArrayList().isEmpty()) {
+            this.ID = DAO.getTecnico().findManyArrayList().get(DAO.getTecnico().findManyArrayList().size() - 1).getTecnicoID();
+        }
+        this.tecnicoID = ID+1;
     }
 
     /**
@@ -29,11 +39,13 @@ public class Tecnico implements Serializable {
      * */
     public void addOrdem(Ordem ordem){
         this.comOrdem = true;
+        this.idOrdemAtual = ordem.getOrdemID();
         historicoOrdens.add(ordem);
     }
 
     public void fechaOrdem(){
         this.comOrdem = false;
+        this.idOrdemAtual = -1;
     }
 
     public boolean isAdm() {

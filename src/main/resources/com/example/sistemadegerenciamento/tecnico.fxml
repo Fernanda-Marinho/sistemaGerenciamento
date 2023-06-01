@@ -47,21 +47,21 @@
                 </Label>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                     <children>
-                        <Button fx:id="btnCadastrarTecnico" mnemonicParsing="false" onAction="#btnRealizaOrdemCompra" text="Cadastrar">
+                        <Button fx:id="btnCadastrarTecnico" mnemonicParsing="false" onAction="#btnRealizaCadastroTecnico" text="Cadastrar">
                      <font>
                         <Font size="14.0" />
                      </font>
                      <effect>
                         <DropShadow />
                      </effect></Button>
-                  <Button fx:id="btnRemoverTecnico" mnemonicParsing="false" onAction="#btnRealizaOrdemCompra" text="Remover">
+                  <Button fx:id="btnRemoverTecnico" mnemonicParsing="false" onAction="#btnRemoveTecnico" text="Remover">
                      <font>
                         <Font size="14.0" />
                      </font>
                      <effect>
                         <DropShadow />
                      </effect></Button>
-                  <Button fx:id="btnEditarTecnico" mnemonicParsing="false" onAction="#btnRealizaOrdemCompra" text="Editar">
+                  <Button fx:id="btnEditarTecnico" mnemonicParsing="false" onAction="#btnEditaTecnico" text="Editar">
                      <font>
                         <Font size="14.0" />
                      </font>

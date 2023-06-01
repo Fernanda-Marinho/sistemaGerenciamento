@@ -67,8 +67,9 @@ public class HelloApplication extends Application {
         }
     }
 
-    public static void main(String[] args) throws IOException, ClassNotFoundException {
+    public static void main(String[] args) throws Exception, IOException, ClassNotFoundException {
         launch();
         //MainController.main(args);
+        //System.out.println(System.getProperty("os.name"));
     }
 }

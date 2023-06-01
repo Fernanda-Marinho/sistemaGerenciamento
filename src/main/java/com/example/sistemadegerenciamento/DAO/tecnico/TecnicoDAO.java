@@ -3,6 +3,7 @@ package com.example.sistemadegerenciamento.DAO.tecnico;
 import com.example.sistemadegerenciamento.DAO.CRUD;
 import com.example.sistemadegerenciamento.models.Tecnico;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /*
@@ -18,4 +19,5 @@ public interface TecnicoDAO extends CRUD<Tecnico, Exception> {
 
     public HashMap<Integer, Tecnico> findMany();
     public void atualizaColecaoDoArquivo(HashMap<Integer, Tecnico> tecnicos);
+    public ArrayList<Tecnico> findManyArrayList();
 }

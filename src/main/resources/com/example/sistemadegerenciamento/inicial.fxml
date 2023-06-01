@@ -12,10 +12,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="800.0" maxWidth="1200.0" minHeight="800.0" minWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" stylesheets="@../../../css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistemadegerenciamento.controller.inicialController">
+<AnchorPane maxHeight="600.0" maxWidth="1000.0" minHeight="600.0" minWidth="1000.0" prefHeight="600.0" prefWidth="1000.0" stylesheets="@../../../css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistemadegerenciamento.controller.inicialController">
    <children>
-      <Separator layoutX="766.0" layoutY="-21.0" orientation="VERTICAL" prefHeight="823.0" prefWidth="6.0" />
-      <VBox layoutX="773.0" layoutY="8.0" prefHeight="781.0" prefWidth="414.0">
+      <Separator layoutX="642.0" layoutY="-16.0" orientation="VERTICAL" prefHeight="617.0" prefWidth="7.0" />
+      <VBox layoutX="663.0" layoutY="36.0" prefHeight="529.0" prefWidth="317.0">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="22.0" prefWidth="414.0" stylesheets="@../../../css/style.css" text="ORDENS EM ABERTO" textAlignment="CENTER">
                <font>
@@ -37,12 +37,12 @@
                </effect></TableView>
          </children>
       </VBox>
-      <ImageView fitHeight="234.0" fitWidth="235.0" layoutX="310.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="181.0" fitWidth="162.0" layoutX="269.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/logo_ecomp_services.png" />
          </image>
       </ImageView>
-      <VBox alignment="TOP_CENTER" layoutX="243.0" layoutY="487.0" prefHeight="147.0" prefWidth="368.0">
+      <VBox alignment="TOP_CENTER" layoutX="245.0" layoutY="331.0" prefHeight="160.0" prefWidth="214.0">
          <children>
             <Button fx:id="btnCriarOrdemDeServico" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#btnCriaOrdemDeServico" prefHeight="30.0" prefWidth="194.0" text="CRIAR ORDEM DE SERVIÇO" textAlignment="CENTER">
                <VBox.margin>
@@ -81,29 +81,29 @@
             <Insets bottom="20.0" top="20.0" />
          </padding>
       </VBox>
-      <VBox alignment="TOP_CENTER" layoutY="179.0" prefHeight="401.0" prefWidth="95.0">
+      <VBox alignment="CENTER" layoutX="14.0" layoutY="96.0" prefHeight="410.0" prefWidth="111.0">
          <children>
-            <Button fx:id="btnSceneHome" alignment="CENTER" mnemonicParsing="false" onAction="#btnSceneHomeAction" prefHeight="5.0" prefWidth="65.0" text="HOME" textAlignment="CENTER">
+            <Button fx:id="btnSceneHome" alignment="CENTER" mnemonicParsing="false" onAction="#btnSceneHomeAction" prefHeight="25.0" prefWidth="153.0" text="HOME" textAlignment="CENTER">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="btnSceneClientes" mnemonicParsing="false" onAction="#btnSceneClientesAction" text="CLIENTES">
+            <Button fx:id="btnSceneClientes" mnemonicParsing="false" onAction="#btnSceneClientesAction" prefHeight="25.0" prefWidth="161.0" text="CLIENTES">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="btnSceneTecnicos" mnemonicParsing="false" onAction="#btnSceneTecnicosAction" text="TECNICOS">
+            <Button fx:id="btnSceneTecnicos" mnemonicParsing="false" onAction="#btnSceneTecnicosAction" prefHeight="25.0" prefWidth="169.0" text="TECNICOS">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="btnSceneEstoque" mnemonicParsing="false" onAction="#btnSceneEstoqueAction" text="ESTOQUE">
+            <Button fx:id="btnSceneEstoque" mnemonicParsing="false" onAction="#btnSceneEstoqueAction" prefHeight="25.0" prefWidth="155.0" text="ESTOQUE">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="btnSceneOrdens" mnemonicParsing="false" onAction="#btnSceneOrdensAction" text="ORDENS">
+            <Button fx:id="btnSceneOrdens" mnemonicParsing="false" onAction="#btnSceneOrdensAction" prefHeight="25.0" prefWidth="140.0" text="ORDENS">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -111,17 +111,14 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="btnSalvar" mnemonicParsing="false" onAction="#btnSalvaDados" text="SALVAR">
+            <Button fx:id="btnSalvar" mnemonicParsing="false" onAction="#btnSalvaDados" prefHeight="25.0" prefWidth="173.0" text="SALVAR">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
             </Button>
          </children>
-         <padding>
-            <Insets bottom="100.0" left="10.0" right="10.0" top="100.0" />
-         </padding>
       </VBox>
-      <ImageView fitHeight="147.0" fitWidth="766.0" layoutX="1.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="171.0" fitWidth="590.0" layoutX="37.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/titulo_logo.png" />
          </image>

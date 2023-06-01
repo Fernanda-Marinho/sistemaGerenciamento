@@ -1,13 +1,14 @@
 package com.example.sistemadegerenciamento.models;
 import com.example.sistemadegerenciamento.DAO.DAO;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 
 /**
  * Classe responsável por armazenar dados e comportamentos dos serviços.
  * */
-public class Servico {
+public class Servico implements Serializable {
 
     private CategoriaServico categoria;
     private double valor;

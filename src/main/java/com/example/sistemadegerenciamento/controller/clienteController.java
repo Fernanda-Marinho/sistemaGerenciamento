@@ -91,6 +91,7 @@ public class clienteController {
         try {
             //.getSelectionModel().getSelectedIndex() pega o índice do item selecionado da tabela.
             int selecionadoTabelaIndice = this.tabelaCliente.getSelectionModel().getSelectedIndex();
+            
             if (selecionadoTabelaIndice>=0) {
                 Cliente selecionadoTabela = this.tabelaCliente.getSelectionModel().getSelectedItem();
 

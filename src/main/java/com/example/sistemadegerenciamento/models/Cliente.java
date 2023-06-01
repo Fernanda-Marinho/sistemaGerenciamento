@@ -14,6 +14,7 @@ public class Cliente implements Serializable {
     private String endereco;
     private String telefone;
     private int clienteID;
+
     public static int ID = 0;
     private ArrayList<Ordem> ordens = new ArrayList();
 

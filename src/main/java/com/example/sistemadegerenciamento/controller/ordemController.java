@@ -2,6 +2,7 @@ package com.example.sistemadegerenciamento.controller;
 
 import com.example.sistemadegerenciamento.DAO.DAO;
 import com.example.sistemadegerenciamento.HelloApplication;
+import com.example.sistemadegerenciamento.models.Cliente;
 import com.example.sistemadegerenciamento.models.Ordem;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -138,11 +139,26 @@ public class ordemController {
 
     @FXML
     void btnCadastraOrdem(ActionEvent event) {
-
+        try {
+            int id = Integer.parseInt(this.idCliente.getText());
+            Cliente cliente = DAO.getCliente().findById(id);
+            Ordem ordem = new Ordem(cliente);
+            DAO.getOrdem().create(ordem);
+            this.ordensEmEsperaData.add(ordem);
+            //Para limpar o conteúdo do textfield.
+            this.idCliente.clear();
+            this.labelErro.setText("");
+        } catch (Exception e){
+            this.labelErro.setText("Erro ao encontrar cliente. Digite um id válido.");
+        }
     }
 
     @FXML
-    void btnSalvaDados(ActionEvent event) {
+    void btnSalvaDados(ActionEvent event) throws IOException {
+        DAO.getOrdemDAOArquivo().salvarArquivoOrdensEmAberto();
+        DAO.getOrdemDAOArquivo().salvarArquivoOrdensEmEspera();
+        DAO.getOrdemDAOArquivo().salvarArquivoOrdensFinalizadas();
+        DAO.getOrdemDAOArquivo().salvarArquivoOrdensCanceladas();
 
     }
 

@@ -1,11 +1,12 @@
 package com.example.sistemadegerenciamento.models;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
 /**
  * Classe responsável por armazenar dados e comportamentos da fatura.
  * */
-public class Fatura {
+public class Fatura implements Serializable {
 
     private double valorTotal;
 	//Definição da coleção de pagamentos.

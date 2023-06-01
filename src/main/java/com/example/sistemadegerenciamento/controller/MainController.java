@@ -149,14 +149,14 @@ public class MainController {
      */
     public void addServico(int ordemID, CategoriaServico categoria, double valor, Peca peca, String descricao) throws Exception {
         Servico servico = new Servico(categoria, valor, ordemID, peca, descricao);
-        DAO.getOrdem().findById(ordemID).addServico(servico);
+        DAO.getOrdem().findByIdAberta(ordemID).addServico(servico);
     }
 
     /**
      * Método que finaliza um serviço de uma ordem no DAO;
      */
     public void finalizaServico(int ordemID, Servico servico, int avaliacaoCliente) {
-        DAO.getOrdem().findById(ordemID).finalizarServico(servico, avaliacaoCliente);
+        DAO.getOrdem().findByIdAberta(ordemID).finalizarServico(servico, avaliacaoCliente);
     }
 
     /**
@@ -327,7 +327,7 @@ public class MainController {
     /**
      * Main do MainController. O técnico "admin" já deve ser criado na primeira instância do técnico.
      */
-    public static void main(String[] args) throws IOException, ClassNotFoundException {
+    public static void main(String[] args) throws Exception {
         //Primeiro passo é realizar login
         //Técnico ADM: login = Admin, senha = Admin
         MainController mainC = new MainController();
@@ -339,18 +339,31 @@ public class MainController {
         mainC.salvarArquivoEstoque();*/
         DAO.getTecnico().create(new Tecnico(false, "Jorge", "12345"));
         DAO.getOrdem().create(new Ordem(new Cliente("Douglas", "Rua Calumbi", "75894564185")));
+        mainC.relacionaOrdemATecnico(1, 1);
+        mainC.addServico(1, CategoriaServico.LIMPEZA, 210.0, null, "sem descrição");
+        mainC.finalizaServico(1, DAO.getOrdem().findManyEmAberto().get(0).getServicos().get(0), 5);
+        mainC.finalizaOrdem(1);
         DAO.getOrdem().create(new Ordem(new Cliente("Ana", "Feira V", "758977864185")));
         DAO.getOrdem().create(new Ordem(new Cliente("Jucicreia", "Feira V", "758977864185")));
         DAO.getOrdem().create(new Ordem(new Cliente("Jordana", "Feira V", "758977864185")));
         DAO.getOrdem().create(new Ordem(new Cliente("Fulano", "Feira V", "758977864185")));
-        mainC.relacionaOrdemATecnico(1, 1);
+        DAO.getOrdem().create(new Ordem(new Cliente("Pariceira", "Feira V", "758977864185")));
         mainC.relacionaOrdemATecnico(2, 1);
         mainC.relacionaOrdemATecnico(3, 1);
-        DAO.getOrdem().finalizarOrdem(2);
         DAO.getOrdem().cancelarOrdem(4);
-        System.out.println(DAO.getOrdem().findManyEmAberto().get(0).getClienteID());
+
+
+        mainC.salvarArquivoTecnico();
         mainC.salvarArquivoOrdem();
-        //HashMap<Integer, Ordem> ordem = mainC.lerArquivoOrdemEmAberto();
+        System.out.println(DAO.getOrdem().findManyEmAberto().get(0).getClienteID());
+
+
+        /*HashMap<Integer, Ordem> ordem = mainC.lerArquivoOrdemFinalizadas();
+        if (ordem.isEmpty()){
+            System.out.println("vazio!");
+        } else {
+            System.out.println("ta vazia nao");
+        }*/
 
 
 
