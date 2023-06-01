@@ -57,6 +57,10 @@ public class ordemController {
 
     private ObservableList<Ordem> ordensEmEsperaData;
 
+    private ObservableList<Ordem> ordensCanceladasData;
+
+    private ObservableList<Ordem> ordensFinalizadasData;
+
     @FXML
     void initialize() throws IOException, ClassNotFoundException {
         //Em Aberto
@@ -94,6 +98,42 @@ public class ordemController {
 
         this.tabelaOrdensEspera.getColumns().addAll(coluna1EmEspera, coluna2EmEspera, coluna3EmEspera);
         this.tabelaOrdensEspera.setItems(ordensEmEsperaData);
+
+        //Canceladas
+        DAO.getOrdem().atualizaColecaoDoArquivoOrdensCanceladas(DAO.getOrdemDAOArquivo().lerArquivoOrdensCanceladas());
+
+        this.ordensCanceladasData = FXCollections.observableArrayList();
+        this.ordensCanceladasData.addAll(DAO.getOrdem().findManyCanceladas());
+
+        //Cria a coluna para usar na tabela, de maneira manual.
+        TableColumn coluna1Canceladas = new TableColumn("ID");
+        TableColumn coluna2Canceladas = new TableColumn("NOME DO CLIENTE");
+        TableColumn coluna3Canceladas = new TableColumn("SERVIÇOS");
+
+        coluna1Canceladas.setCellValueFactory(new PropertyValueFactory<Ordem, String>("ordemID"));
+        coluna2Canceladas.setCellValueFactory(new PropertyValueFactory<Ordem, String>("nomeCliente"));
+        coluna3Canceladas.setCellValueFactory(new PropertyValueFactory<Ordem, String>("servicosEmString"));
+
+        this.tabelaOrdensCanceladas.getColumns().addAll(coluna1Canceladas, coluna2Canceladas, coluna3Canceladas);
+        this.tabelaOrdensCanceladas.setItems(ordensCanceladasData);
+
+        //Finalizadas
+        DAO.getOrdem().atualizaColecaoDoArquivoOrdensFinalizadas(DAO.getOrdemDAOArquivo().lerArquivoOrdensFinalizadas());
+
+        this.ordensFinalizadasData = FXCollections.observableArrayList();
+        this.ordensFinalizadasData.addAll(DAO.getOrdem().findManyFinalizadas());
+
+        //Cria a coluna para usar na tabela, de maneira manual.
+        TableColumn coluna1Finalizadas = new TableColumn("ID");
+        TableColumn coluna2Finalizadas = new TableColumn("NOME DO CLIENTE");
+        TableColumn coluna3Finalizadas = new TableColumn("SERVIÇOS");
+
+        coluna1Finalizadas.setCellValueFactory(new PropertyValueFactory<Ordem, String>("ordemID"));
+        coluna2Finalizadas.setCellValueFactory(new PropertyValueFactory<Ordem, String>("nomeCliente"));
+        coluna3Finalizadas.setCellValueFactory(new PropertyValueFactory<Ordem, String>("servicosEmString"));
+
+        this.tabelaOrdensFinalizadas.getColumns().addAll(coluna1Finalizadas, coluna2Finalizadas, coluna3Finalizadas);
+        this.tabelaOrdensFinalizadas.setItems(ordensFinalizadasData);
     }
 
     @FXML

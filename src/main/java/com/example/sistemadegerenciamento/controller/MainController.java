@@ -337,14 +337,22 @@ public class MainController {
         mainC.realizaOrdemCompra(new Peca("HD", 218.50), 8, 329.4);
         System.out.println(mainC.geraRelatorio());
         mainC.salvarArquivoEstoque();*/
-        /*DAO.getTecnico().create(new Tecnico(false, "Jorge", "12345"));
+        DAO.getTecnico().create(new Tecnico(false, "Jorge", "12345"));
         DAO.getOrdem().create(new Ordem(new Cliente("Douglas", "Rua Calumbi", "75894564185")));
         DAO.getOrdem().create(new Ordem(new Cliente("Ana", "Feira V", "758977864185")));
+        DAO.getOrdem().create(new Ordem(new Cliente("Jucicreia", "Feira V", "758977864185")));
+        DAO.getOrdem().create(new Ordem(new Cliente("Jordana", "Feira V", "758977864185")));
+        DAO.getOrdem().create(new Ordem(new Cliente("Fulano", "Feira V", "758977864185")));
         mainC.relacionaOrdemATecnico(1, 1);
+        mainC.relacionaOrdemATecnico(2, 1);
+        mainC.relacionaOrdemATecnico(3, 1);
+        DAO.getOrdem().finalizarOrdem(2);
+        DAO.getOrdem().cancelarOrdem(4);
         System.out.println(DAO.getOrdem().findManyEmAberto().get(0).getClienteID());
-        mainC.salvarArquivoOrdem();*/
-        /*HashMap<Integer, Ordem> ordem = mainC.lerArquivoOrdemEmAberto();
-        System.out.println(ordem.get(1).getNomeCliente());*/
+        mainC.salvarArquivoOrdem();
+        //HashMap<Integer, Ordem> ordem = mainC.lerArquivoOrdemEmAberto();
+
+
 
     }
 }
