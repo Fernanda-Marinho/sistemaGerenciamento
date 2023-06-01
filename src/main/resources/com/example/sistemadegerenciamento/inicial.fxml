@@ -9,15 +9,16 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="600.0" maxWidth="1000.0" minHeight="600.0" minWidth="1000.0" prefHeight="600.0" prefWidth="1000.0" stylesheets="@../../../css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistemadegerenciamento.controller.inicialController">
    <children>
       <Separator layoutX="642.0" layoutY="-16.0" orientation="VERTICAL" prefHeight="617.0" prefWidth="7.0" />
-      <VBox layoutX="663.0" layoutY="36.0" prefHeight="529.0" prefWidth="317.0">
+      <VBox layoutX="662.0" layoutY="39.0" prefHeight="472.0" prefWidth="320.0">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="22.0" prefWidth="414.0" stylesheets="@../../../css/style.css" text="ORDENS EM ABERTO" textAlignment="CENTER">
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="0.0" prefWidth="320.0" stylesheets="@../../../css/style.css" text="ORDENS EM ABERTO" textAlignment="CENTER">
                <font>
                   <Font name="Swis721 Lt BT Light" size="17.0" />
                </font>
@@ -37,52 +38,13 @@
                </effect></TableView>
          </children>
       </VBox>
-      <ImageView fitHeight="181.0" fitWidth="162.0" layoutX="269.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../images/logo_ecomp_services.png" />
-         </image>
-      </ImageView>
-      <VBox alignment="TOP_CENTER" layoutX="245.0" layoutY="331.0" prefHeight="160.0" prefWidth="214.0">
+      <VBox alignment="CENTER" layoutX="5.0" layoutY="110.0" prefHeight="363.0" prefWidth="131.0">
          <children>
-            <Button fx:id="btnCriarOrdemDeServico" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#btnCriaOrdemDeServico" prefHeight="30.0" prefWidth="194.0" text="CRIAR ORDEM DE SERVIÇO" textAlignment="CENTER">
-               <VBox.margin>
-                  <Insets bottom="10.0" />
-               </VBox.margin>
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <effect>
-                  <DropShadow />
-               </effect></Button>
-            <Button fx:id="btnPegarOrdemServico" mnemonicParsing="false" onAction="#btnPegaOrdemServico" text="PEGAR ORDEM DE SERVIÇO">
-               <VBox.margin>
-                  <Insets bottom="10.0" />
-               </VBox.margin>
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <effect>
-                  <DropShadow />
-               </effect>
-            </Button>
-            <Button fx:id="btnOrdemDeCompra" mnemonicParsing="false" onAction="#btnFazOrdemDeCompra" text="CRIAR ORDEM DE COMPRA">
-               <VBox.margin>
-                  <Insets bottom="10.0" />
-               </VBox.margin>
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <effect>
-                  <DropShadow />
-               </effect>
-            </Button>
-         </children>
-         <padding>
-            <Insets bottom="20.0" top="20.0" />
-         </padding>
-      </VBox>
-      <VBox alignment="CENTER" layoutX="14.0" layoutY="96.0" prefHeight="410.0" prefWidth="111.0">
-         <children>
+            <ImageView fitHeight="107.0" fitWidth="108.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/logo_ecomp_services.png" />
+               </image>
+            </ImageView>
             <Button fx:id="btnSceneHome" alignment="CENTER" mnemonicParsing="false" onAction="#btnSceneHomeAction" prefHeight="25.0" prefWidth="153.0" text="HOME" textAlignment="CENTER">
                <VBox.margin>
                   <Insets bottom="10.0" />
@@ -118,10 +80,14 @@
             </Button>
          </children>
       </VBox>
-      <ImageView fitHeight="171.0" fitWidth="590.0" layoutX="37.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="121.0" fitWidth="516.0" layoutX="140.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/titulo_logo.png" />
          </image>
       </ImageView>
+      <Separator layoutX="140.0" layoutY="-8.0" orientation="VERTICAL" prefHeight="617.0" prefWidth="7.0" />
+      <Button fx:id="btnAbrirOrdem" layoutX="662.0" layoutY="520.0" mnemonicParsing="false" onAction="#btnAbreOrdem" prefHeight="25.0" prefWidth="320.0" text="ABRIR ORDEM" />
+      <HBox layoutX="71.0" layoutY="503.0" prefHeight="34.0" prefWidth="583.0" />
+      <Button fx:id="btnPegarOrdemServico" layoutX="662.0" layoutY="550.0" mnemonicParsing="false" onAction="#btnPegaOrdemServico" prefHeight="25.0" prefWidth="320.0" text="PEGAR ORDEM DE SERVIÇO" />
    </children>
 </AnchorPane>

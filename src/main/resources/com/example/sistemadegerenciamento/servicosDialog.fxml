@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../../../css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="260.0" layoutY="25.0" text="SERVIÇOS">
@@ -16,7 +15,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TableView fx:id="tabelaServicos" layoutX="44.0" layoutY="63.0" prefHeight="250.0" prefWidth="512.0" />
+      <TableView fx:id="tabelaServicos" layoutX="44.0" layoutY="63.0" prefHeight="242.0" prefWidth="512.0" />
       <HBox alignment="CENTER" layoutX="44.0" layoutY="313.0" prefHeight="44.0" prefWidth="512.0" spacing="10.0">
          <children>
             <Button fx:id="btnFinalizarServico" mnemonicParsing="false" onAction="#btnFinalizaServico" text="FINALIZAR SERVIÇO" />
