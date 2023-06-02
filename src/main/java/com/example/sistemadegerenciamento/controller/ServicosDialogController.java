@@ -1,9 +1,7 @@
 package com.example.sistemadegerenciamento.controller;
 
 import com.example.sistemadegerenciamento.DAO.DAO;
-import com.example.sistemadegerenciamento.models.Cliente;
-import com.example.sistemadegerenciamento.models.Ordem;
-import com.example.sistemadegerenciamento.models.Servico;
+import com.example.sistemadegerenciamento.models.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,18 +12,21 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import java.io.IOException;
+import  java.io.FileWriter;
 
-public class servicosDialogController {
+import java.io.BufferedWriter;
+import java.io.File;
+
+import java.io.IOException;
+import java.nio.file.Paths;
+
+public class ServicosDialogController {
 
     @FXML
     private Button btnCancelarOrdem;
 
     @FXML
-    private Button btnFInalizarOrdem;
-
-    @FXML
-    private Button btnFecharServico;
+    private Button btnFinalizarOrdem;
 
     @FXML
     private Button btnFinalizarServico;
@@ -42,8 +43,8 @@ public class servicosDialogController {
     // DA PÁGINA INICIAL FOR SELECIONADA. OU SEJA, SÓ QUERO QUE SEJA EXIBIDA QUANDO O ATRIBUTO ESTÁTICO
     // ordemAbertaNoMomento for diferente de nulo, pois irei exibir na tabela dados retirados da Ordem
     // que estará nesse atributo.
-    
-    /*@FXML
+
+    @FXML
         //Carrega todos os dados a serem mostrados no View.
     void initialize() throws IOException, ClassNotFoundException {
         System.out.println("3) initialize");
@@ -66,21 +67,41 @@ public class servicosDialogController {
             this.tabelaServicos.getColumns().addAll(coluna1, coluna2, coluna3, coluna4);
             this.tabelaServicos.setItems(servicosData);
         }
-    }*/
+    }
 
     @FXML
     void btnCancelaOrdem(ActionEvent event) {
 
     }
-
-    @FXML
-    void btnFechaServico(ActionEvent event) {
-
-    }
-
     @FXML
     void btnFinalizaOrdem(ActionEvent event) {
+        Ordem ordem = DAO.getOrdem().finalizarOrdem(ordemAbertaNoMomento.getOrdemID());
+        DAO.getTecnico().findById(ordem.getTecnicoID()).fechaOrdem();
+        ordem.setStatus(StatusOrdem.FINALIZADA);
+        //Gerando fatura
+        String diretorioAtual = Paths.get(".").toAbsolutePath().normalize().toString();
+        String nomeArquivo = diretorioAtual + "\\faturas\\fatura" + "Ordem" + String.valueOf(ordem.getOrdemID()) + ".txt";
+        File arquivo = new File(nomeArquivo);
+        try {
+            //Salva arquivo
+            arquivo.createNewFile();
+            FileWriter fw = new FileWriter( arquivo );
+            BufferedWriter bw = new BufferedWriter( fw );
+            bw.write(ordem.gerarFatura().toString());
+            bw.close();
+            fw.close();
+            //Salva os dados e recarrega as páginas
+            //Controller.getInicialController().btnSalvaDados();
+            //Controller.getOrdemController().atualizaOrdens();
+            //Controller.getInicialController().atualizaOrdens();
+            //Inicializa arquivo automaticamente, representando abertura de fatura externa
+            ProcessBuilder processBuilder = new ProcessBuilder();
+            processBuilder.command("cmd.exe", "/c", nomeArquivo);
+            processBuilder.start();
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

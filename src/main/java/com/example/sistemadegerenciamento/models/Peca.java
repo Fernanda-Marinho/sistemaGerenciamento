@@ -9,11 +9,15 @@ public class Peca implements Serializable {
 
     private String nome = "";
     private double valor;
+    private int quantidade;
 
     //construtor
     public Peca(String nome, double valor){
         this.nome = nome;
         this.valor = valor;
+    }
+    public void setQuantidade(int quantidadeNova){
+        this.quantidade = quantidadeNova;
     }
 
     public String getNome() {

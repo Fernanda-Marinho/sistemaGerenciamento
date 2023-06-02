@@ -1,8 +1,6 @@
 package com.example.sistemadegerenciamento;
 
 import com.example.sistemadegerenciamento.controller.MainController;
-import com.example.sistemadegerenciamento.controller.servicosDialogController;
-import com.example.sistemadegerenciamento.models.Ordem;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,7 +9,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
 
 
 public class HelloApplication extends Application {
@@ -86,6 +83,7 @@ public class HelloApplication extends Application {
     public static void main(String[] args) throws Exception, IOException, ClassNotFoundException {
         launch();
         //Alteração pendente: no dialog, trocar estratégia. Colocar igual o vídeo de Tosta. Do jeito que está o initialize se apresenta primeiro que a chamada do botão e do case switch. Portanto, não dá para atualizar a ordem atual antes de inicializar.
+        //Falta consertar a quantidade na tabela de estoquee controller
         //MainController.main(args);
     }
 }

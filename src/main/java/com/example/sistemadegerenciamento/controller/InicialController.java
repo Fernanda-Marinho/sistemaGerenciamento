@@ -2,28 +2,17 @@ package com.example.sistemadegerenciamento.controller;
 
 import com.example.sistemadegerenciamento.DAO.DAO;
 import com.example.sistemadegerenciamento.HelloApplication;
-import com.example.sistemadegerenciamento.models.Cliente;
 import com.example.sistemadegerenciamento.models.Ordem;
-import javafx.application.Preloader;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import com.example.sistemadegerenciamento.DAO.ordem.OrdemDAOArquivo;
-import javafx.scene.input.MouseEvent;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
-import java.nio.file.Paths;
 
-public class inicialController {
+public class InicialController {
 
     @FXML
     private Button btnAbrirOrdem;
@@ -49,6 +38,10 @@ public class inicialController {
     @FXML
     private Button btnSceneTecnicos;
     @FXML
+    private Label labelErro;
+    @FXML
+    private TextField idTecnico;
+    @FXML
     private TableView<Ordem> tabelaOrdensEmAberto;
     @FXML
     private TableView<Ordem> tabelaOrdensEmEspera;
@@ -57,8 +50,7 @@ public class inicialController {
 
     private ObservableList<Ordem> ordensEmEsperaData;
 
-    @FXML
-    void initialize() throws IOException, ClassNotFoundException {
+    void atualizaOrdens() throws IOException, ClassNotFoundException {
         //Em Aberto
         DAO.getOrdem().atualizaColecaoDoArquivoOrdensAbertas(DAO.getOrdemDAOArquivo().lerArquivoOrdensEmAberto());
 
@@ -95,6 +87,10 @@ public class inicialController {
         this.tabelaOrdensEmEspera.getColumns().addAll(coluna1EmEspera, coluna2EmEspera, coluna3EmEspera);
         this.tabelaOrdensEmEspera.setItems(ordensEmEsperaData);
     }
+    @FXML
+    void initialize() throws IOException, ClassNotFoundException {
+        atualizaOrdens();
+    }
 
     @FXML
     void btnCriaOrdemDeServico(ActionEvent event) {
@@ -110,14 +106,40 @@ public class inicialController {
 
     @FXML
     void btnPegaOrdemServico(ActionEvent event) {
-        Dialog dialog = new Dialog();
-        dialog.setTitle("PEGAR ORDEM DE SERVIÇO");
-        dialog.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);
-        dialog.show();
+        int selecionadoTabelaIndice = this.tabelaOrdensEmEspera.getSelectionModel().getSelectedIndex();
+        try {
+            if (selecionadoTabelaIndice>=0) {
+                int tecnicoID = Integer.parseInt(this.idTecnico.getText());
+                Ordem selecionadoTabela = this.tabelaOrdensEmEspera.getSelectionModel().getSelectedItem();
+                if (!(DAO.getTecnico().findById(tecnicoID).isComOrdem())) {
+                    DAO.getOrdem().abrirOrdem(selecionadoTabela.getOrdemID(), tecnicoID);
+                    DAO.getTecnico().findById(tecnicoID).addOrdem(selecionadoTabela);
+                    this.idTecnico.clear();
+                    this.labelErro.setText("");
+                    this.ordensEmEsperaData.remove(selecionadoTabelaIndice);
+                    this.ordensEmAbertoData.add(selecionadoTabela);
+                } else {
+                    this.labelErro.setText("Você já está associado a uma ordem. Finalize primeiro.");
+                }
+            }
+        } catch (Exception e){
+            this.labelErro.setText("Insira um ID válido e existente.");
+        }
     }
 
     @FXML
     void btnSalvaDados(ActionEvent event) throws IOException {
+        System.out.println("salvando dados");
+        DAO.getClienteDAOArquivo().salvarArquivo();
+        DAO.getEstoqueDAOArquivo().salvarArquivo();
+        DAO.getTecnicoDAOArquivo().salvarArquivo();
+        DAO.getOrdemDAOArquivo().salvarArquivoOrdensCanceladas();
+        DAO.getOrdemDAOArquivo().salvarArquivoOrdensEmAberto();
+        DAO.getOrdemDAOArquivo().salvarArquivoOrdensEmEspera();
+        DAO.getOrdemDAOArquivo().salvarArquivoOrdensFinalizadas();
+    }
+
+    void btnSalvaDados() throws IOException {
         DAO.getClienteDAOArquivo().salvarArquivo();
         DAO.getEstoqueDAOArquivo().salvarArquivo();
         DAO.getTecnicoDAOArquivo().salvarArquivo();
@@ -160,12 +182,14 @@ public class inicialController {
         if (selecionadoTabelaEmAbertoIndice>=0) {
             Ordem selecionadoTabela = this.tabelaOrdensEmAberto.getSelectionModel().getSelectedItem();
             int clienteID = selecionadoTabela.getClienteID();
-            servicosDialogController.ordemAbertaNoMomento = selecionadoTabela;
+            ServicosDialogController.ordemAbertaNoMomento = selecionadoTabela;
+            //Controller.getServicosDialogController().atualizaServicos();
             HelloApplication.telaScreen("servicosDialog");
         } else if (selecionadoTabelaEmEsperaIndice>=0){
             Ordem selecionadoTabela = this.tabelaOrdensEmEspera.getSelectionModel().getSelectedItem();
             int clienteID = selecionadoTabela.getClienteID();
-            servicosDialogController.ordemAbertaNoMomento = selecionadoTabela;
+            ServicosDialogController.ordemAbertaNoMomento = selecionadoTabela;
+            //Controller.getServicosDialogController().atualizaServicos();
             HelloApplication.telaScreen("servicosDialog");
         }
     }

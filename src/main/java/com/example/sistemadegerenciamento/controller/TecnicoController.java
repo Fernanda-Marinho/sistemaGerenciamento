@@ -13,7 +13,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
 
-public class tecnicoController {
+public class TecnicoController {
 
     @FXML
     private Button btnCadastrarTecnico;

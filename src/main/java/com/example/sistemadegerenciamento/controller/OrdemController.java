@@ -13,7 +13,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
 
-public class ordemController {
+public class OrdemController {
 
     @FXML
     private Button btnCadastrarOrdem;
@@ -62,8 +62,7 @@ public class ordemController {
 
     private ObservableList<Ordem> ordensFinalizadasData;
 
-    @FXML
-    void initialize() throws IOException, ClassNotFoundException {
+    void atualizaOrdens() throws IOException, ClassNotFoundException {
         //Em Aberto
         DAO.getOrdem().atualizaColecaoDoArquivoOrdensAbertas(DAO.getOrdemDAOArquivo().lerArquivoOrdensEmAberto());
 
@@ -135,6 +134,10 @@ public class ordemController {
 
         this.tabelaOrdensFinalizadas.getColumns().addAll(coluna1Finalizadas, coluna2Finalizadas, coluna3Finalizadas);
         this.tabelaOrdensFinalizadas.setItems(ordensFinalizadasData);
+    }
+    @FXML
+    void initialize() throws IOException, ClassNotFoundException {
+        atualizaOrdens();
     }
 
     @FXML

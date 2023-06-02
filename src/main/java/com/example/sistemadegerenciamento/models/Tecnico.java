@@ -15,11 +15,9 @@ public class Tecnico implements Serializable {
     private int tecnicoID;
     private boolean comOrdem;
     private ArrayList<Ordem> historicoOrdens = new ArrayList();
-    private int idOrdemAtual;
-
+    private String idOrdemAtual;
 
     public static int ID=0;
-
 
 
     public  Tecnico(boolean adm, String nome, String senha){
@@ -39,13 +37,13 @@ public class Tecnico implements Serializable {
      * */
     public void addOrdem(Ordem ordem){
         this.comOrdem = true;
-        this.idOrdemAtual = ordem.getOrdemID();
+        this.idOrdemAtual = String.valueOf(ordem.getOrdemID());
         historicoOrdens.add(ordem);
     }
 
     public void fechaOrdem(){
         this.comOrdem = false;
-        this.idOrdemAtual = -1;
+        this.idOrdemAtual = "";
     }
 
     public boolean isAdm() {

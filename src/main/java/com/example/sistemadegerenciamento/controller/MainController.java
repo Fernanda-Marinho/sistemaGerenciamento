@@ -332,11 +332,11 @@ public class MainController {
         //Técnico ADM: login = Admin, senha = Admin
         MainController mainC = new MainController();
         /*mainC.criaTecnico(true, "Admin", "Admin");
+        System.out.println(mainC.geraRelatorio());
+        mainC.salvarArquivoEstoque();*/
         Peca peca = new Peca("RAM", 128.0);
         mainC.realizaOrdemCompra(peca, 10, peca.getValor());
         mainC.realizaOrdemCompra(new Peca("HD", 218.50), 8, 329.4);
-        System.out.println(mainC.geraRelatorio());
-        mainC.salvarArquivoEstoque();*/
         DAO.getTecnico().create(new Tecnico(false, "Jorge", "12345"));
         DAO.getOrdem().create(new Ordem(new Cliente("Douglas", "Rua Calumbi", "75894564185")));
         mainC.relacionaOrdemATecnico(1, 1);
@@ -357,6 +357,7 @@ public class MainController {
 
         mainC.salvarArquivoTecnico();
         mainC.salvarArquivoOrdem();
+        mainC.salvarArquivoEstoque();
         System.out.println(DAO.getOrdem().findManyEmAberto().get(0).getClienteID());
 
 

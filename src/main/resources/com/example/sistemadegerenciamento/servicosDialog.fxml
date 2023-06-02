@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../../../css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistemadegerenciamento.controller.servicosDialogController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../../../css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistemadegerenciamento.controller.ServicosDialogController">
    <children>
       <Label layoutX="260.0" layoutY="25.0" text="SERVIÇOS">
          <font>
@@ -19,13 +19,8 @@
       <HBox alignment="CENTER" layoutX="44.0" layoutY="313.0" prefHeight="44.0" prefWidth="512.0" spacing="10.0">
          <children>
             <Button fx:id="btnFinalizarServico" mnemonicParsing="false" onAction="#btnFinalizaServico" text="FINALIZAR SERVIÇO" />
-            <Button fx:id="btnFInalizarOrdem" mnemonicParsing="false" onAction="#btnFinalizaOrdem" text="FINALIZAR ORDEM" />
+            <Button fx:id="btnFinalizarOrdem" mnemonicParsing="false" onAction="#btnFinalizaOrdem" text="FINALIZAR ORDEM" />
             <Button fx:id="btnCancelarOrdem" mnemonicParsing="false" onAction="#btnCancelaOrdem" text="CANCELAR ORDEM" />
-            <Button fx:id="btnFecharServico" mnemonicParsing="false" onAction="#btnFechaServico" text="FECHAR">
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
-            </Button>
          </children>
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

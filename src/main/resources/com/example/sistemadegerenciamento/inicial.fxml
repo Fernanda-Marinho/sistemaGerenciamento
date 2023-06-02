@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -13,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="600.0" maxWidth="1000.0" minHeight="600.0" minWidth="1000.0" prefHeight="600.0" prefWidth="1000.0" stylesheets="@../../../css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistemadegerenciamento.controller.inicialController">
+<AnchorPane maxHeight="600.0" maxWidth="1000.0" minHeight="600.0" minWidth="1000.0" prefHeight="600.0" prefWidth="1000.0" stylesheets="@../../../css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistemadegerenciamento.controller.InicialController">
    <children>
       <ImageView fitHeight="600.0" fitWidth="1000.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -21,14 +22,14 @@
          </image>
       </ImageView>
       <Separator layoutX="642.0" layoutY="-16.0" orientation="VERTICAL" prefHeight="617.0" prefWidth="7.0" />
-      <VBox layoutX="662.0" layoutY="14.0" prefHeight="498.0" prefWidth="320.0">
+      <VBox layoutX="662.0" layoutY="30.0" prefHeight="446.0" prefWidth="320.0">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="0.0" prefWidth="320.0" stylesheets="@../../../css/style.css" text="ORDENS EM ABERTO" textAlignment="CENTER">
                <font>
                   <Font name="Swis721 Lt BT Light" size="17.0" />
                </font>
             </Label>
-            <TableView fx:id="tabelaOrdensEmAberto" prefHeight="372.0" prefWidth="414.0">
+            <TableView fx:id="tabelaOrdensEmAberto" prefHeight="372.0" prefWidth="320.0">
                <effect>
                   <DropShadow />
                </effect></TableView>
@@ -170,14 +171,21 @@
          </opaqueInsets>
       </VBox>
       <Separator layoutX="204.0" orientation="VERTICAL" prefHeight="600.0" prefWidth="7.0" />
-      <Button fx:id="btnAbrirOrdem" layoutX="662.0" layoutY="524.0" mnemonicParsing="false" onAction="#btnAbreOrdem" prefHeight="25.0" prefWidth="320.0" text="ABRIR ORDEM">
+      <Button fx:id="btnAbrirOrdem" layoutX="662.0" layoutY="489.0" mnemonicParsing="false" onAction="#btnAbreOrdem" prefHeight="25.0" prefWidth="320.0" text="ABRIR ORDEM">
          <effect>
             <DropShadow />
          </effect></Button>
       <HBox layoutX="71.0" layoutY="503.0" prefHeight="34.0" prefWidth="583.0" />
-      <Button fx:id="btnPegarOrdemServico" layoutX="662.0" layoutY="560.0" mnemonicParsing="false" onAction="#btnPegaOrdemServico" prefHeight="25.0" prefWidth="320.0" text="PEGAR ORDEM DE SERVIÇO">
+      <Button fx:id="btnPegarOrdemServico" layoutX="812.0" layoutY="526.0" mnemonicParsing="false" onAction="#btnPegaOrdemServico" prefHeight="26.0" prefWidth="170.0" text="PEGAR ORDEM DE SERVIÇO">
          <effect>
             <DropShadow />
          </effect></Button>
+      <TextField fx:id="idTecnico" layoutX="728.0" layoutY="526.0" prefHeight="26.0" prefWidth="74.0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="645.0" layoutY="530.0" prefHeight="18.0" prefWidth="92.0" stylesheets="@../../../css/style.css" text="SEU ID" textAlignment="CENTER">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelErro" alignment="CENTER" layoutX="665.0" layoutY="563.0" prefHeight="26.0" prefWidth="320.0" textFill="#b41313" />
    </children>
 </AnchorPane>

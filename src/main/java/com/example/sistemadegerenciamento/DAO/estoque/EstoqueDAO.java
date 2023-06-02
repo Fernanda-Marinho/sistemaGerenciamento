@@ -3,6 +3,7 @@ package com.example.sistemadegerenciamento.DAO.estoque;
 import com.example.sistemadegerenciamento.models.OrdemCompra;
 import com.example.sistemadegerenciamento.models.Peca;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -18,5 +19,6 @@ public interface EstoqueDAO {
     public String verEstoqueFormatado();
     public void devolucaoPeca(Peca peca, int quantidade);
     public void atualizaColecaoDoArquivo(HashMap<Peca, Integer> pecas);
+    public ArrayList<Peca> findManyPecas();
 
 }

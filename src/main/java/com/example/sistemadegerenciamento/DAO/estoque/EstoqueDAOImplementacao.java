@@ -31,8 +31,10 @@ public class EstoqueDAOImplementacao implements EstoqueDAO {
             int qntdNova = ordemCompra.getQuantidade();
             int qntdAtual = quantidadePecas.get(ordemCompra.getPeca());
             int qntdTotal = qntdNova + qntdAtual;
+            ordemCompra.getPeca().setQuantidade(qntdTotal);
             quantidadePecas.put(ordemCompra.getPeca(), qntdTotal);
         } else {
+            ordemCompra.getPeca().setQuantidade(ordemCompra.getQuantidade());
             quantidadePecas.put(ordemCompra.getPeca(), ordemCompra.getQuantidade());
         }
     }
@@ -82,6 +84,13 @@ public class EstoqueDAOImplementacao implements EstoqueDAO {
             estoquef = estoquef + valor.getKey().getNome() + "   \t" + valor.getValue() + "   \t" + valor.getKey().getValor() + ";\n";
         }
         return estoquef;
+    }
+    public ArrayList<Peca> findManyPecas(){
+        ArrayList<Peca> pecas = new ArrayList<>();
+        for (Map.Entry<Peca, Integer> valor : this.quantidadePecas.entrySet()){
+            pecas.add(valor.getKey());
+        }
+        return pecas;
     }
     /**
      * Método que devolve a peça para o estoque caso a ordem seja cancelada;

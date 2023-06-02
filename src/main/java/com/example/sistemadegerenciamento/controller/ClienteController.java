@@ -3,7 +3,6 @@ package com.example.sistemadegerenciamento.controller;
 import com.example.sistemadegerenciamento.DAO.DAO;
 import com.example.sistemadegerenciamento.HelloApplication;
 import com.example.sistemadegerenciamento.models.Cliente;
-import com.example.sistemadegerenciamento.models.Ordem;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,9 +11,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
-import java.util.HashMap;
 
-public class clienteController {
+public class ClienteController {
 
     @FXML
     private Button btnAdicionar;
