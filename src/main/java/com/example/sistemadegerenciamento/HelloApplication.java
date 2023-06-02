@@ -79,7 +79,6 @@ public class HelloApplication extends Application {
                 stageDialog.setResizable(false);
                 stageDialog.centerOnScreen();
                 stageDialog.initModality(Modality.APPLICATION_MODAL);
-                System.out.println("2) case switch");
                 stageDialog.showAndWait();
         }
     }

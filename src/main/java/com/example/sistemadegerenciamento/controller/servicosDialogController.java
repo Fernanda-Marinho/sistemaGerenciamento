@@ -38,7 +38,12 @@ public class servicosDialogController {
     public static Ordem ordemAbertaNoMomento;
     private ObservableList<Servico> servicosData;
 
-    @FXML
+    //RAFA, AQUI ESTÁ O INITIALIZE. MEU INTERESSE É QUE A TABELA SÓ SEJA EXIBIDA DEPOIS QUE UMA ORDEM
+    // DA PÁGINA INICIAL FOR SELECIONADA. OU SEJA, SÓ QUERO QUE SEJA EXIBIDA QUANDO O ATRIBUTO ESTÁTICO
+    // ordemAbertaNoMomento for diferente de nulo, pois irei exibir na tabela dados retirados da Ordem
+    // que estará nesse atributo.
+    
+    /*@FXML
         //Carrega todos os dados a serem mostrados no View.
     void initialize() throws IOException, ClassNotFoundException {
         System.out.println("3) initialize");
@@ -61,7 +66,7 @@ public class servicosDialogController {
             this.tabelaServicos.getColumns().addAll(coluna1, coluna2, coluna3, coluna4);
             this.tabelaServicos.setItems(servicosData);
         }
-    }
+    }*/
 
     @FXML
     void btnCancelaOrdem(ActionEvent event) {
