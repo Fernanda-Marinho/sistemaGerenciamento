@@ -11,14 +11,17 @@ import java.util.Date;
 public class Servico implements Serializable {
 
     private CategoriaServico categoria;
+    private String categoriaEmString;
     private double valor;
     private Calendar horarioAbertura;
     private Calendar horarioFechamento;
     private int avaliacaoCliente;
     private int ordemID;
     private Peca peca;
+    private String nomePeca = "Sem Peça";
     private String descricao;
     private boolean finalizado;
+
 
 
 
@@ -31,9 +34,12 @@ public class Servico implements Serializable {
             }
         }
         this.categoria = categoria;
+        this.categoriaEmString = categoria.toString();
         this.valor = valor;
         this.ordemID = ordemID;
         this.peca = peca;
+        if (peca != null)
+            this.nomePeca = peca.getNome();
         this.descricao = descricao;
         // Registrar a data e hora atuais
         Calendar abertura = Calendar.getInstance();

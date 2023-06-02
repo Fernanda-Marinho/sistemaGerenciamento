@@ -344,12 +344,14 @@ public class MainController {
         mainC.finalizaServico(1, DAO.getOrdem().findManyEmAberto().get(0).getServicos().get(0), 5);
         mainC.finalizaOrdem(1);
         DAO.getOrdem().create(new Ordem(new Cliente("Ana", "Feira V", "758977864185")));
+
         DAO.getOrdem().create(new Ordem(new Cliente("Jucicreia", "Feira V", "758977864185")));
         DAO.getOrdem().create(new Ordem(new Cliente("Jordana", "Feira V", "758977864185")));
         DAO.getOrdem().create(new Ordem(new Cliente("Fulano", "Feira V", "758977864185")));
         DAO.getOrdem().create(new Ordem(new Cliente("Pariceira", "Feira V", "758977864185")));
         mainC.relacionaOrdemATecnico(2, 1);
         mainC.relacionaOrdemATecnico(3, 1);
+        mainC.addServico(2, CategoriaServico.LIMPEZA, 210.0, null, "sem descrição");
         DAO.getOrdem().cancelarOrdem(4);
 
 

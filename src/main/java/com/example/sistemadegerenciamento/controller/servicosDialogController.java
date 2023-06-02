@@ -35,31 +35,33 @@ public class servicosDialogController {
 
     @FXML
     private TableView<Servico> tabelaServicos;
-    public static Ordem ordemAberta;
+    public static Ordem ordemAbertaNoMomento;
     private ObservableList<Servico> servicosData;
 
-    //FALTA ADICIONAR OS ATRIBUTOS PARA CRIAR A TABELA. VERIFICAR SE O MÉTODO setCellValueFactory CONSEGUE ACEITAR OUTROS DADOS ALÉM DO ATRIBUTO DO OBJETO
-
-    /*@FXML
+    @FXML
         //Carrega todos os dados a serem mostrados no View.
     void initialize() throws IOException, ClassNotFoundException {
-        this.servicosData = FXCollections.observableArrayList();
-        this.servicosData.addAll(ordemAberta.getServicos());
-        //Cria a coluna para usar na tabela, de maneira manual.
-        TableColumn coluna1 = new TableColumn("ID");
-        TableColumn coluna2 = new TableColumn("NOME");
-        TableColumn coluna3 = new TableColumn("ENDEREÇO");
-        TableColumn coluna4 = new TableColumn("TELEFONE");
+        System.out.println("3) initialize");
+        if (ordemAbertaNoMomento != null) {
+            this.servicosData = FXCollections.observableArrayList();
+            this.servicosData.addAll(ordemAbertaNoMomento.getServicos());
+
+            //Cria a coluna para usar na tabela, de maneira manual.
+            TableColumn coluna1 = new TableColumn("CATEGORIA");
+            TableColumn coluna2 = new TableColumn("NOME (PEÇA)");
+            TableColumn coluna3 = new TableColumn("ESTÁ FINALIZADO");
+            TableColumn coluna4 = new TableColumn("VALOR");
 
 
-        coluna1.setCellValueFactory(new PropertyValueFactory<Cliente, String>(ordemAberta.));
-        coluna2.setCellValueFactory(new PropertyValueFactory<Cliente, String>("nome"));
-        coluna3.setCellValueFactory(new PropertyValueFactory<Cliente, String>("endereco"));
-        coluna4.setCellValueFactory(new PropertyValueFactory<Cliente, String>("telefone"));
+            coluna1.setCellValueFactory(new PropertyValueFactory<Servico, String>("categoriaEmString"));
+            coluna2.setCellValueFactory(new PropertyValueFactory<Servico, String>("nomePeca"));
+            coluna3.setCellValueFactory(new PropertyValueFactory<Servico, Boolean>("finalizado"));
+            coluna4.setCellValueFactory(new PropertyValueFactory<Servico, Double>("valor"));
 
-        this.tabelaCliente.getColumns().addAll(coluna1, coluna2, coluna3, coluna4);
-        this.tabelaCliente.setItems(clientesData);
-    }*/
+            this.tabelaServicos.getColumns().addAll(coluna1, coluna2, coluna3, coluna4);
+            this.tabelaServicos.setItems(servicosData);
+        }
+    }
 
     @FXML
     void btnCancelaOrdem(ActionEvent event) {

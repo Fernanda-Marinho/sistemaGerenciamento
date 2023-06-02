@@ -7,7 +7,7 @@ import java.io.Serializable;
  * */
 public class Peca implements Serializable {
 
-    private String nome;
+    private String nome = "";
     private double valor;
 
     //construtor

@@ -160,12 +160,13 @@ public class inicialController {
         if (selecionadoTabelaEmAbertoIndice>=0) {
             Ordem selecionadoTabela = this.tabelaOrdensEmAberto.getSelectionModel().getSelectedItem();
             int clienteID = selecionadoTabela.getClienteID();
-            servicosDialogController.ordemAberta = selecionadoTabela;
+            servicosDialogController.ordemAbertaNoMomento = selecionadoTabela;
+            System.out.println("1) btnAbreOrdem");
             HelloApplication.telaScreen("servicosDialog");
         } else if (selecionadoTabelaEmEsperaIndice>=0){
             Ordem selecionadoTabela = this.tabelaOrdensEmEspera.getSelectionModel().getSelectedItem();
             int clienteID = selecionadoTabela.getClienteID();
-            servicosDialogController.ordemAberta = selecionadoTabela;
+            servicosDialogController.ordemAbertaNoMomento = selecionadoTabela;
             HelloApplication.telaScreen("servicosDialog");
         }
     }
