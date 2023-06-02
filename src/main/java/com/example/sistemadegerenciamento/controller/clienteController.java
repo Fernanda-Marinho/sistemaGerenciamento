@@ -4,7 +4,6 @@ import com.example.sistemadegerenciamento.DAO.DAO;
 import com.example.sistemadegerenciamento.HelloApplication;
 import com.example.sistemadegerenciamento.models.Cliente;
 import com.example.sistemadegerenciamento.models.Ordem;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,7 +12,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class clienteController {
@@ -61,15 +59,7 @@ public class clienteController {
         TableColumn coluna3 = new TableColumn("ENDEREÇO");
         TableColumn coluna4 = new TableColumn("TELEFONE");
 
-        //coluna1.setCellValueFactory(new PropertyValueFactory<Cliente, String>("clienteID"));
-        coluna1.setCellValueFactory(cellData -> {
-            TableColumn.CellDataFeatures<Cliente, String> c = (TableColumn.CellDataFeatures<Cliente, String>) cellData;
-            Cliente cliente = c.getValue();
-            Ordem ordem = cliente.getOrdens().get(0);
-            String status = ordem.getStatus().toString();
-            return new SimpleStringProperty(status);
-        });
-
+        coluna1.setCellValueFactory(new PropertyValueFactory<Cliente, String>("clienteID"));
         coluna2.setCellValueFactory(new PropertyValueFactory<Cliente, String>("nome"));
         coluna3.setCellValueFactory(new PropertyValueFactory<Cliente, String>("endereco"));
         coluna4.setCellValueFactory(new PropertyValueFactory<Cliente, String>("telefone"));
