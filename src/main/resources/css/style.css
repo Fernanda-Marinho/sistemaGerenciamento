@@ -38,3 +38,7 @@
   -fx-background-color: #345678;
   -fx-text-fill: #ffffff;
 }
+
+.vbox {
+    -fx-background-color: #616e88;
+}

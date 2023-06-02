@@ -15,8 +15,13 @@
 
 <AnchorPane maxHeight="600.0" maxWidth="1000.0" minHeight="600.0" minWidth="1000.0" prefHeight="600.0" prefWidth="1000.0" stylesheets="@../../../css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistemadegerenciamento.controller.inicialController">
    <children>
+      <ImageView fitHeight="600.0" fitWidth="1000.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/Untitled%20design.png" />
+         </image>
+      </ImageView>
       <Separator layoutX="642.0" layoutY="-16.0" orientation="VERTICAL" prefHeight="617.0" prefWidth="7.0" />
-      <VBox layoutX="662.0" layoutY="39.0" prefHeight="472.0" prefWidth="320.0">
+      <VBox layoutX="662.0" layoutY="14.0" prefHeight="498.0" prefWidth="320.0">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="0.0" prefWidth="320.0" stylesheets="@../../../css/style.css" text="ORDENS EM ABERTO" textAlignment="CENTER">
                <font>
@@ -38,56 +43,141 @@
                </effect></TableView>
          </children>
       </VBox>
-      <VBox alignment="CENTER" layoutX="5.0" layoutY="110.0" prefHeight="363.0" prefWidth="131.0">
+      <VBox alignment="TOP_CENTER" layoutX="-3.0" prefHeight="600.0" prefWidth="210.0" styleClass="vbox" stylesheets="@../../../css/style.css">
          <children>
-            <ImageView fitHeight="107.0" fitWidth="108.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="176.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../images/logo_ecomp_services.png" />
+                  <Image url="@../../../images/manutenção%20de%20microcomputadores%20(1).png" />
                </image>
             </ImageView>
-            <Button fx:id="btnSceneHome" alignment="CENTER" mnemonicParsing="false" onAction="#btnSceneHomeAction" prefHeight="25.0" prefWidth="153.0" text="HOME" textAlignment="CENTER">
+            <Button fx:id="btnSceneHome" alignment="CENTER" mnemonicParsing="false" onAction="#btnSceneHomeAction" prefHeight="26.0" prefWidth="232.0" text="HOME" textAlignment="CENTER">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
+               <effect>
+                  <DropShadow />
+               </effect>
+               <font>
+                  <Font name="Dubai Medium" size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/icons8-home-50.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
-            <Button fx:id="btnSceneClientes" mnemonicParsing="false" onAction="#btnSceneClientesAction" prefHeight="25.0" prefWidth="161.0" text="CLIENTES">
+            <Button fx:id="btnSceneClientes" mnemonicParsing="false" onAction="#btnSceneClientesAction" prefHeight="26.0" prefWidth="303.0" text="CLIENTES">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
+               <effect>
+                  <DropShadow />
+               </effect>
+               <font>
+                  <Font name="Dubai Medium" size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/icons8-client-50.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
-            <Button fx:id="btnSceneTecnicos" mnemonicParsing="false" onAction="#btnSceneTecnicosAction" prefHeight="25.0" prefWidth="169.0" text="TECNICOS">
+            <Button fx:id="btnSceneTecnicos" mnemonicParsing="false" onAction="#btnSceneTecnicosAction" prefHeight="26.0" prefWidth="330.0" text="TECNICOS">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
+               <effect>
+                  <DropShadow />
+               </effect>
+               <font>
+                  <Font name="Dubai Medium" size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/icons8-technician-64.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
-            <Button fx:id="btnSceneEstoque" mnemonicParsing="false" onAction="#btnSceneEstoqueAction" prefHeight="25.0" prefWidth="155.0" text="ESTOQUE">
+            <Button fx:id="btnSceneEstoque" mnemonicParsing="false" onAction="#btnSceneEstoqueAction" prefHeight="26.0" prefWidth="334.0" text="ESTOQUE">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
+               <effect>
+                  <DropShadow />
+               </effect>
+               <font>
+                  <Font name="Dubai Medium" size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/icons8-storage-50.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
-            <Button fx:id="btnSceneOrdens" mnemonicParsing="false" onAction="#btnSceneOrdensAction" prefHeight="25.0" prefWidth="140.0" text="ORDENS">
+            <Button fx:id="btnSceneOrdens" mnemonicParsing="false" onAction="#btnSceneOrdensAction" prefHeight="26.0" prefWidth="202.0" text="ORDENS">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
+               <effect>
+                  <DropShadow />
+               </effect>
+               <font>
+                  <Font name="Dubai Medium" size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/icons8-paper-50.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
-            <Button fx:id="btnSalvar" mnemonicParsing="false" onAction="#btnSalvaDados" prefHeight="25.0" prefWidth="173.0" text="SALVAR">
+            <Button fx:id="btnSalvar" mnemonicParsing="false" onAction="#btnSalvaDados" prefHeight="26.0" prefWidth="330.0" text="SALVAR">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
+               <effect>
+                  <DropShadow />
+               </effect>
+               <font>
+                  <Font name="Dubai Medium" size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/icons8-save-50.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
          </children>
+         <padding>
+            <Insets left="10.0" right="10.0" top="45.0" />
+         </padding>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
       </VBox>
-      <ImageView fitHeight="121.0" fitWidth="516.0" layoutX="140.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../images/titulo_logo.png" />
-         </image>
-      </ImageView>
-      <Separator layoutX="140.0" layoutY="-8.0" orientation="VERTICAL" prefHeight="617.0" prefWidth="7.0" />
-      <Button fx:id="btnAbrirOrdem" layoutX="662.0" layoutY="520.0" mnemonicParsing="false" onAction="#btnAbreOrdem" prefHeight="25.0" prefWidth="320.0" text="ABRIR ORDEM" />
+      <Separator layoutX="204.0" orientation="VERTICAL" prefHeight="600.0" prefWidth="7.0" />
+      <Button fx:id="btnAbrirOrdem" layoutX="662.0" layoutY="524.0" mnemonicParsing="false" onAction="#btnAbreOrdem" prefHeight="25.0" prefWidth="320.0" text="ABRIR ORDEM">
+         <effect>
+            <DropShadow />
+         </effect></Button>
       <HBox layoutX="71.0" layoutY="503.0" prefHeight="34.0" prefWidth="583.0" />
-      <Button fx:id="btnPegarOrdemServico" layoutX="662.0" layoutY="550.0" mnemonicParsing="false" onAction="#btnPegaOrdemServico" prefHeight="25.0" prefWidth="320.0" text="PEGAR ORDEM DE SERVIÇO" />
+      <Button fx:id="btnPegarOrdemServico" layoutX="662.0" layoutY="560.0" mnemonicParsing="false" onAction="#btnPegaOrdemServico" prefHeight="25.0" prefWidth="320.0" text="PEGAR ORDEM DE SERVIÇO">
+         <effect>
+            <DropShadow />
+         </effect></Button>
    </children>
 </AnchorPane>

@@ -11,6 +11,8 @@ import javafx.scene.control.TextField;
 public class estoqueController {
 
     @FXML
+    private Button btnExportarEstoque;
+    @FXML
     private Button btnRealizarOrdemCompra;
 
     @FXML
@@ -43,6 +45,10 @@ public class estoqueController {
     @FXML
     private TextField valorPeca;
 
+    @FXML
+    void btnExportaEstoque(ActionEvent event) {
+
+    }
     @FXML
     void btnRealizaOrdemCompra(ActionEvent event) {
 

@@ -11,14 +11,144 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="600.0" maxWidth="1000.0" minHeight="600.0" minWidth="1000.0" prefHeight="600.0" prefWidth="1000.0" stylesheets="@../../../css/style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistemadegerenciamento.controller.ordemController">
+<AnchorPane maxHeight="600.0" maxWidth="1000.0" minHeight="600.0" minWidth="1000.0" prefHeight="600.0" prefWidth="1000.0" stylesheets="@../../../css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistemadegerenciamento.controller.ordemController">
 
     <children>
-        <TableView fx:id="tabelaOrdensCanceladas" layoutX="725.0" layoutY="478.0" prefHeight="284.0" prefWidth="460.0" GridPane.columnIndex="1">
+      <ImageView fitHeight="600.0" fitWidth="1000.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/Untitled%20design.png" />
+         </image>
+      </ImageView>
+      <VBox alignment="TOP_CENTER" layoutX="-3.0" prefHeight="600.0" prefWidth="210.0" styleClass="vbox" stylesheets="@../../../css/style.css">
+         <children>
+            <ImageView fitHeight="176.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/manutenção%20de%20microcomputadores%20(1).png" />
+               </image>
+            </ImageView>
+            <Button fx:id="btnSceneHome" alignment="CENTER" mnemonicParsing="false" onAction="#btnSceneHomeAction" prefHeight="26.0" prefWidth="232.0" text="HOME" textAlignment="CENTER">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+               <effect>
+                  <DropShadow />
+               </effect>
+               <font>
+                  <Font name="Dubai Medium" size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/icons8-home-50.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btnSceneClientes" mnemonicParsing="false" onAction="#btnSceneClientesAction" prefHeight="26.0" prefWidth="303.0" text="CLIENTES">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+               <effect>
+                  <DropShadow />
+               </effect>
+               <font>
+                  <Font name="Dubai Medium" size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/icons8-client-50.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btnSceneTecnicos" mnemonicParsing="false" onAction="#btnSceneTecnicosAction" prefHeight="26.0" prefWidth="330.0" text="TECNICOS">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+               <effect>
+                  <DropShadow />
+               </effect>
+               <font>
+                  <Font name="Dubai Medium" size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/icons8-technician-64.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btnSceneEstoque" mnemonicParsing="false" onAction="#btnSceneEstoqueAction" prefHeight="26.0" prefWidth="334.0" text="ESTOQUE">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+               <effect>
+                  <DropShadow />
+               </effect>
+               <font>
+                  <Font name="Dubai Medium" size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/icons8-storage-50.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btnSceneOrdens" mnemonicParsing="false" onAction="#btnSceneOrdensAction" prefHeight="26.0" prefWidth="202.0" text="ORDENS">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+               <effect>
+                  <DropShadow />
+               </effect>
+               <font>
+                  <Font name="Dubai Medium" size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/icons8-paper-50.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btnSalvar" mnemonicParsing="false" onAction="#btnSalvaDados" prefHeight="26.0" prefWidth="330.0" text="SALVAR">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+               <effect>
+                  <DropShadow />
+               </effect>
+               <font>
+                  <Font name="Dubai Medium" size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/icons8-save-50.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+         <padding>
+            <Insets left="10.0" right="10.0" top="45.0" />
+         </padding>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </VBox>
+        <TableView fx:id="tabelaOrdensCanceladas" layoutX="646.0" layoutY="382.0" prefHeight="200.0" prefWidth="300.0" GridPane.columnIndex="1">
             <columnResizePolicy>
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
             </columnResizePolicy>
@@ -26,54 +156,12 @@
             <DropShadow />
          </effect>
         </TableView>
-        <Label alignment="CENTER" layoutX="816.0" layoutY="448.0" maxHeight="800.0" maxWidth="1200.0" minHeight="25.0" minWidth="279.0" prefHeight="25.0" prefWidth="279.0" text="ORDENS CANCELADAS" textAlignment="CENTER">
+        <Label alignment="CENTER" layoutX="660.0" layoutY="356.0" maxHeight="800.0" maxWidth="1200.0" minHeight="25.0" minWidth="279.0" prefHeight="25.0" prefWidth="279.0" text="ORDENS CANCELADAS" textAlignment="CENTER">
             <font>
                 <Font name="Rockwell" size="21.0" />
             </font>
         </Label>
-        <VBox alignment="TOP_CENTER" layoutY="179.0" prefHeight="401.0" prefWidth="95.0">
-            <children>
-                <Button fx:id="btnSceneHome" alignment="CENTER" mnemonicParsing="false" onAction="#btnSceneHomeAction" prefHeight="3.0" prefWidth="65.0" text="HOME" textAlignment="CENTER">
-                    <VBox.margin>
-                        <Insets bottom="10.0" />
-                    </VBox.margin>
-                </Button>
-                <Button fx:id="btnSceneClientes" mnemonicParsing="false" onAction="#btnSceneClientesAction" text="CLIENTES">
-                    <VBox.margin>
-                        <Insets bottom="10.0" />
-                    </VBox.margin>
-                </Button>
-                <Button fx:id="btnSceneTecnicos" mnemonicParsing="false" onAction="#btnSceneTecnicosAction" text="TECNICOS">
-                    <VBox.margin>
-                        <Insets bottom="10.0" />
-                    </VBox.margin>
-                </Button>
-                <Button fx:id="btnSceneEstoque" mnemonicParsing="false" onAction="#btnSceneEstoqueAction" text="ESTOQUE">
-                    <VBox.margin>
-                        <Insets bottom="10.0" />
-                    </VBox.margin>
-                </Button>
-            <Button fx:id="btnSceneOrdens" mnemonicParsing="false" onAction="#btnSceneOrdensAction" text="ORDENS">
-               <VBox.margin>
-                  <Insets bottom="10.0" />
-               </VBox.margin>
-            </Button>
-                <Button fx:id="btnSalvar" mnemonicParsing="false" onAction="#btnSalvaDados" text="SALVAR">
-                    <VBox.margin>
-                        <Insets bottom="10.0" />
-                    </VBox.margin>
-                </Button>
-            </children>
-            <padding>
-                <Insets bottom="100.0" left="10.0" right="10.0" top="100.0" />
-            </padding>
-        </VBox>
-        <ImageView fitHeight="147.0" fitWidth="766.0" layoutX="1.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../../../images/titulo_logo.png" />
-            </image>
-        </ImageView>
-      <TableView fx:id="tabelaOrdensFinalizadas" layoutX="726.0" layoutY="175.0" prefHeight="273.0" prefWidth="460.0">
+      <TableView fx:id="tabelaOrdensFinalizadas" layoutX="646.0" layoutY="146.0" prefHeight="200.0" prefWidth="300.0">
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
@@ -81,12 +169,12 @@
             <DropShadow />
          </effect>
       </TableView>
-      <Label alignment="CENTER" layoutX="816.0" layoutY="146.0" maxHeight="800.0" maxWidth="1200.0" minHeight="25.0" minWidth="279.0" prefHeight="25.0" prefWidth="279.0" text="ORDENS FINALIZADAS" textAlignment="CENTER">
+      <Label alignment="CENTER" layoutX="660.0" layoutY="120.0" maxHeight="800.0" maxWidth="1200.0" minHeight="25.0" minWidth="279.0" prefHeight="25.0" prefWidth="279.0" text="ORDENS FINALIZADAS" textAlignment="CENTER">
          <font>
             <Font name="Rockwell" size="21.0" />
          </font>
       </Label>
-      <TableView fx:id="tabelaOrdensEspera" layoutX="256.0" layoutY="478.0" prefHeight="284.0" prefWidth="460.0">
+      <TableView fx:id="tabelaOrdensEspera" layoutX="276.0" layoutY="382.0" prefHeight="200.0" prefWidth="300.0">
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
@@ -94,12 +182,12 @@
             <DropShadow />
          </effect>
       </TableView>
-      <Label alignment="CENTER" layoutX="347.0" layoutY="448.0" maxHeight="800.0" maxWidth="1200.0" minHeight="25.0" minWidth="279.0" prefHeight="25.0" prefWidth="279.0" text="ORDENS EM ESPERA" textAlignment="CENTER">
+      <Label alignment="CENTER" layoutX="286.0" layoutY="356.0" maxHeight="800.0" maxWidth="1200.0" minHeight="25.0" minWidth="279.0" prefHeight="25.0" prefWidth="279.0" text="ORDENS EM ESPERA" textAlignment="CENTER">
          <font>
             <Font name="Rockwell" size="21.0" />
          </font>
       </Label>
-      <TableView fx:id="tabelaOrdensAbertas" layoutX="256.0" layoutY="175.0" prefHeight="273.0" prefWidth="460.0">
+      <TableView fx:id="tabelaOrdensAbertas" layoutX="276.0" layoutY="146.0" prefHeight="200.0" prefWidth="300.0">
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
@@ -107,12 +195,12 @@
             <DropShadow />
          </effect>
       </TableView>
-      <Label alignment="CENTER" layoutX="347.0" layoutY="146.0" maxHeight="800.0" maxWidth="1200.0" minHeight="25.0" minWidth="279.0" prefHeight="25.0" prefWidth="279.0" text="ORDENS ABERTAS" textAlignment="CENTER">
+      <Label alignment="CENTER" layoutX="286.0" layoutY="120.0" maxHeight="800.0" maxWidth="1200.0" minHeight="25.0" minWidth="279.0" prefHeight="25.0" prefWidth="279.0" text="ORDENS ABERTAS" textAlignment="CENTER">
          <font>
             <Font name="Rockwell" size="21.0" />
          </font>
       </Label>
-      <VBox layoutX="816.0" layoutY="23.0" prefHeight="200.0" prefWidth="100.0">
+      <VBox layoutX="469.0" layoutY="6.0" prefHeight="200.0" prefWidth="100.0">
          <children>
                 <Label alignment="CENTER" maxHeight="800.0" maxWidth="1200.0" minHeight="25.0" minWidth="279.0" prefHeight="25.0" prefWidth="279.0" text="CADASTRAR ORDEM" textAlignment="CENTER">
                     <font>
@@ -122,14 +210,13 @@
               <VBox prefHeight="327.0" prefWidth="328.0" spacing="3.0">
                   <children>
                       <Separator prefWidth="200.0" />
-                      <Label prefHeight="24.0" prefWidth="102.0" text="Id do cliente" />
+                      <Label prefHeight="24.0" prefWidth="102.0" text="Id do cliente">
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font>
+                  </Label>
                       <TextField fx:id="idCliente" />
-                  <Label fx:id="labelErro" contentDisplay="CENTER" prefHeight="70.0" prefWidth="259.0" textAlignment="CENTER" textFill="#ee1313" />
-                      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
-                          <padding>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                          </padding>
-                      </HBox>
+                  <Label fx:id="labelErro" contentDisplay="CENTER" prefHeight="58.0" prefWidth="259.0" textAlignment="CENTER" textFill="#ee1313" />
                   </children>
                   <padding>
                       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -137,13 +224,11 @@
               </VBox>
          </children>
       </VBox>
-            <Button fx:id="btnCadastrarOrdem" layoutX="1095.0" layoutY="79.0" mnemonicParsing="false" onAction="#btnCadastraOrdem" text="Cadastrar">
-         <font>
-            <Font size="14.0" />
-         </font>
+            <Button fx:id="btnCadastrarOrdem" layoutX="748.0" layoutY="75.0" mnemonicParsing="false" onAction="#btnCadastraOrdem" prefHeight="16.0" prefWidth="66.0" text="Cadastrar">
          <effect>
             <DropShadow />
          </effect>
       </Button>
+      <Separator layoutX="204.0" orientation="VERTICAL" prefHeight="600.0" prefWidth="7.0" />
     </children>
 </AnchorPane>

@@ -51,6 +51,7 @@ public class servicosDialogController {
         TableColumn coluna3 = new TableColumn("ENDEREÇO");
         TableColumn coluna4 = new TableColumn("TELEFONE");
 
+
         coluna1.setCellValueFactory(new PropertyValueFactory<Cliente, String>(ordemAberta.));
         coluna2.setCellValueFactory(new PropertyValueFactory<Cliente, String>("nome"));
         coluna3.setCellValueFactory(new PropertyValueFactory<Cliente, String>("endereco"));
