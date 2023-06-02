@@ -21,6 +21,7 @@ public class Servico implements Serializable {
     private boolean finalizado;
 
 
+
     public Servico (CategoriaServico categoria, double valor, int ordemID, Peca peca, String descricao) throws Exception {
         if (categoria == CategoriaServico.MONTAGEM){
             if (DAO.getEstoque().verDisponibilidadeDePeca(peca)){

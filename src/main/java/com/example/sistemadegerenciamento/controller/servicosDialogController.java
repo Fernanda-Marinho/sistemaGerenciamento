@@ -5,6 +5,7 @@ import com.example.sistemadegerenciamento.models.Cliente;
 import com.example.sistemadegerenciamento.models.Ordem;
 import com.example.sistemadegerenciamento.models.Servico;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -35,20 +36,22 @@ public class servicosDialogController {
     @FXML
     private TableView<Servico> tabelaServicos;
     public static Ordem ordemAberta;
+    private ObservableList<Servico> servicosData;
+
+    //FALTA ADICIONAR OS ATRIBUTOS PARA CRIAR A TABELA. VERIFICAR SE O MÉTODO setCellValueFactory CONSEGUE ACEITAR OUTROS DADOS ALÉM DO ATRIBUTO DO OBJETO
 
     /*@FXML
         //Carrega todos os dados a serem mostrados no View.
     void initialize() throws IOException, ClassNotFoundException {
-        DAO.getCliente().atualizaColecaoDoArquivo(DAO.getClienteDAOArquivo().lerArquivo());
-        this.clientesData = FXCollections.observableArrayList();
-        this.clientesData.addAll(DAO.getCliente().findManyArrayList());
+        this.servicosData = FXCollections.observableArrayList();
+        this.servicosData.addAll(ordemAberta.getServicos());
         //Cria a coluna para usar na tabela, de maneira manual.
         TableColumn coluna1 = new TableColumn("ID");
         TableColumn coluna2 = new TableColumn("NOME");
         TableColumn coluna3 = new TableColumn("ENDEREÇO");
         TableColumn coluna4 = new TableColumn("TELEFONE");
 
-        coluna1.setCellValueFactory(new PropertyValueFactory<Cliente, String>("clienteID"));
+        coluna1.setCellValueFactory(new PropertyValueFactory<Cliente, String>(ordemAberta.));
         coluna2.setCellValueFactory(new PropertyValueFactory<Cliente, String>("nome"));
         coluna3.setCellValueFactory(new PropertyValueFactory<Cliente, String>("endereco"));
         coluna4.setCellValueFactory(new PropertyValueFactory<Cliente, String>("telefone"));
