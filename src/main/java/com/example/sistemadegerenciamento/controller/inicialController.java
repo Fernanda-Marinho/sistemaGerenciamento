@@ -21,8 +21,12 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Paths;
 
 public class inicialController {
+
+    @FXML
+    private Button btnAbrirOrdem;
 
     @FXML
     private Button btnCriarOrdemDeServico;
@@ -149,23 +153,20 @@ public class inicialController {
         HelloApplication.telaScreen("ordens");
     }
 
-    /*@FXML
-    void btnOpenDialog(MouseEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader();
-            URL xmlURL = getClass().getResource("servicosDialogController.fxml");
-            loader.setLocation(xmlURL);
-            Parent parent = loader.load();
-            Scene scene = new Scene(parent);
-            Stage stage = new Stage();
-            stage.setTitle("Nome do Dialog");
-            stage.setScene(scene);
-            stage.setResizable(false);
-            stage.centerOnScreen();
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.showAndWait();
-        } catch (IOException e){
-            e.printStackTrace();
+    @FXML
+    void btnAbreOrdem(ActionEvent event) {
+        int selecionadoTabelaEmEsperaIndice = this.tabelaOrdensEmEspera.getSelectionModel().getSelectedIndex();
+        int selecionadoTabelaEmAbertoIndice = this.tabelaOrdensEmAberto.getSelectionModel().getSelectedIndex();
+        if (selecionadoTabelaEmAbertoIndice>=0) {
+            Ordem selecionadoTabela = this.tabelaOrdensEmAberto.getSelectionModel().getSelectedItem();
+            int clienteID = selecionadoTabela.getClienteID();
+            servicosDialogController.ordemAberta = selecionadoTabela;
+            HelloApplication.telaScreen("servicosDialog");
+        } else if (selecionadoTabelaEmEsperaIndice>=0){
+            Ordem selecionadoTabela = this.tabelaOrdensEmEspera.getSelectionModel().getSelectedItem();
+            int clienteID = selecionadoTabela.getClienteID();
+            servicosDialogController.ordemAberta = selecionadoTabela;
+            HelloApplication.telaScreen("servicosDialog");
         }
-    }*/
+    }
 }

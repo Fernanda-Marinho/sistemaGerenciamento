@@ -1,13 +1,16 @@
 package com.example.sistemadegerenciamento;
 
 import com.example.sistemadegerenciamento.controller.MainController;
+import com.example.sistemadegerenciamento.models.Ordem;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 
 
 public class HelloApplication extends Application {
@@ -17,6 +20,7 @@ public class HelloApplication extends Application {
     private static Scene tecnicoScene;
     private static Scene estoqueScene;
     private static Scene ordemScene;
+    private static Scene servicosDialogScene;
 
     @Override
     public void start(Stage primaryStage) throws IOException {
@@ -41,8 +45,10 @@ public class HelloApplication extends Application {
 
         Parent fxmlOrdem = FXMLLoader.load(getClass().getResource("ordem.fxml"));
         ordemScene = new Scene(fxmlOrdem);
-    }
 
+        Parent fxmlServicosDialog = FXMLLoader.load(getClass().getResource("servicosDialog.fxml"));
+        servicosDialogScene = new Scene(fxmlServicosDialog);
+    }
     public static void telaScreen(String nome) {
         switch (nome) {
             case "inicial":
@@ -64,6 +70,16 @@ public class HelloApplication extends Application {
             case "ordens":
                 stage.setScene(ordemScene);
                 stage.setResizable(false);
+                break;
+            case "servicosDialog":
+                Stage stageDialog = new Stage();
+                stageDialog.setTitle("ORDEM");
+                stageDialog.setScene(servicosDialogScene);
+                stageDialog.setResizable(false);
+                stageDialog.centerOnScreen();
+                stageDialog.initModality(Modality.APPLICATION_MODAL);
+                stageDialog.showAndWait();
+
         }
     }
 
