@@ -26,6 +26,9 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
       </HBox>
-      <Label fx:id="labelErro" alignment="CENTER" contentDisplay="CENTER" layoutX="76.0" layoutY="358.0" prefHeight="14.0" prefWidth="451.0" text="label de erro" textAlignment="CENTER" />
+      <Label fx:id="labelErro" alignment="CENTER" contentDisplay="CENTER" layoutX="76.0" layoutY="358.0" prefHeight="14.0" prefWidth="451.0" textAlignment="CENTER" textFill="RED">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
    </children>
 </AnchorPane>

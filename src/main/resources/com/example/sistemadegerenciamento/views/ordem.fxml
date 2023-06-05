@@ -149,7 +149,7 @@
             <Insets />
          </opaqueInsets>
       </VBox>
-        <TableView fx:id="tabelaOrdensCanceladas" layoutX="646.0" layoutY="382.0" prefHeight="200.0" prefWidth="300.0" GridPane.columnIndex="1">
+        <TableView fx:id="tabelaOrdensCanceladas" layoutX="646.0" layoutY="361.0" prefHeight="180.0" prefWidth="300.0" GridPane.columnIndex="1">
             <columnResizePolicy>
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
             </columnResizePolicy>
@@ -157,12 +157,12 @@
             <DropShadow />
          </effect>
         </TableView>
-        <Label alignment="CENTER" layoutX="660.0" layoutY="356.0" maxHeight="800.0" maxWidth="1200.0" minHeight="25.0" minWidth="279.0" prefHeight="25.0" prefWidth="279.0" text="ORDENS CANCELADAS" textAlignment="CENTER">
+        <Label alignment="CENTER" layoutX="660.0" layoutY="335.0" maxHeight="800.0" maxWidth="1200.0" minHeight="25.0" minWidth="279.0" prefHeight="25.0" prefWidth="279.0" text="ORDENS CANCELADAS" textAlignment="CENTER">
             <font>
                 <Font name="Rockwell" size="21.0" />
             </font>
         </Label>
-      <TableView fx:id="tabelaOrdensFinalizadas" layoutX="646.0" layoutY="146.0" prefHeight="200.0" prefWidth="300.0">
+      <TableView fx:id="tabelaOrdensFinalizadas" layoutX="646.0" layoutY="158.0" prefHeight="180.0" prefWidth="300.0">
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
@@ -170,12 +170,12 @@
             <DropShadow />
          </effect>
       </TableView>
-      <Label alignment="CENTER" layoutX="660.0" layoutY="120.0" maxHeight="800.0" maxWidth="1200.0" minHeight="25.0" minWidth="279.0" prefHeight="25.0" prefWidth="279.0" text="ORDENS FINALIZADAS" textAlignment="CENTER">
+      <Label alignment="CENTER" layoutX="660.0" layoutY="132.0" maxHeight="800.0" maxWidth="1200.0" minHeight="25.0" minWidth="279.0" prefHeight="25.0" prefWidth="279.0" text="ORDENS FINALIZADAS" textAlignment="CENTER">
          <font>
             <Font name="Rockwell" size="21.0" />
          </font>
       </Label>
-      <TableView fx:id="tabelaOrdensEspera" layoutX="276.0" layoutY="382.0" prefHeight="200.0" prefWidth="300.0">
+      <TableView fx:id="tabelaOrdensEspera" layoutX="276.0" layoutY="361.0" prefHeight="180.0" prefWidth="300.0">
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
@@ -183,12 +183,12 @@
             <DropShadow />
          </effect>
       </TableView>
-      <Label alignment="CENTER" layoutX="286.0" layoutY="356.0" maxHeight="800.0" maxWidth="1200.0" minHeight="25.0" minWidth="279.0" prefHeight="25.0" prefWidth="279.0" text="ORDENS EM ESPERA" textAlignment="CENTER">
+      <Label alignment="CENTER" layoutX="286.0" layoutY="335.0" maxHeight="800.0" maxWidth="1200.0" minHeight="25.0" minWidth="279.0" prefHeight="25.0" prefWidth="279.0" text="ORDENS EM ESPERA" textAlignment="CENTER">
          <font>
             <Font name="Rockwell" size="21.0" />
          </font>
       </Label>
-      <TableView fx:id="tabelaOrdensAbertas" layoutX="276.0" layoutY="146.0" prefHeight="200.0" prefWidth="300.0">
+      <TableView fx:id="tabelaOrdensAbertas" layoutX="276.0" layoutY="158.0" prefHeight="180.0" prefWidth="300.0">
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
@@ -196,41 +196,42 @@
             <DropShadow />
          </effect>
       </TableView>
-      <Label alignment="CENTER" layoutX="286.0" layoutY="120.0" maxHeight="800.0" maxWidth="1200.0" minHeight="25.0" minWidth="279.0" prefHeight="25.0" prefWidth="279.0" text="ORDENS ABERTAS" textAlignment="CENTER">
+      <Label alignment="CENTER" layoutX="286.0" layoutY="132.0" maxHeight="800.0" maxWidth="1200.0" minHeight="25.0" minWidth="279.0" prefHeight="25.0" prefWidth="279.0" text="ORDENS ABERTAS" textAlignment="CENTER">
          <font>
             <Font name="Rockwell" size="21.0" />
          </font>
       </Label>
-      <VBox layoutX="469.0" layoutY="6.0" prefHeight="200.0" prefWidth="100.0">
-         <children>
+        <VBox layoutX="456.0" layoutY="14.0" prefHeight="95.0" prefWidth="299.0" spacing="3.0">
+            <children>
                 <Label alignment="CENTER" maxHeight="800.0" maxWidth="1200.0" minHeight="25.0" minWidth="279.0" prefHeight="25.0" prefWidth="279.0" text="CADASTRAR ORDEM" textAlignment="CENTER">
                     <font>
                         <Font name="Rockwell" size="21.0" />
                     </font>
                 </Label>
-              <VBox prefHeight="327.0" prefWidth="328.0" spacing="3.0">
-                  <children>
-                      <Separator prefWidth="200.0" />
-                      <Label prefHeight="24.0" prefWidth="102.0" text="Id do cliente">
-                     <font>
-                        <Font name="Century Gothic" size="14.0" />
-                     </font>
-                  </Label>
-                      <TextField fx:id="idCliente" />
-                  <Label fx:id="labelErro" contentDisplay="CENTER" prefHeight="58.0" prefWidth="259.0" textAlignment="CENTER" textFill="#ee1313" />
-                  </children>
-                  <padding>
-                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                  </padding>
-              </VBox>
-         </children>
-      </VBox>
-            <Button fx:id="btnCadastrarOrdem" layoutX="748.0" layoutY="75.0" mnemonicParsing="false" onAction="#btnCadastraOrdem" prefHeight="16.0" prefWidth="66.0" text="Cadastrar">
+                <Separator prefWidth="200.0" />
+                <Label prefHeight="24.0" prefWidth="102.0" text="Id do cliente">
+               <font>
+                  <Font name="Century Gothic" size="14.0" />
+               </font>
+            </Label>
+                <TextField fx:id="idCliente" prefHeight="25.0" prefWidth="235.0" />
+            <Label fx:id="labelErro" contentDisplay="CENTER" prefHeight="58.0" prefWidth="259.0" textAlignment="CENTER" textFill="#ee1313" />
+            </children>
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+        </VBox>
+            <Button fx:id="btnCadastrarOrdem" layoutX="762.0" layoutY="78.0" mnemonicParsing="false" onAction="#btnCadastraOrdem" prefHeight="25.0" prefWidth="132.0" text="CADASTRAR ORDEM">
          <effect>
             <DropShadow />
          </effect>
       </Button>
       <Separator layoutX="204.0" orientation="VERTICAL" prefHeight="600.0" prefWidth="7.0" />
       <FontAwesomeIconView glyphName="CLOSE" layoutX="980.0" layoutY="20.0" onMouseClicked="#btnClose" size="20" wrappingWidth="7.0" />
+      <Button fx:id="btnAbrirOrdem" layoutX="346.0" layoutY="78.0" mnemonicParsing="false" onAction="#btnAbreOrdem" prefHeight="25.0" prefWidth="102.0" text="ABRIR ORDEM">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Button>
     </children>
 </AnchorPane>

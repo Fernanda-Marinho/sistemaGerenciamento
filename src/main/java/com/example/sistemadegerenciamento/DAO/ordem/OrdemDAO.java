@@ -16,7 +16,7 @@ import java.util.HashMap;
 
 public interface OrdemDAO extends CRUD<Ordem, Exception> {
 
-    public void cancelarOrdem(int ordemID);
+    public Ordem cancelarOrdem(int ordemID);
     public Ordem finalizarOrdem(int ordemID);
     public long gerarTempoMedioDeOrdensFinalizadas();
     public String gerarMediaSatisfacaoPorOrdem();

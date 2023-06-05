@@ -48,7 +48,6 @@ public class InicialController {
 
     @FXML
     void initialize() throws IOException, ClassNotFoundException {
-        System.out.println("aqui 2)");
         //Em Aberto
         //Cria a coluna para usar na tabela, de maneira manual.
         TableColumn coluna1EmAberto = new TableColumn("ID");

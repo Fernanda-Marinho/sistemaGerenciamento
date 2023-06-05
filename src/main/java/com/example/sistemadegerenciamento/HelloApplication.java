@@ -83,8 +83,6 @@ public class HelloApplication extends Application {
         Parent fxmlOrdem = FXMLLoader.load(getClass().getResource("views/ordem.fxml"));
         ordemScene = new Scene(fxmlOrdem);
 
-
-
     }
     public static void telaScreen(String nome) throws IOException {
         switch (nome) {

@@ -19,6 +19,9 @@ public class OrdemController {
     private Button btnCadastrarOrdem;
 
     @FXML
+    private Button btnAbrirOrdem;
+
+    @FXML
     private Button btnSalvar;
 
     @FXML
@@ -132,6 +135,41 @@ public class OrdemController {
         DAO.getOrdemDAOArquivo().salvarArquivoOrdensFinalizadas();
         DAO.getOrdemDAOArquivo().salvarArquivoOrdensCanceladas();
 
+    }
+
+    @FXML
+    void btnAbreOrdem(ActionEvent event) throws IOException {
+        int selecionadoTabelaEmEsperaIndice = this.tabelaOrdensEspera.getSelectionModel().getSelectedIndex();
+        int selecionadoTabelaEmAbertoIndice = this.tabelaOrdensAbertas.getSelectionModel().getSelectedIndex();
+        int selecionadoTabelaCanceladaIndice = this.tabelaOrdensCanceladas.getSelectionModel().getSelectedIndex();
+        int selecionadoTabelaFinalizadaIndice = this.tabelaOrdensFinalizadas.getSelectionModel().getSelectedIndex();
+        if (selecionadoTabelaEmAbertoIndice>=0) {
+            Ordem selecionadoTabela = this.tabelaOrdensAbertas.getSelectionModel().getSelectedItem();
+            int clienteID = selecionadoTabela.getClienteID();
+            ServicosDialogController.ordemAbertaNoMomento = selecionadoTabela;
+            this.labelErro.setText("");
+            HelloApplication.telaScreen("servicosDialog");
+        } else if (selecionadoTabelaEmEsperaIndice>=0){
+            Ordem selecionadoTabela = this.tabelaOrdensEspera.getSelectionModel().getSelectedItem();
+            int clienteID = selecionadoTabela.getClienteID();
+            ServicosDialogController.ordemAbertaNoMomento = selecionadoTabela;
+            this.labelErro.setText("");
+            HelloApplication.telaScreen("servicosDialog");
+        } else if (selecionadoTabelaCanceladaIndice>=0){
+            Ordem selecionadoTabela = this.tabelaOrdensCanceladas.getSelectionModel().getSelectedItem();
+            int clienteID = selecionadoTabela.getClienteID();
+            ServicosDialogController.ordemAbertaNoMomento = selecionadoTabela;
+            this.labelErro.setText("");
+            HelloApplication.telaScreen("servicosDialog");
+        } else if (selecionadoTabelaFinalizadaIndice>=0){
+            Ordem selecionadoTabela = this.tabelaOrdensFinalizadas.getSelectionModel().getSelectedItem();
+            int clienteID = selecionadoTabela.getClienteID();
+            ServicosDialogController.ordemAbertaNoMomento = selecionadoTabela;
+            this.labelErro.setText("");
+            HelloApplication.telaScreen("servicosDialog");
+        } else {
+            this.labelErro.setText("Selecione uma ordem das tabelas abaixo.");
+        }
     }
 
     @FXML

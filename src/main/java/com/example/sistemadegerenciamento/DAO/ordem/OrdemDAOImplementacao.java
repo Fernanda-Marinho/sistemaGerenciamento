@@ -105,12 +105,15 @@ public class OrdemDAOImplementacao implements OrdemDAO{
     /**
      * Método que cancela uma ordem do HashMap e devolve as peças dos serviços para o estoque;
      * */
-    public void cancelarOrdem(int ordemID){
+    public Ordem cancelarOrdem(int ordemID){
         //Quando cancelar, tem que devolver as peças para o estoque
+        Ordem ordem = null;
         if (this.ordensAberta.get(ordemID) != null){
+            ordem = this.ordensAberta.get(ordemID);
             this.ordensCanceladas.put(ordemID, this.ordensAberta.get(ordemID));
             this.ordensAberta.remove(ordemID);
         } else if (this.ordensEmEspera.get(ordemID) != null){
+            ordem = this.ordensEmEspera.get(ordemID);
             this.ordensCanceladas.put(ordemID, this.ordensEmEspera.get(ordemID));
             this.ordensEmEspera.remove(ordemID);
         }
@@ -120,6 +123,7 @@ public class OrdemDAOImplementacao implements OrdemDAO{
                 DAO.getEstoque().devolucaoPeca(servicos.get(i).getPeca(), 1);
             }
         }
+        return ordem;
     }
     /**
      * Método que finaliza a ordem;

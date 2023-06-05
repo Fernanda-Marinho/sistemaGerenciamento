@@ -64,37 +64,59 @@ public class ServicosDialogController {
 
     @FXML
     void btnCancelaOrdem(ActionEvent event) {
-
+        if (ordemAbertaNoMomento.getStatus() == StatusOrdem.ABERTA || ordemAbertaNoMomento.getStatus() == StatusOrdem.ESPERA){
+            Ordem ordem = DAO.getOrdem().cancelarOrdem(ordemAbertaNoMomento.getOrdemID());
+            if (ordem != null){
+                if (ordem.getStatus() == StatusOrdem.ABERTA){
+                    DAO.getTecnico().findById(ordem.getTecnicoID()).fechaOrdem();
+                    ObservableLists.ordensEmAbertoData.remove(ordem);
+                } else {
+                    ObservableLists.ordensEmEsperaData.remove(ordem);
+                }
+                ordem.setStatus(StatusOrdem.CANCELADA);
+                ObservableLists.ordensCanceladasData.add(ordem);
+                this.labelErro.setText("");
+            } else {
+                this.labelErro.setText("Houve um erro.");
+            }
+        } else {
+            this.labelErro.setText("Para ser cancelada, precisa estar aberta ou em espera.");
+        }
     }
     @FXML
     void btnFinalizaOrdem(ActionEvent event) {
-        Ordem ordem = DAO.getOrdem().finalizarOrdem(ordemAbertaNoMomento.getOrdemID());
-        DAO.getTecnico().findById(ordem.getTecnicoID()).fechaOrdem();
-        ordem.setStatus(StatusOrdem.FINALIZADA);
-        ObservableLists.ordensFinalizadasData.add(ordem);
-        ObservableLists.ordensEmAbertoData.remove(ordem);
-        //Gerando fatura
-        String diretorioAtual = Paths.get(".").toAbsolutePath().normalize().toString();
-        String nomeArquivo = diretorioAtual + "\\faturas\\fatura" + "Ordem" + String.valueOf(ordem.getOrdemID()) + ".txt";
-        File arquivo = new File(nomeArquivo);
-        try {
-            //Salva arquivo
-            arquivo.createNewFile();
-            FileWriter fw = new FileWriter( arquivo );
-            BufferedWriter bw = new BufferedWriter( fw );
-            bw.write(ordem.gerarFatura().toString());
-            bw.close();
-            fw.close();
-            ProcessBuilder processBuilder = new ProcessBuilder();
-            processBuilder.command("cmd.exe", "/c", nomeArquivo);
-            processBuilder.start();
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (ordemAbertaNoMomento.getStatus() == StatusOrdem.ABERTA){
+            Ordem ordem = DAO.getOrdem().finalizarOrdem(ordemAbertaNoMomento.getOrdemID());
+            DAO.getTecnico().findById(ordem.getTecnicoID()).fechaOrdem();
+            ordem.setStatus(StatusOrdem.FINALIZADA);
+            ObservableLists.ordensFinalizadasData.add(ordem);
+            ObservableLists.ordensEmAbertoData.remove(ordem);
+            //Gerando fatura
+            String diretorioAtual = Paths.get(".").toAbsolutePath().normalize().toString();
+            String nomeArquivo = diretorioAtual + "\\faturas\\fatura" + "Ordem" + String.valueOf(ordem.getOrdemID()) + ".txt";
+            File arquivo = new File(nomeArquivo);
+            try {
+                //Salva arquivo
+                arquivo.createNewFile();
+                FileWriter fw = new FileWriter( arquivo );
+                BufferedWriter bw = new BufferedWriter( fw );
+                bw.write(ordem.gerarFatura().toString());
+                bw.close();
+                fw.close();
+                ProcessBuilder processBuilder = new ProcessBuilder();
+                processBuilder.command("cmd.exe", "/c", nomeArquivo);
+                processBuilder.start();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            labelErro.setText("Para a ordem ser finalizada, precisa estar aberta.");
         }
+
     }
 
     @FXML
     void btnFinalizaServico(ActionEvent event) {
-
+        
     }
 }
