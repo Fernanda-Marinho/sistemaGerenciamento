@@ -109,4 +109,8 @@ public class Servico implements Serializable {
     public boolean isFinalizado(){
         return this.finalizado;
     }
+
+    public String getCategoriaEmString(){
+        return this.categoriaEmString;
+    }
 }

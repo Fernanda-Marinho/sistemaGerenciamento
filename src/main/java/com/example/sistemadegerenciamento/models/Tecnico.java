@@ -15,10 +15,9 @@ public class Tecnico implements Serializable {
     private int tecnicoID;
     private boolean comOrdem;
     private ArrayList<Ordem> historicoOrdens = new ArrayList();
-    private String idOrdemAtual;
+    private int idOrdemAtual;
 
     public static int ID=0;
-
 
     public  Tecnico(boolean adm, String nome, String senha){
         this.adm = adm;
@@ -30,6 +29,7 @@ public class Tecnico implements Serializable {
             this.ID = DAO.getTecnico().findManyArrayList().get(DAO.getTecnico().findManyArrayList().size() - 1).getTecnicoID();
         }
         this.tecnicoID = ID+1;
+        this.idOrdemAtual = -1;
     }
 
     /**
@@ -37,13 +37,13 @@ public class Tecnico implements Serializable {
      * */
     public void addOrdem(Ordem ordem){
         this.comOrdem = true;
-        this.idOrdemAtual = String.valueOf(ordem.getOrdemID());
+        this.idOrdemAtual = ordem.getOrdemID();
         historicoOrdens.add(ordem);
     }
 
     public void fechaOrdem(){
         this.comOrdem = false;
-        this.idOrdemAtual = "";
+        this.idOrdemAtual = 0;
     }
 
     public boolean isAdm() {
@@ -76,6 +76,9 @@ public class Tecnico implements Serializable {
 
     public boolean isComOrdem(){
         return this.comOrdem;
+    }
+    public int getIdOrdemAtual(){
+        return this.idOrdemAtual;
     }
 
 }

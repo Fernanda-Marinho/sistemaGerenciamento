@@ -47,7 +47,6 @@ public class ServicosDialogController {
     @FXML
         //Carrega todos os dados a serem mostrados no View.
     void initialize() throws IOException, ClassNotFoundException {
-        System.out.println("3) initialize");
         if (ordemAbertaNoMomento != null) {
             this.servicosData = FXCollections.observableArrayList();
             this.servicosData.addAll(ordemAbertaNoMomento.getServicos());
@@ -57,7 +56,6 @@ public class ServicosDialogController {
             TableColumn coluna2 = new TableColumn("NOME (PEÇA)");
             TableColumn coluna3 = new TableColumn("ESTÁ FINALIZADO");
             TableColumn coluna4 = new TableColumn("VALOR");
-
 
             coluna1.setCellValueFactory(new PropertyValueFactory<Servico, String>("categoriaEmString"));
             coluna2.setCellValueFactory(new PropertyValueFactory<Servico, String>("nomePeca"));
@@ -109,4 +107,8 @@ public class ServicosDialogController {
 
     }
 
+    @FXML
+    void btnClose() {
+        System.exit(0);
+    }
 }

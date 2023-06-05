@@ -72,7 +72,7 @@ public class TecnicoController {
 
         coluna1.setCellValueFactory(new PropertyValueFactory<Cliente, String>("tecnicoID"));
         coluna2.setCellValueFactory(new PropertyValueFactory<Cliente, String>("nome"));
-        coluna3.setCellValueFactory(new PropertyValueFactory<Cliente, String>("idOrdemAtual"));
+        coluna3.setCellValueFactory(new PropertyValueFactory<Cliente, Integer>("idOrdemAtual"));
 
         this.tabelaTecnico.getColumns().addAll(coluna1, coluna2, coluna3);
         this.tabelaTecnico.setItems(tecnicosData);
@@ -135,29 +135,34 @@ public class TecnicoController {
     }
 
     @FXML
-    void btnSceneClientesAction(ActionEvent event) {
+    void btnSceneClientesAction(ActionEvent event) throws IOException {
         HelloApplication.telaScreen("cliente");
     }
 
     @FXML
-    void btnSceneEstoqueAction(ActionEvent event) {
+    void btnSceneEstoqueAction(ActionEvent event) throws IOException {
         HelloApplication.telaScreen("estoque");
 
     }
 
     @FXML
-    void btnSceneHomeAction(ActionEvent event) {
+    void btnSceneHomeAction(ActionEvent event) throws IOException {
         HelloApplication.telaScreen("inicial");
     }
 
     @FXML
-    void btnSceneTecnicosAction(ActionEvent event) {
+    void btnSceneTecnicosAction(ActionEvent event) throws IOException {
         HelloApplication.telaScreen("tecnico");
 
     }
     @FXML
-    void btnSceneOrdensAction(ActionEvent event) {
+    void btnSceneOrdensAction(ActionEvent event) throws IOException {
         HelloApplication.telaScreen("ordens");
+    }
+
+    @FXML
+    void btnClose() {
+        System.exit(0);
     }
 
 }

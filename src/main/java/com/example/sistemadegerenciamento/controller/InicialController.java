@@ -93,13 +93,13 @@ public class InicialController {
     }
 
     @FXML
-    void btnCriaOrdemDeServico(ActionEvent event) {
+    void btnCriaOrdemDeServico(ActionEvent event) throws IOException {
         HelloApplication.telaScreen("ordens");
 
     }
 
     @FXML
-    void btnFazOrdemDeCompra(ActionEvent event) {
+    void btnFazOrdemDeCompra(ActionEvent event) throws IOException {
         HelloApplication.telaScreen("estoque");
 
     }
@@ -150,47 +150,49 @@ public class InicialController {
     }
 
     @FXML
-    void btnSceneClientesAction(ActionEvent event) {
+    void btnSceneClientesAction(ActionEvent event) throws IOException {
         HelloApplication.telaScreen("cliente");
     }
 
     @FXML
-    void btnSceneEstoqueAction(ActionEvent event) {
+    void btnSceneEstoqueAction(ActionEvent event) throws IOException {
         HelloApplication.telaScreen("estoque");
 
     }
 
     @FXML
-    void btnSceneHomeAction(ActionEvent event) {
+    void btnSceneHomeAction(ActionEvent event) throws IOException {
         HelloApplication.telaScreen("inicial");
     }
 
     @FXML
-    void btnSceneTecnicosAction(ActionEvent event) {
+    void btnSceneTecnicosAction(ActionEvent event) throws IOException {
         HelloApplication.telaScreen("tecnico");
 
     }
     @FXML
-    void btnSceneOrdensAction(ActionEvent event) {
+    void btnSceneOrdensAction(ActionEvent event) throws IOException {
         HelloApplication.telaScreen("ordens");
     }
 
     @FXML
-    void btnAbreOrdem(ActionEvent event) {
+    void btnAbreOrdem(ActionEvent event) throws IOException {
         int selecionadoTabelaEmEsperaIndice = this.tabelaOrdensEmEspera.getSelectionModel().getSelectedIndex();
         int selecionadoTabelaEmAbertoIndice = this.tabelaOrdensEmAberto.getSelectionModel().getSelectedIndex();
         if (selecionadoTabelaEmAbertoIndice>=0) {
             Ordem selecionadoTabela = this.tabelaOrdensEmAberto.getSelectionModel().getSelectedItem();
             int clienteID = selecionadoTabela.getClienteID();
             ServicosDialogController.ordemAbertaNoMomento = selecionadoTabela;
-            //Controller.getServicosDialogController().atualizaServicos();
             HelloApplication.telaScreen("servicosDialog");
         } else if (selecionadoTabelaEmEsperaIndice>=0){
             Ordem selecionadoTabela = this.tabelaOrdensEmEspera.getSelectionModel().getSelectedItem();
             int clienteID = selecionadoTabela.getClienteID();
             ServicosDialogController.ordemAbertaNoMomento = selecionadoTabela;
-            //Controller.getServicosDialogController().atualizaServicos();
             HelloApplication.telaScreen("servicosDialog");
         }
+    }
+    @FXML
+    void btnClose() {
+        System.exit(0);
     }
 }

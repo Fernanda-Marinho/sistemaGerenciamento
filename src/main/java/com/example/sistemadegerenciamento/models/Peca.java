@@ -35,4 +35,7 @@ public class Peca implements Serializable {
     public void setValor(double valor) {
         this.valor = valor;
     }
+    public int getQuantidade(){
+        return this.quantidade;
+    }
 }

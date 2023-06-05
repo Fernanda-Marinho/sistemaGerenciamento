@@ -166,29 +166,34 @@ public class OrdemController {
     }
 
     @FXML
-    void btnSceneClientesAction(ActionEvent event) {
+    void btnSceneClientesAction(ActionEvent event) throws IOException {
         HelloApplication.telaScreen("cliente");
     }
 
     @FXML
-    void btnSceneEstoqueAction(ActionEvent event) {
+    void btnSceneEstoqueAction(ActionEvent event) throws IOException {
         HelloApplication.telaScreen("estoque");
 
     }
 
     @FXML
-    void btnSceneHomeAction(ActionEvent event) {
+    void btnSceneHomeAction(ActionEvent event) throws IOException {
         HelloApplication.telaScreen("inicial");
     }
 
     @FXML
-    void btnSceneTecnicosAction(ActionEvent event) {
+    void btnSceneTecnicosAction(ActionEvent event) throws IOException {
         HelloApplication.telaScreen("tecnico");
 
     }
     @FXML
-    void btnSceneOrdensAction(ActionEvent event) {
+    void btnSceneOrdensAction(ActionEvent event) throws IOException {
         HelloApplication.telaScreen("ordens");
+    }
+
+    @FXML
+    void btnClose() {
+        System.exit(0);
     }
 
 }

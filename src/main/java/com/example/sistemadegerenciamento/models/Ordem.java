@@ -192,4 +192,7 @@ public class Ordem implements Serializable {
     public String getNomeCliente(){
         return this.nomeCliente;
     }
+    public String getServicosEmString(){
+        return this.servicosEmString;
+    }
 }
