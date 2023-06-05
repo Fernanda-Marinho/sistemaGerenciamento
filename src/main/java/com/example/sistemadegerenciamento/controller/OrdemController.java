@@ -54,21 +54,9 @@ public class OrdemController {
     @FXML
     private TableView<Ordem> tabelaOrdensFinalizadas;
 
-    private ObservableList<Ordem> ordensEmAbertoData;
-
-    private ObservableList<Ordem> ordensEmEsperaData;
-
-    private ObservableList<Ordem> ordensCanceladasData;
-
-    private ObservableList<Ordem> ordensFinalizadasData;
-
-    void atualizaOrdens() throws IOException, ClassNotFoundException {
+    @FXML
+    void initialize() throws IOException, ClassNotFoundException {
         //Em Aberto
-        DAO.getOrdem().atualizaColecaoDoArquivoOrdensAbertas(DAO.getOrdemDAOArquivo().lerArquivoOrdensEmAberto());
-
-        this.ordensEmAbertoData = FXCollections.observableArrayList();
-        this.ordensEmAbertoData.addAll(DAO.getOrdem().findManyEmAberto());
-
         //Cria a coluna para usar na tabela, de maneira manual.
         TableColumn coluna1EmAberto = new TableColumn("ID");
         TableColumn coluna2EmAberto = new TableColumn("NOME DO CLIENTE");
@@ -79,14 +67,9 @@ public class OrdemController {
         coluna3EmAberto.setCellValueFactory(new PropertyValueFactory<Ordem, String>("servicosEmString"));
 
         this.tabelaOrdensAbertas.getColumns().addAll(coluna1EmAberto, coluna2EmAberto, coluna3EmAberto);
-        this.tabelaOrdensAbertas.setItems(ordensEmAbertoData);
+        this.tabelaOrdensAbertas.setItems(ObservableLists.ordensEmAbertoData);
 
         //Em espera
-        DAO.getOrdem().atualizaColecaoDoArquivoOrdensEmEspera(DAO.getOrdemDAOArquivo().lerArquivoOrdensEmEspera());
-
-        this.ordensEmEsperaData = FXCollections.observableArrayList();
-        this.ordensEmEsperaData.addAll(DAO.getOrdem().findManyEmEspera());
-
         //Cria a coluna para usar na tabela, de maneira manual.
         TableColumn coluna1EmEspera = new TableColumn("ID");
         TableColumn coluna2EmEspera = new TableColumn("NOME DO CLIENTE");
@@ -97,14 +80,9 @@ public class OrdemController {
         coluna3EmEspera.setCellValueFactory(new PropertyValueFactory<Ordem, String>("servicosEmString"));
 
         this.tabelaOrdensEspera.getColumns().addAll(coluna1EmEspera, coluna2EmEspera, coluna3EmEspera);
-        this.tabelaOrdensEspera.setItems(ordensEmEsperaData);
+        this.tabelaOrdensEspera.setItems(ObservableLists.ordensEmEsperaData);
 
         //Canceladas
-        DAO.getOrdem().atualizaColecaoDoArquivoOrdensCanceladas(DAO.getOrdemDAOArquivo().lerArquivoOrdensCanceladas());
-
-        this.ordensCanceladasData = FXCollections.observableArrayList();
-        this.ordensCanceladasData.addAll(DAO.getOrdem().findManyCanceladas());
-
         //Cria a coluna para usar na tabela, de maneira manual.
         TableColumn coluna1Canceladas = new TableColumn("ID");
         TableColumn coluna2Canceladas = new TableColumn("NOME DO CLIENTE");
@@ -115,14 +93,9 @@ public class OrdemController {
         coluna3Canceladas.setCellValueFactory(new PropertyValueFactory<Ordem, String>("servicosEmString"));
 
         this.tabelaOrdensCanceladas.getColumns().addAll(coluna1Canceladas, coluna2Canceladas, coluna3Canceladas);
-        this.tabelaOrdensCanceladas.setItems(ordensCanceladasData);
+        this.tabelaOrdensCanceladas.setItems(ObservableLists.ordensCanceladasData);
 
         //Finalizadas
-        DAO.getOrdem().atualizaColecaoDoArquivoOrdensFinalizadas(DAO.getOrdemDAOArquivo().lerArquivoOrdensFinalizadas());
-
-        this.ordensFinalizadasData = FXCollections.observableArrayList();
-        this.ordensFinalizadasData.addAll(DAO.getOrdem().findManyFinalizadas());
-
         //Cria a coluna para usar na tabela, de maneira manual.
         TableColumn coluna1Finalizadas = new TableColumn("ID");
         TableColumn coluna2Finalizadas = new TableColumn("NOME DO CLIENTE");
@@ -133,11 +106,7 @@ public class OrdemController {
         coluna3Finalizadas.setCellValueFactory(new PropertyValueFactory<Ordem, String>("servicosEmString"));
 
         this.tabelaOrdensFinalizadas.getColumns().addAll(coluna1Finalizadas, coluna2Finalizadas, coluna3Finalizadas);
-        this.tabelaOrdensFinalizadas.setItems(ordensFinalizadasData);
-    }
-    @FXML
-    void initialize() throws IOException, ClassNotFoundException {
-        atualizaOrdens();
+        this.tabelaOrdensFinalizadas.setItems(ObservableLists.ordensFinalizadasData);
     }
 
     @FXML
@@ -147,7 +116,7 @@ public class OrdemController {
             Cliente cliente = DAO.getCliente().findById(id);
             Ordem ordem = new Ordem(cliente);
             DAO.getOrdem().create(ordem);
-            this.ordensEmEsperaData.add(ordem);
+            ObservableLists.ordensEmEsperaData.add(ordem);
             //Para limpar o conteúdo do textfield.
             this.idCliente.clear();
             this.labelErro.setText("");

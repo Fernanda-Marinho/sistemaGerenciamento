@@ -37,19 +37,14 @@ public class ServicosDialogController {
     @FXML
     private TableView<Servico> tabelaServicos;
     public static Ordem ordemAbertaNoMomento;
-    private ObservableList<Servico> servicosData;
 
-    //RAFA, AQUI ESTÁ O INITIALIZE. MEU INTERESSE É QUE A TABELA SÓ SEJA EXIBIDA DEPOIS QUE UMA ORDEM
-    // DA PÁGINA INICIAL FOR SELECIONADA. OU SEJA, SÓ QUERO QUE SEJA EXIBIDA QUANDO O ATRIBUTO ESTÁTICO
-    // ordemAbertaNoMomento for diferente de nulo, pois irei exibir na tabela dados retirados da Ordem
-    // que estará nesse atributo.
 
     @FXML
         //Carrega todos os dados a serem mostrados no View.
     void initialize() throws IOException, ClassNotFoundException {
         if (ordemAbertaNoMomento != null) {
-            this.servicosData = FXCollections.observableArrayList();
-            this.servicosData.addAll(ordemAbertaNoMomento.getServicos());
+            ObservableLists.servicosData = FXCollections.observableArrayList();
+            ObservableLists.servicosData.addAll(ordemAbertaNoMomento.getServicos());
 
             //Cria a coluna para usar na tabela, de maneira manual.
             TableColumn coluna1 = new TableColumn("CATEGORIA");
@@ -63,7 +58,7 @@ public class ServicosDialogController {
             coluna4.setCellValueFactory(new PropertyValueFactory<Servico, Double>("valor"));
 
             this.tabelaServicos.getColumns().addAll(coluna1, coluna2, coluna3, coluna4);
-            this.tabelaServicos.setItems(servicosData);
+            this.tabelaServicos.setItems(ObservableLists.servicosData);
         }
     }
 
@@ -76,6 +71,8 @@ public class ServicosDialogController {
         Ordem ordem = DAO.getOrdem().finalizarOrdem(ordemAbertaNoMomento.getOrdemID());
         DAO.getTecnico().findById(ordem.getTecnicoID()).fechaOrdem();
         ordem.setStatus(StatusOrdem.FINALIZADA);
+        ObservableLists.ordensFinalizadasData.add(ordem);
+        ObservableLists.ordensEmAbertoData.remove(ordem);
         //Gerando fatura
         String diretorioAtual = Paths.get(".").toAbsolutePath().normalize().toString();
         String nomeArquivo = diretorioAtual + "\\faturas\\fatura" + "Ordem" + String.valueOf(ordem.getOrdemID()) + ".txt";
@@ -88,15 +85,9 @@ public class ServicosDialogController {
             bw.write(ordem.gerarFatura().toString());
             bw.close();
             fw.close();
-            //Salva os dados e recarrega as páginas
-            //Controller.getInicialController().btnSalvaDados();
-            //Controller.getOrdemController().atualizaOrdens();
-            //Controller.getInicialController().atualizaOrdens();
-            //Inicializa arquivo automaticamente, representando abertura de fatura externa
             ProcessBuilder processBuilder = new ProcessBuilder();
             processBuilder.command("cmd.exe", "/c", nomeArquivo);
             processBuilder.start();
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -105,11 +96,5 @@ public class ServicosDialogController {
     @FXML
     void btnFinalizaServico(ActionEvent event) {
 
-    }
-
-    @FXML
-    void btnClose() throws IOException {
-        SaveData.saveAllData();
-        System.exit(0);
     }
 }

@@ -113,4 +113,7 @@ public class Servico implements Serializable {
     public String getCategoriaEmString(){
         return this.categoriaEmString;
     }
+    public String getNomePeca(){
+        return this.nomePeca;
+    }
 }

@@ -344,7 +344,6 @@ public class MainController {
         mainC.finalizaServico(1, DAO.getOrdem().findManyEmAberto().get(0).getServicos().get(0), 5);
         mainC.finalizaOrdem(1);
         DAO.getOrdem().create(new Ordem(new Cliente("Ana", "Feira V", "758977864185")));
-
         DAO.getOrdem().create(new Ordem(new Cliente("Jucicreia", "Feira V", "758977864185")));
         DAO.getOrdem().create(new Ordem(new Cliente("Jordana", "Feira V", "758977864185")));
         DAO.getOrdem().create(new Ordem(new Cliente("Fulano", "Feira V", "758977864185")));

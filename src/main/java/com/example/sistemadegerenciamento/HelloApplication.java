@@ -1,7 +1,10 @@
 package com.example.sistemadegerenciamento;
 
+import com.example.sistemadegerenciamento.DAO.DAO;
 import com.example.sistemadegerenciamento.controller.MainController;
+import com.example.sistemadegerenciamento.controller.ObservableLists;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -24,18 +27,45 @@ public class HelloApplication extends Application {
     private static Scene ordemScene;
     private static Scene servicosDialogScene;
 
+    public void atualizaColecoesDosArquivosDAO() throws IOException, ClassNotFoundException {
+        DAO.getOrdem().atualizaColecaoDoArquivoOrdensAbertas(DAO.getOrdemDAOArquivo().lerArquivoOrdensEmAberto());
+        ObservableLists.ordensEmAbertoData = FXCollections.observableArrayList();
+        ObservableLists.ordensEmAbertoData.addAll(DAO.getOrdem().findManyEmAberto());
+        DAO.getOrdem().atualizaColecaoDoArquivoOrdensEmEspera(DAO.getOrdemDAOArquivo().lerArquivoOrdensEmEspera());
+        ObservableLists.ordensEmEsperaData = FXCollections.observableArrayList();
+        ObservableLists.ordensEmEsperaData.addAll(DAO.getOrdem().findManyEmEspera());
+        DAO.getOrdem().atualizaColecaoDoArquivoOrdensCanceladas(DAO.getOrdemDAOArquivo().lerArquivoOrdensCanceladas());
+        ObservableLists.ordensCanceladasData = FXCollections.observableArrayList();
+        ObservableLists.ordensCanceladasData.addAll(DAO.getOrdem().findManyCanceladas());
+        DAO.getOrdem().atualizaColecaoDoArquivoOrdensFinalizadas(DAO.getOrdemDAOArquivo().lerArquivoOrdensFinalizadas());
+        ObservableLists.ordensFinalizadasData = FXCollections.observableArrayList();
+        ObservableLists.ordensFinalizadasData.addAll(DAO.getOrdem().findManyFinalizadas());
+        DAO.getCliente().atualizaColecaoDoArquivo(DAO.getClienteDAOArquivo().lerArquivo());
+        ObservableLists.clientesData = FXCollections.observableArrayList();
+        ObservableLists.clientesData.addAll(DAO.getCliente().findManyArrayList());
+        DAO.getEstoque().atualizaColecaoDoArquivo(DAO.getEstoqueDAOArquivo().lerArquivo());
+        ObservableLists.pecasData = FXCollections.observableArrayList();
+        ObservableLists.pecasData.addAll(DAO.getEstoque().findManyPecas());
+        DAO.getTecnico().atualizaColecaoDoArquivo(DAO.getTecnicoDAOArquivo().lerArquivo());
+        ObservableLists.tecnicosData = FXCollections.observableArrayList();
+        ObservableLists.tecnicosData.addAll(DAO.getTecnico().findManyArrayList());
+    }
+
     @Override
-    public void start(Stage primaryStage) throws IOException {
+    public void start(Stage primaryStage) throws IOException, ClassNotFoundException {
+
+        atualizaColecoesDosArquivosDAO();
+
         stage = primaryStage;
         primaryStage.setTitle("GERENCIADOR DE SERVIÇOS");
 
         Parent fxmlInicial = FXMLLoader.load(getClass().getResource("views/inicial.fxml"));
-        System.out.println("Ok!");
         inicialScene = new Scene(fxmlInicial);
-        System.out.println("Ok!");
+
+        //Adiciona ícone ao aplicativo
         Image image = new Image(getClass().getResourceAsStream("images/icon_computer_logo.png"));
         primaryStage.getIcons().add(image);
-        System.out.println(getClass().getResourceAsStream(""));
+
         primaryStage.setScene(inicialScene);
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setResizable(false);
@@ -52,6 +82,9 @@ public class HelloApplication extends Application {
 
         Parent fxmlOrdem = FXMLLoader.load(getClass().getResource("views/ordem.fxml"));
         ordemScene = new Scene(fxmlOrdem);
+
+
+
     }
     public static void telaScreen(String nome) throws IOException {
         switch (nome) {

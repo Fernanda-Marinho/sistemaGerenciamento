@@ -41,16 +41,11 @@ public class ClienteController {
     @FXML
     private Label labelErro;
 
-    //Collections do JavaFX
-    private ObservableList<Cliente> clientesData;
-
 
     @FXML
     //Carrega todos os dados a serem mostrados no View.
     void initialize() throws IOException, ClassNotFoundException {
-        DAO.getCliente().atualizaColecaoDoArquivo(DAO.getClienteDAOArquivo().lerArquivo());
-        this.clientesData = FXCollections.observableArrayList();
-        this.clientesData.addAll(DAO.getCliente().findManyArrayList());
+
         //Cria a coluna para usar na tabela, de maneira manual.
         TableColumn coluna1 = new TableColumn("ID");
         TableColumn coluna2 = new TableColumn("NOME");
@@ -63,7 +58,7 @@ public class ClienteController {
         coluna4.setCellValueFactory(new PropertyValueFactory<Cliente, String>("telefone"));
 
         this.tabelaCliente.getColumns().addAll(coluna1, coluna2, coluna3, coluna4);
-        this.tabelaCliente.setItems(clientesData);
+        this.tabelaCliente.setItems(ObservableLists.clientesData);
     }
 
     @FXML
@@ -72,7 +67,7 @@ public class ClienteController {
             //.getText() pega o texto em String do textfield.
             Cliente cliente = new Cliente(this.nomeCliente.getText(), this.endereco.getText(), this.telefone.getText());
             DAO.getCliente().create(cliente);
-            this.clientesData.add(cliente);
+            ObservableLists.clientesData.add(cliente);
             //Para limpar o conteúdo do textfield.
             this.nomeCliente.clear();
             this.endereco.clear();
@@ -96,7 +91,7 @@ public class ClienteController {
                 int clienteID = selecionadoTabela.getClienteID();
                 //.getText() pega o texto em String do textfield.
                 DAO.getCliente().update(clienteID, this.nomeCliente.getText(), this.endereco.getText(), this.telefone.getText());
-                this.clientesData.set(selecionadoTabelaIndice, DAO.getCliente().findById(clienteID));
+                ObservableLists.clientesData.set(selecionadoTabelaIndice, DAO.getCliente().findById(clienteID));
                 //Para limpar o conteúdo do textfield.
                 this.nomeCliente.clear();
                 this.endereco.clear();
@@ -117,7 +112,7 @@ public class ClienteController {
             Cliente selecionadoTabela = this.tabelaCliente.getSelectionModel().getSelectedItem();
             int clienteID = selecionadoTabela.getClienteID();
             DAO.getCliente().delete(clienteID);
-            this.clientesData.remove(selecionadoTabelaIndice);
+            ObservableLists.clientesData.remove(selecionadoTabelaIndice);
         }
     }
 

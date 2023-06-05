@@ -49,14 +49,11 @@ public class EstoqueController {
     private TableView<Peca> tabelaEstoque;
     @FXML
     private TextField valorPeca;
-    private ObservableList<Peca> pecasData;
 
     @FXML
         //Carrega todos os dados a serem mostrados no View.
     void initialize() throws IOException, ClassNotFoundException {
-        DAO.getEstoque().atualizaColecaoDoArquivo(DAO.getEstoqueDAOArquivo().lerArquivo());
-        this.pecasData = FXCollections.observableArrayList();
-        this.pecasData.addAll(DAO.getEstoque().findManyPecas());
+
         //Cria a coluna para usar na tabela, de maneira manual.
         TableColumn coluna1 = new TableColumn("NOME PEÇA");
         TableColumn coluna2 = new TableColumn("QUANTIDADE");
@@ -65,7 +62,7 @@ public class EstoqueController {
         coluna2.setCellValueFactory(new PropertyValueFactory<Cliente, String>("quantidade"));
 
         this.tabelaEstoque.getColumns().addAll(coluna1, coluna2);
-        this.tabelaEstoque.setItems(pecasData);
+        this.tabelaEstoque.setItems(ObservableLists.pecasData);
     }
 
     @FXML
@@ -79,7 +76,7 @@ public class EstoqueController {
             Peca peca = new Peca(this.nomePeca.getText(), Double.parseDouble(this.valorPeca.getText()));
             OrdemCompra ordemCompra = new OrdemCompra(peca, Integer.parseInt(this.quantidadePeca.getText()), Double.parseDouble(this.valorPeca.getText()));
             DAO.getEstoque().addOrdemCompra(ordemCompra);
-            this.pecasData.add(peca);
+            ObservableLists.pecasData.add(peca);
             //Para limpar o conteúdo do textfield.
             this.nomePeca.clear();
             this.valorPeca.clear();

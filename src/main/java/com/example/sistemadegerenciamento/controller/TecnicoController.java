@@ -57,14 +57,12 @@ public class TecnicoController {
     @FXML
     private TextField userTecnicoAtual;
 
-    private ObservableList<Tecnico> tecnicosData;
+
 
 
     @FXML
     void initialize() throws IOException, ClassNotFoundException {
-        DAO.getTecnico().atualizaColecaoDoArquivo(DAO.getTecnicoDAOArquivo().lerArquivo());
-        this.tecnicosData = FXCollections.observableArrayList();
-        this.tecnicosData.addAll(DAO.getTecnico().findManyArrayList());
+
         //Cria a coluna para usar na tabela, de maneira manual.
         TableColumn coluna1 = new TableColumn("ID");
         TableColumn coluna2 = new TableColumn("NOME");
@@ -75,7 +73,7 @@ public class TecnicoController {
         coluna3.setCellValueFactory(new PropertyValueFactory<Cliente, Integer>("idOrdemAtual"));
 
         this.tabelaTecnico.getColumns().addAll(coluna1, coluna2, coluna3);
-        this.tabelaTecnico.setItems(tecnicosData);
+        this.tabelaTecnico.setItems(ObservableLists.tecnicosData);
     }
 
     @FXML
@@ -84,7 +82,7 @@ public class TecnicoController {
         if (this.userTecnicoAtual.getText().equals("admin")) {
             Tecnico tecnico = new Tecnico(false, this.userTecnico.getText(), this.senhaTecnico.getText());
             DAO.getTecnico().create(tecnico);
-            this.tecnicosData.add(tecnico);
+            ObservableLists.tecnicosData.add(tecnico);
             this.userTecnicoAtual.clear();
             this.userTecnico.clear();
             this.senhaTecnico.clear();
@@ -103,7 +101,7 @@ public class TecnicoController {
             int tecnicoID = selecionadoTabela.getTecnicoID();
             //.getText() pega o texto em String do textfield.
             DAO.getTecnico().update(tecnicoID, this.userTecnico.getText(), this.senhaTecnico.getText());
-            this.tecnicosData.set(selecionadoTabelaIndice, DAO.getTecnico().findById(tecnicoID));
+            ObservableLists.tecnicosData.set(selecionadoTabelaIndice, DAO.getTecnico().findById(tecnicoID));
             //Para limpar o conteúdo do textfield.
             this.userTecnicoAtual.clear();
             this.userTecnico.clear();
@@ -122,7 +120,7 @@ public class TecnicoController {
             Tecnico selecionadoTabela = this.tabelaTecnico.getSelectionModel().getSelectedItem();
             int tecnicoID = selecionadoTabela.getTecnicoID();
             DAO.getTecnico().delete(tecnicoID);
-            this.tecnicosData.remove(selecionadoTabelaIndice);
+            ObservableLists.tecnicosData.remove(selecionadoTabelaIndice);
             this.labelErro.setText("");
         } else {
             this.labelErro.setText("Somente o administrador pode deletar os técnicos.");
