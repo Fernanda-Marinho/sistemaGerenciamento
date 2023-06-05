@@ -7,8 +7,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.scene.image.Image;
+
 
 import java.io.IOException;
+import java.nio.file.Paths;
 
 
 public class HelloApplication extends Application {
@@ -25,29 +29,31 @@ public class HelloApplication extends Application {
         stage = primaryStage;
         primaryStage.setTitle("GERENCIADOR DE SERVIÇOS");
 
-        Parent fxmlInicial = FXMLLoader.load(getClass().getResource("inicial.fxml"));
+        Parent fxmlInicial = FXMLLoader.load(getClass().getResource("views/inicial.fxml"));
+        System.out.println("Ok!");
         inicialScene = new Scene(fxmlInicial);
-
+        System.out.println("Ok!");
+        Image image = new Image(getClass().getResourceAsStream("images/icon_computer_logo.png"));
+        primaryStage.getIcons().add(image);
+        System.out.println(getClass().getResourceAsStream(""));
         primaryStage.setScene(inicialScene);
+        primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setResizable(false);
         primaryStage.show();
 
-        Parent fxmlCliente = FXMLLoader.load(getClass().getResource("cliente.fxml"));
+        Parent fxmlCliente = FXMLLoader.load(getClass().getResource("views/cliente.fxml"));
         clienteScene = new Scene(fxmlCliente);
 
-        Parent fxmlTecnico = FXMLLoader.load(getClass().getResource("tecnico.fxml"));
+        Parent fxmlTecnico = FXMLLoader.load(getClass().getResource("views/tecnico.fxml"));
         tecnicoScene = new Scene(fxmlTecnico);
 
-        Parent fxmlEstoque = FXMLLoader.load(getClass().getResource("estoque.fxml"));
+        Parent fxmlEstoque = FXMLLoader.load(getClass().getResource("views/estoque.fxml"));
         estoqueScene = new Scene(fxmlEstoque);
 
-        Parent fxmlOrdem = FXMLLoader.load(getClass().getResource("ordem.fxml"));
+        Parent fxmlOrdem = FXMLLoader.load(getClass().getResource("views/ordem.fxml"));
         ordemScene = new Scene(fxmlOrdem);
-
-        Parent fxmlServicosDialog = FXMLLoader.load(getClass().getResource("servicosDialog.fxml"));
-        servicosDialogScene = new Scene(fxmlServicosDialog);
     }
-    public static void telaScreen(String nome) {
+    public static void telaScreen(String nome) throws IOException {
         switch (nome) {
             case "inicial":
                 stage.setScene(inicialScene);
@@ -70,6 +76,9 @@ public class HelloApplication extends Application {
                 stage.setResizable(false);
                 break;
             case "servicosDialog":
+                //Parent fxmlServicosDialog = FXMLLoader.load(getClass().getResource("servicosDialog.fxml"));
+                FXMLLoader fxmlServicosDialog = new FXMLLoader(HelloApplication.class.getResource("views/servicosDialog.fxml"));
+                servicosDialogScene = new Scene(fxmlServicosDialog.load());
                 Stage stageDialog = new Stage();
                 stageDialog.setTitle("ORDEM");
                 stageDialog.setScene(servicosDialogScene);

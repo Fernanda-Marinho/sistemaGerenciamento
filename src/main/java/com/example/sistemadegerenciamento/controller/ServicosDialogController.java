@@ -108,7 +108,8 @@ public class ServicosDialogController {
     }
 
     @FXML
-    void btnClose() {
+    void btnClose() throws IOException {
+        SaveData.saveAllData();
         System.exit(0);
     }
 }

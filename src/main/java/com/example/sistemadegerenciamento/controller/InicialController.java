@@ -129,24 +129,7 @@ public class InicialController {
 
     @FXML
     void btnSalvaDados(ActionEvent event) throws IOException {
-        System.out.println("salvando dados");
-        DAO.getClienteDAOArquivo().salvarArquivo();
-        DAO.getEstoqueDAOArquivo().salvarArquivo();
-        DAO.getTecnicoDAOArquivo().salvarArquivo();
-        DAO.getOrdemDAOArquivo().salvarArquivoOrdensCanceladas();
-        DAO.getOrdemDAOArquivo().salvarArquivoOrdensEmAberto();
-        DAO.getOrdemDAOArquivo().salvarArquivoOrdensEmEspera();
-        DAO.getOrdemDAOArquivo().salvarArquivoOrdensFinalizadas();
-    }
-
-    void btnSalvaDados() throws IOException {
-        DAO.getClienteDAOArquivo().salvarArquivo();
-        DAO.getEstoqueDAOArquivo().salvarArquivo();
-        DAO.getTecnicoDAOArquivo().salvarArquivo();
-        DAO.getOrdemDAOArquivo().salvarArquivoOrdensCanceladas();
-        DAO.getOrdemDAOArquivo().salvarArquivoOrdensEmAberto();
-        DAO.getOrdemDAOArquivo().salvarArquivoOrdensEmEspera();
-        DAO.getOrdemDAOArquivo().salvarArquivoOrdensFinalizadas();
+        SaveData.saveAllData();
     }
 
     @FXML
@@ -192,7 +175,8 @@ public class InicialController {
         }
     }
     @FXML
-    void btnClose() {
+    void btnClose() throws IOException {
+        SaveData.saveAllData();
         System.exit(0);
     }
 }

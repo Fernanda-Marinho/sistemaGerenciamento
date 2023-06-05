@@ -161,7 +161,8 @@ public class TecnicoController {
     }
 
     @FXML
-    void btnClose() {
+    void btnClose() throws IOException {
+        SaveData.saveAllData();
         System.exit(0);
     }
 

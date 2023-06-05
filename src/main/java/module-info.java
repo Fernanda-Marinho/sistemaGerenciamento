@@ -3,7 +3,8 @@ module com.example.sistemadegerenciamento {
     requires javafx.fxml;
     requires javafx.graphics;
     requires javafx.base;
-
+    requires de.jensd.fx.glyphs.fontawesome;
+    requires de.jensd.fx.glyphs.commons;
     requires org.kordamp.bootstrapfx.core;
 
     opens com.example.sistemadegerenciamento to javafx.fxml, javafx.graphics;
