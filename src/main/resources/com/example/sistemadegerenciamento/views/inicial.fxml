@@ -11,7 +11,6 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -168,6 +167,14 @@
                   </ImageView>
                </graphic>
             </Button>
+            <Button fx:id="btnGerarRelatorio" mnemonicParsing="false" onAction="#btnGeraRelatorio" prefHeight="35.0" prefWidth="190.0" stylesheets="@../css/style.css" text="GERAR RELATÓRIO">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Button>
          </children>
          <padding>
             <Insets left="10.0" right="10.0" top="45.0" />
@@ -181,7 +188,6 @@
          <effect>
             <DropShadow />
          </effect></Button>
-      <HBox layoutX="71.0" layoutY="503.0" prefHeight="34.0" prefWidth="583.0" />
       <Button fx:id="btnPegarOrdemServico" layoutX="812.0" layoutY="526.0" mnemonicParsing="false" onAction="#btnPegaOrdemServico" prefHeight="26.0" prefWidth="170.0" text="PEGAR ORDEM DE SERVIÇO">
          <effect>
             <DropShadow />

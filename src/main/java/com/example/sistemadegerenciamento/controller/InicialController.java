@@ -10,7 +10,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.Date;
 
 public class InicialController {
@@ -23,6 +27,9 @@ public class InicialController {
 
     @FXML
     private Button btnOrdemDeCompra;
+
+    @FXML
+    private Button btnGerarRelatorio;
 
     @FXML
     private Button btnPegarOrdemServico;
@@ -78,18 +85,6 @@ public class InicialController {
 
         this.tabelaOrdensEmEspera.getColumns().addAll(coluna1EmEspera, coluna2EmEspera, coluna3EmEspera);
         this.tabelaOrdensEmEspera.setItems(ObservableLists.ordensEmEsperaData);
-
-    }
-
-    @FXML
-    void btnCriaOrdemDeServico(ActionEvent event) throws IOException {
-        HelloApplication.telaScreen("ordens");
-
-    }
-
-    @FXML
-    void btnFazOrdemDeCompra(ActionEvent event) throws IOException {
-        HelloApplication.telaScreen("estoque");
 
     }
 
@@ -161,7 +156,39 @@ public class InicialController {
             ServicosDialogController.ordemAbertaNoMomento = selecionadoTabela;
             HelloApplication.telaScreen("servicosDialog");
         }
+        System.out.println(ServicosDialogController.ordemAbertaNoMomento.getNomeCliente());
+        this.tabelaOrdensEmEspera.getSelectionModel().clearSelection();
+        this.tabelaOrdensEmAberto.getSelectionModel().clearSelection();
     }
+
+    @FXML
+    void btnGeraRelatorio(ActionEvent event) {
+        String relatorio = "Tempo médio de espera de ordens finalizadas: " + DAO.getOrdem().gerarTempoMedioDeOrdensFinalizadas() + "mins;\n";
+        relatorio = relatorio + "Custo total de peças nas ordens de compras: R$" + DAO.getEstoque().gerarCustoTotalOrdensCompra() + ";\n";
+        relatorio = relatorio + "Estoque atual:\n" + DAO.getEstoque().verEstoqueFormatado();
+        relatorio = relatorio + DAO.getOrdem().gerarMediaSatisfacaoPorOrdem();
+        String diretorioAtual = Paths.get(".").toAbsolutePath().normalize().toString();
+        Date date = new Date();
+        String dateModified = date.toString().replace(" ", "_");
+        dateModified = dateModified.replace(":", "_");
+        String nomeArquivo = diretorioAtual + "\\relatorios\\relatorio_" + dateModified + ".txt";
+        File arquivo = new File(nomeArquivo);
+        try {
+            //Salva arquivo
+            arquivo.createNewFile();
+            FileWriter fw = new FileWriter( arquivo );
+            BufferedWriter bw = new BufferedWriter( fw );
+            bw.write(relatorio);
+            bw.close();
+            fw.close();
+            ProcessBuilder processBuilder = new ProcessBuilder();
+            processBuilder.command("cmd.exe", "/c", nomeArquivo);
+            processBuilder.start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @FXML
     void btnClose() throws IOException {
         SaveData.saveAllData();
