@@ -6,6 +6,7 @@ import com.example.sistemadegerenciamento.models.*;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -356,6 +357,10 @@ public class MainController {
         mainC.salvarArquivoOrdem();
         mainC.salvarArquivoEstoque();
         System.out.println(DAO.getOrdem().findManyEmAberto().get(0).getClienteID());
+        Date date = new Date();
+        String dateModified = date.toString().replace(" ", "_");
+        dateModified = dateModified.replace(":", "_");
+        System.out.println(dateModified);
 
 
         /*HashMap<Integer, Ordem> ordem = mainC.lerArquivoOrdemFinalizadas();

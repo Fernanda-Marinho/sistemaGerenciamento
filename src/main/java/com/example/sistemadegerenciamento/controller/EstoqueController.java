@@ -13,7 +13,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Paths;
+import java.util.Date;
 
 public class EstoqueController {
 
@@ -67,7 +72,26 @@ public class EstoqueController {
 
     @FXML
     void btnExportaEstoque(ActionEvent event) {
-
+        String diretorioAtual = Paths.get(".").toAbsolutePath().normalize().toString();
+        Date date = new Date();
+        String dateModified = date.toString().replace(" ", "_");
+        dateModified = dateModified.replace(":", "_");
+        String nomeArquivo = diretorioAtual + "\\relatorios\\estoque_" + dateModified + ".txt";
+        File arquivo = new File(nomeArquivo);
+        try {
+            //Salva arquivo
+            arquivo.createNewFile();
+            FileWriter fw = new FileWriter( arquivo );
+            BufferedWriter bw = new BufferedWriter( fw );
+            bw.write(DAO.getEstoque().verEstoqueFormatado());
+            bw.close();
+            fw.close();
+            ProcessBuilder processBuilder = new ProcessBuilder();
+            processBuilder.command("cmd.exe", "/c", nomeArquivo);
+            processBuilder.start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     @FXML
     void btnRealizaOrdemCompra(ActionEvent event) {

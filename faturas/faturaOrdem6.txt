@@ -1,1 +1,1 @@
-com.example.sistemadegerenciamento.models.Fatura@b8fbdb1
+com.example.sistemadegerenciamento.models.Fatura@2e67ddba

@@ -1,0 +1,4 @@
+NOME	QNTD	VALOR UNI.
+FONE   	34   	12.0;
+RAM   	10   	128.0;
+HD   	8   	218.5;
