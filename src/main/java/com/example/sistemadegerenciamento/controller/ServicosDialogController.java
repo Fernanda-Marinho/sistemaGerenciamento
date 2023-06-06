@@ -126,9 +126,14 @@ public class ServicosDialogController {
             Servico selecionadoTabela = this.tabelaServicos.getSelectionModel().getSelectedItem();
             if (ordemAbertaNoMomento.getStatus() == StatusOrdem.ESPERA){
                 DAO.getOrdem().findById(ordemAbertaNoMomento.getOrdemID()).finalizarServico(selecionadoTabela, 0);
+                ObservableLists.servicosData.clear();
+                ObservableLists.servicosData.addAll(ordemAbertaNoMomento.getServicos());
             } else if (ordemAbertaNoMomento.getStatus() == StatusOrdem.ABERTA){
-                ObservableLists.servicosData.remove(selecionadoTabela);
+                DAO.getOrdem().findByIdAberta(ordemAbertaNoMomento.getOrdemID()).finalizarServico(selecionadoTabela, 0);
+                ObservableLists.servicosData.clear();
+                ObservableLists.servicosData.addAll(ordemAbertaNoMomento.getServicos());
             }
+
             this.labelErro.setText("");
         }
     }

@@ -93,6 +93,8 @@ public class AdicionarServicoDialogController {
                 }
                 ObservableLists.servicosData.add(servico);
             }
+            ObservableLists.pecasData.clear();
+            ObservableLists.pecasData.addAll(DAO.getEstoque().findManyPecas());
             labelErro.setText("Serviço adicionado com sucesso.");
         } catch (Exception e) {
             labelErro.setText(e.toString());
