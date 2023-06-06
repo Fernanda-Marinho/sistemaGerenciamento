@@ -15,12 +15,13 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TableView fx:id="tabelaServicos" layoutX="44.0" layoutY="63.0" prefHeight="242.0" prefWidth="512.0" />
-      <HBox alignment="CENTER" layoutX="44.0" layoutY="313.0" prefHeight="44.0" prefWidth="512.0" spacing="10.0">
+      <TableView fx:id="tabelaServicos" layoutX="44.0" layoutY="63.0" prefHeight="228.0" prefWidth="512.0" />
+      <HBox alignment="CENTER" layoutX="23.0" layoutY="302.0" prefHeight="45.0" prefWidth="554.0" spacing="10.0">
          <children>
             <Button fx:id="btnFinalizarServico" mnemonicParsing="false" onAction="#btnFinalizaServico" text="FINALIZAR SERVIÇO" />
-            <Button fx:id="btnFinalizarOrdem" mnemonicParsing="false" onAction="#btnFinalizaOrdem" text="FINALIZAR ORDEM" />
+            <Button fx:id="btnAdicionarServico" mnemonicParsing="false" onAction="#btnAdicionaServico" text="ADICIONAR SERVIÇO" />
             <Button fx:id="btnCancelarOrdem" mnemonicParsing="false" onAction="#btnCancelaOrdem" text="CANCELAR ORDEM" />
+            <Button fx:id="btnFinalizarOrdem" mnemonicParsing="false" onAction="#btnFinalizaOrdem" text="FINALIZAR ORDEM" />
          </children>
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

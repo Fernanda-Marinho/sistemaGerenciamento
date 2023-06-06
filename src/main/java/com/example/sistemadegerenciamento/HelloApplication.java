@@ -26,6 +26,7 @@ public class HelloApplication extends Application {
     private static Scene estoqueScene;
     private static Scene ordemScene;
     private static Scene servicosDialogScene;
+    private static Scene adicionarServicosDialogScene;
 
     public void atualizaColecoesDosArquivosDAO() throws IOException, ClassNotFoundException {
         DAO.getOrdem().atualizaColecaoDoArquivoOrdensAbertas(DAO.getOrdemDAOArquivo().lerArquivoOrdensEmAberto());
@@ -107,23 +108,31 @@ public class HelloApplication extends Application {
                 stage.setResizable(false);
                 break;
             case "servicosDialog":
-                //Parent fxmlServicosDialog = FXMLLoader.load(getClass().getResource("servicosDialog.fxml"));
                 FXMLLoader fxmlServicosDialog = new FXMLLoader(HelloApplication.class.getResource("views/servicosDialog.fxml"));
                 servicosDialogScene = new Scene(fxmlServicosDialog.load());
-                Stage stageDialog = new Stage();
-                stageDialog.setTitle("ORDEM");
-                stageDialog.setScene(servicosDialogScene);
-                stageDialog.setResizable(false);
-                stageDialog.centerOnScreen();
-                stageDialog.initModality(Modality.APPLICATION_MODAL);
-                stageDialog.showAndWait();
+                Stage stageDialogServicos = new Stage();
+                stageDialogServicos.setTitle("ORDEM");
+                stageDialogServicos.setScene(servicosDialogScene);
+                stageDialogServicos.setResizable(false);
+                stageDialogServicos.centerOnScreen();
+                stageDialogServicos.initModality(Modality.APPLICATION_MODAL);
+                stageDialogServicos.showAndWait();
+                break;
+            case "adicionarServicoDialogController":
+                FXMLLoader fxmlAdicionarServicosDialog = new FXMLLoader(HelloApplication.class.getResource("views/adicionarServicoDialog.fxml"));
+                adicionarServicosDialogScene = new Scene(fxmlAdicionarServicosDialog.load());
+                Stage stageDialogAdicionarServicos = new Stage();
+                stageDialogAdicionarServicos.setTitle("ADICIONAR SERVIÇO");
+                stageDialogAdicionarServicos.setScene(adicionarServicosDialogScene);
+                stageDialogAdicionarServicos.setResizable(false);
+                stageDialogAdicionarServicos.centerOnScreen();
+                stageDialogAdicionarServicos.initModality(Modality.APPLICATION_MODAL);
+                stageDialogAdicionarServicos.showAndWait();
         }
     }
 
     public static void main(String[] args) throws Exception, IOException, ClassNotFoundException {
         launch();
-        //Alteração pendente: no dialog, trocar estratégia. Colocar igual o vídeo de Tosta. Do jeito que está o initialize se apresenta primeiro que a chamada do botão e do case switch. Portanto, não dá para atualizar a ordem atual antes de inicializar.
-        //Falta consertar a quantidade na tabela de estoquee controller
         //MainController.main(args);
     }
 }

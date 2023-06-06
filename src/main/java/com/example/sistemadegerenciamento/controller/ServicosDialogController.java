@@ -1,6 +1,7 @@
 package com.example.sistemadegerenciamento.controller;
 
 import com.example.sistemadegerenciamento.DAO.DAO;
+import com.example.sistemadegerenciamento.HelloApplication;
 import com.example.sistemadegerenciamento.models.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -30,6 +31,9 @@ public class ServicosDialogController {
 
     @FXML
     private Button btnFinalizarServico;
+
+    @FXML
+    private Button btnAdicionarServico;
 
     @FXML
     private Label labelErro;
@@ -117,6 +121,20 @@ public class ServicosDialogController {
 
     @FXML
     void btnFinalizaServico(ActionEvent event) {
-        
+        int selecionadoTabelaIndice = this.tabelaServicos.getSelectionModel().getSelectedIndex();
+        if (selecionadoTabelaIndice>=0) {
+            Servico selecionadoTabela = this.tabelaServicos.getSelectionModel().getSelectedItem();
+            if (ordemAbertaNoMomento.getStatus() == StatusOrdem.ESPERA){
+                DAO.getOrdem().findById(ordemAbertaNoMomento.getOrdemID()).finalizarServico(selecionadoTabela, 0);
+            } else if (ordemAbertaNoMomento.getStatus() == StatusOrdem.ABERTA){
+                ObservableLists.servicosData.remove(selecionadoTabela);
+            }
+            this.labelErro.setText("");
+        }
+    }
+
+    @FXML
+    void btnAdicionaServico(ActionEvent event) throws IOException {
+        HelloApplication.telaScreen("adicionarServicoDialogController");
     }
 }
