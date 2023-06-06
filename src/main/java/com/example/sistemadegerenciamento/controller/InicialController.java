@@ -142,17 +142,16 @@ public class InicialController {
     }
 
     @FXML
+    //Se eu abrir a ordem em aberto, ele sempre será registrado como aberto na ordem de precedência.
     void btnAbreOrdem(ActionEvent event) throws IOException {
         int selecionadoTabelaEmEsperaIndice = this.tabelaOrdensEmEspera.getSelectionModel().getSelectedIndex();
         int selecionadoTabelaEmAbertoIndice = this.tabelaOrdensEmAberto.getSelectionModel().getSelectedIndex();
         if (selecionadoTabelaEmAbertoIndice>=0) {
             Ordem selecionadoTabela = this.tabelaOrdensEmAberto.getSelectionModel().getSelectedItem();
-            int clienteID = selecionadoTabela.getClienteID();
             ServicosDialogController.ordemAbertaNoMomento = selecionadoTabela;
             HelloApplication.telaScreen("servicosDialog");
         } else if (selecionadoTabelaEmEsperaIndice>=0){
             Ordem selecionadoTabela = this.tabelaOrdensEmEspera.getSelectionModel().getSelectedItem();
-            int clienteID = selecionadoTabela.getClienteID();
             ServicosDialogController.ordemAbertaNoMomento = selecionadoTabela;
             HelloApplication.telaScreen("servicosDialog");
         }

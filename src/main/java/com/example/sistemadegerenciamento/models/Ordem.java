@@ -16,7 +16,7 @@ public class Ordem implements Serializable {
     private Fatura fatura;
     private int clienteID;
     private String nomeCliente;
-    private String servicosEmString = null;
+    private String servicosEmString;
     private int tecnicoID;
     private int ordemID;
     private long tempoMedioDeServicos;
@@ -59,11 +59,7 @@ public class Ordem implements Serializable {
      * Método que adiciona o serviço no ArrayList de serviços;
      * */
     public void addServico(Servico servico){
-        if (servicos == null){
-            this.servicosEmString = servico.getCategoria().toString();
-        } else {
-            this.servicosEmString = ", " + servico.getCategoria().toString();
-        }
+        this.servicosEmString = ((servicosEmString == null) ? "" : ", ") + servico.getCategoria().toString();
         this.servicos.add(servico);
     }
 
