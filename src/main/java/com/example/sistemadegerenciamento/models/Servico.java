@@ -1,7 +1,9 @@
 package com.example.sistemadegerenciamento.models;
 import com.example.sistemadegerenciamento.DAO.DAO;
+import com.example.sistemadegerenciamento.controller.ObservableLists;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -23,12 +25,12 @@ public class Servico implements Serializable {
     private boolean finalizado;
 
 
-
-
     public Servico (CategoriaServico categoria, double valor, int ordemID, Peca peca, String descricao) throws Exception {
         if (categoria == CategoriaServico.MONTAGEM){
             if (DAO.getEstoque().verDisponibilidadeDePeca(peca.getNome())){
+
                 DAO.getEstoque().decrementaPeca(peca.getNome());
+
             } else {
                 throw new Exception("Peça não está disponível no estoque.");
             }

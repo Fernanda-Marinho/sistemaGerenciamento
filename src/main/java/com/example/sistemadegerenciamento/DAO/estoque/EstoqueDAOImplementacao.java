@@ -1,5 +1,6 @@
 package com.example.sistemadegerenciamento.DAO.estoque;
 
+import com.example.sistemadegerenciamento.controller.ObservableLists;
 import com.example.sistemadegerenciamento.models.Cliente;
 import com.example.sistemadegerenciamento.models.OrdemCompra;
 import com.example.sistemadegerenciamento.models.Peca;
@@ -47,7 +48,7 @@ public class EstoqueDAOImplementacao implements EstoqueDAO {
             if (valor.getKey().getNome().equals(nomePeca)){
                 if (valor.getValue() > 0){
                     quantidadePecas.put(valor.getKey(), valor.getValue()-1);
-                    valor.getKey().setQuantidade(valor.getValue()-1);
+                    valor.getKey().setQuantidade(valor.getValue());
                 }
             }
         }

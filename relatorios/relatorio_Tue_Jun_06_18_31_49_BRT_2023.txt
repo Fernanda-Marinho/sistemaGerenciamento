@@ -1,0 +1,7 @@
+Tempo médio de espera de ordens finalizadas: 0mins;
+Custo total de peças nas ordens de compras: R$0.0;
+Estoque atual:
+NOME	QNTD	VALOR UNI.
+RAM   	9   	128.0;
+HD   	8   	218.5;
+Ordem ID: 7 - Cliente: Manoel Francisco - Média da satisfação por serviços: 0.0;

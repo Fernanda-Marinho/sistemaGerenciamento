@@ -150,6 +150,7 @@ public class EstoqueController {
     @FXML
     void btnClose() throws IOException {
         SaveData.saveAllData();
+        TimeNow.stop = true;
         System.exit(0);
     }
 }

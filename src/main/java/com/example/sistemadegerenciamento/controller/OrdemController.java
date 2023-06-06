@@ -204,6 +204,7 @@ public class OrdemController {
     @FXML
     void btnClose() throws IOException {
         SaveData.saveAllData();
+        TimeNow.stop = true;
         System.exit(0);
     }
 

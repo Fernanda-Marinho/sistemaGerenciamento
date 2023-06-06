@@ -156,7 +156,6 @@ public class InicialController {
             ServicosDialogController.ordemAbertaNoMomento = selecionadoTabela;
             HelloApplication.telaScreen("servicosDialog");
         }
-        System.out.println(ServicosDialogController.ordemAbertaNoMomento.getNomeCliente());
         this.tabelaOrdensEmEspera.getSelectionModel().clearSelection();
         this.tabelaOrdensEmAberto.getSelectionModel().clearSelection();
     }
