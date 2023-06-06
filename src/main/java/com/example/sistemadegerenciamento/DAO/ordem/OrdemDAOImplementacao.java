@@ -166,7 +166,7 @@ public class OrdemDAOImplementacao implements OrdemDAO{
         String nomeCliente;
         double mediaCliente;
         for (Map.Entry<Integer, Ordem> valor : ordensFinalizadas.entrySet()){
-            nomeCliente = DAO.getCliente().findById(valor.getValue().getClienteID()).getNome();
+            nomeCliente = valor.getValue().getNomeCliente();
             mediaCliente = valor.getValue().gerarMediaDeSatisfacaoDoCliente();
             satisfacaoGeral = "Ordem ID: " + valor.getValue().getOrdemID() + " - Cliente: " + nomeCliente + " - Média da satisfação por serviços: " + mediaCliente + ";\n";
         }
