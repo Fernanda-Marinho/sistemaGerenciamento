@@ -47,6 +47,11 @@
       </VBox>
       <VBox alignment="TOP_CENTER" layoutX="-3.0" prefHeight="600.0" prefWidth="210.0" styleClass="vbox" stylesheets="@../css/style.css">
          <children>
+            <Label fx:id="labelDate" alignment="CENTER" contentDisplay="CENTER" prefHeight="14.0" prefWidth="164.0" textAlignment="CENTER">
+               <font>
+                  <Font name="DejaVu Sans Bold" size="12.0" />
+               </font>
+            </Label>
             <ImageView fitHeight="176.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/manutenção%20de%20microcomputadores%20(1).png" />

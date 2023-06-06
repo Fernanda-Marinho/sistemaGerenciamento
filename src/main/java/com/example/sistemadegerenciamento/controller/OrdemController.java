@@ -46,6 +46,8 @@ public class OrdemController {
     private Label labelErro;
 
     @FXML
+    private Label labelDate;
+    @FXML
     private TableView<Ordem> tabelaOrdensAbertas;
 
     @FXML
@@ -59,6 +61,7 @@ public class OrdemController {
 
     @FXML
     void initialize() throws IOException, ClassNotFoundException {
+        TimeNow.timeNow(labelDate);
         //Em Aberto
         //Cria a coluna para usar na tabela, de maneira manual.
         TableColumn coluna1EmAberto = new TableColumn("ID");

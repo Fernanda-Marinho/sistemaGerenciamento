@@ -13,6 +13,10 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.scene.image.Image;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -51,6 +55,13 @@ public class HelloApplication extends Application {
         ObservableLists.tecnicosData = FXCollections.observableArrayList();
         ObservableLists.tecnicosData.addAll(DAO.getTecnico().findManyArrayList());
     }
+
+    public static String getDateTime() {
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date date = new Date();
+        return dateFormat.format(date);
+    }
+
 
     @Override
     public void start(Stage primaryStage) throws IOException, ClassNotFoundException {

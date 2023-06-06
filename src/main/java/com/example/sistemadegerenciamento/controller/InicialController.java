@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
+import java.util.Date;
 
 public class InicialController {
 
@@ -45,9 +46,13 @@ public class InicialController {
     private TableView<Ordem> tabelaOrdensEmAberto;
     @FXML
     private TableView<Ordem> tabelaOrdensEmEspera;
+    @FXML
+    private Label labelDate;
+
 
     @FXML
     void initialize() throws IOException, ClassNotFoundException {
+        TimeNow.timeNow(labelDate);
         //Em Aberto
         //Cria a coluna para usar na tabela, de maneira manual.
         TableColumn coluna1EmAberto = new TableColumn("ID");
@@ -73,6 +78,7 @@ public class InicialController {
 
         this.tabelaOrdensEmEspera.getColumns().addAll(coluna1EmEspera, coluna2EmEspera, coluna3EmEspera);
         this.tabelaOrdensEmEspera.setItems(ObservableLists.ordensEmEsperaData);
+
     }
 
     @FXML
@@ -159,6 +165,7 @@ public class InicialController {
     @FXML
     void btnClose() throws IOException {
         SaveData.saveAllData();
+        TimeNow.stop = true;
         System.exit(0);
     }
 }

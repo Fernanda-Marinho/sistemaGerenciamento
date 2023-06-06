@@ -40,11 +40,14 @@ public class ClienteController {
 
     @FXML
     private Label labelErro;
+    @FXML
+    private Label labelDate;
 
 
     @FXML
     //Carrega todos os dados a serem mostrados no View.
     void initialize() throws IOException, ClassNotFoundException {
+        TimeNow.timeNow(labelDate);
 
         //Cria a coluna para usar na tabela, de maneira manual.
         TableColumn coluna1 = new TableColumn("ID");

@@ -44,6 +44,8 @@ public class TecnicoController {
 
     @FXML
     private Label labelErro;
+    @FXML
+    private Label labelDate;
 
     @FXML
     private TextField senhaTecnico;
@@ -62,6 +64,7 @@ public class TecnicoController {
 
     @FXML
     void initialize() throws IOException, ClassNotFoundException {
+        TimeNow.timeNow(labelDate);
 
         //Cria a coluna para usar na tabela, de maneira manual.
         TableColumn coluna1 = new TableColumn("ID");
