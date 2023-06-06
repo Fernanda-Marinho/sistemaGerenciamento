@@ -65,6 +65,18 @@ public class EstoqueController {
         this.tabelaEstoque.setItems(ObservableLists.pecasData);
     }
 
+    public void atualizaTabela(){
+        //Cria a coluna para usar na tabela, de maneira manual.
+        TableColumn coluna1 = new TableColumn("NOME PEÇA");
+        TableColumn coluna2 = new TableColumn("QUANTIDADE");
+
+        coluna1.setCellValueFactory(new PropertyValueFactory<Cliente, String>("nome"));
+        coluna2.setCellValueFactory(new PropertyValueFactory<Cliente, String>("quantidade"));
+
+        this.tabelaEstoque.getColumns().addAll(coluna1, coluna2);
+        this.tabelaEstoque.setItems(ObservableLists.pecasData);
+    }
+
     @FXML
     void btnExportaEstoque(ActionEvent event) {
 

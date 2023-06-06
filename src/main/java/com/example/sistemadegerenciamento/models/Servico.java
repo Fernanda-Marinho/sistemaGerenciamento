@@ -27,8 +27,8 @@ public class Servico implements Serializable {
 
     public Servico (CategoriaServico categoria, double valor, int ordemID, Peca peca, String descricao) throws Exception {
         if (categoria == CategoriaServico.MONTAGEM){
-            if (DAO.getEstoque().verDisponibilidadeDePeca(peca)){
-                DAO.getEstoque().decrementaPeca(peca);
+            if (DAO.getEstoque().verDisponibilidadeDePeca(peca.getNome())){
+                DAO.getEstoque().decrementaPeca(peca.getNome());
             } else {
                 throw new Exception("Peça não está disponível no estoque.");
             }

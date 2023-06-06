@@ -231,7 +231,7 @@ class MainControllerTest {
         Peca peca = new Peca("RAM", 123);
         OrdemCompra ordemCompra = new OrdemCompra(peca, 10, 123);
         DAO.getEstoque().addOrdemCompra(ordemCompra);
-        assertEquals(true, DAO.getEstoque().verDisponibilidadeDePeca(peca));
+        assertEquals(true, DAO.getEstoque().verDisponibilidadeDePeca(peca.getNome()));
     }
 
     @Test

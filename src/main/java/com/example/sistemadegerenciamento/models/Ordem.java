@@ -16,7 +16,7 @@ public class Ordem implements Serializable {
     private Fatura fatura;
     private int clienteID;
     private String nomeCliente;
-    private String servicosEmString;
+    private String servicosEmString = null;
     private int tecnicoID;
     private int ordemID;
     private long tempoMedioDeServicos;

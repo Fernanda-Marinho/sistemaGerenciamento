@@ -12,9 +12,9 @@ import java.util.HashMap;
 public interface EstoqueDAO {
     //interface de estoque
     public void addOrdemCompra(OrdemCompra ordemCompra);
-    public void decrementaPeca(Peca peca);
+    public void decrementaPeca(String nomePeca);
     public HashMap verEstoque();
-    public boolean verDisponibilidadeDePeca(Peca peca);
+    public boolean verDisponibilidadeDePeca(String nomePeca);
     public double gerarCustoTotalOrdensCompra();
     public String verEstoqueFormatado();
     public void devolucaoPeca(Peca peca, int quantidade);

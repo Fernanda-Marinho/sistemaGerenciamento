@@ -42,9 +42,14 @@ public class EstoqueDAOImplementacao implements EstoqueDAO {
      * Método que decrementa peça do estoque de acordo com a utilização em serviço;
      * */
     @Override
-    public void decrementaPeca(Peca peca){
-        if (quantidadePecas.containsKey(peca)){
-            quantidadePecas.put(peca, quantidadePecas.get(peca)-1);
+    public void decrementaPeca(String nomePeca){
+        for (Map.Entry<Peca, Integer> valor : quantidadePecas.entrySet()){
+            if (valor.getKey().getNome().equals(nomePeca)){
+                if (valor.getValue() > 0){
+                    quantidadePecas.put(valor.getKey(), valor.getValue()-1);
+                    valor.getKey().setQuantidade(valor.getValue()-1);
+                }
+            }
         }
     }
     /**
@@ -57,10 +62,13 @@ public class EstoqueDAOImplementacao implements EstoqueDAO {
     /**
      * Método que verifica a disponibilidade da peça no estoque, ou seja, se há peça no estoque;
      * */
-    public boolean verDisponibilidadeDePeca(Peca peca){
-        if (quantidadePecas.containsKey(peca)){
-            if (quantidadePecas.get(peca) > 0){
-                return true;
+    public boolean verDisponibilidadeDePeca(String nomePeca){
+        for (Map.Entry<Peca, Integer> valor : quantidadePecas.entrySet()){
+            if (valor.getKey().getNome().equals(nomePeca)){
+                if (valor.getValue() > 0){
+                    return true;
+                }
+                return false;
             }
         }
         return false;

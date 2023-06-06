@@ -352,8 +352,6 @@ public class MainController {
         mainC.relacionaOrdemATecnico(3, 1);
         mainC.addServico(2, CategoriaServico.LIMPEZA, 210.0, null, "sem descrição");
         DAO.getOrdem().cancelarOrdem(4);
-
-
         mainC.salvarArquivoTecnico();
         mainC.salvarArquivoOrdem();
         mainC.salvarArquivoEstoque();
