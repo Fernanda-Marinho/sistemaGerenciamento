@@ -4,6 +4,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -186,10 +187,10 @@
                <font>
                   <Font name="Century Gothic" size="14.0" />
                </font></Label>
-                <TextField fx:id="senhaTecnico" maxWidth="158.0" prefHeight="26.0" prefWidth="158.0" />
+            <PasswordField fx:id="senhaTecnico" prefHeight="26.0" prefWidth="158.0" />
                 <Label fx:id="labelErro" prefHeight="26.0" prefWidth="308.0" textAlignment="CENTER" textFill="#df1111">
                     <font>
-                        <Font size="17.0" />
+                        <Font size="14.0" />
                     </font>
                 </Label>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">

@@ -28,16 +28,18 @@ public class EstoqueDAOImplementacao implements EstoqueDAO {
     @Override
     public void addOrdemCompra(OrdemCompra ordemCompra){
         ordensCompra.add(ordemCompra);
-        if (quantidadePecas.containsKey(ordemCompra.getPeca())){
-            int qntdNova = ordemCompra.getQuantidade();
-            int qntdAtual = quantidadePecas.get(ordemCompra.getPeca());
-            int qntdTotal = qntdNova + qntdAtual;
-            ordemCompra.getPeca().setQuantidade(qntdTotal);
-            quantidadePecas.put(ordemCompra.getPeca(), qntdTotal);
-        } else {
-            ordemCompra.getPeca().setQuantidade(ordemCompra.getQuantidade());
-            quantidadePecas.put(ordemCompra.getPeca(), ordemCompra.getQuantidade());
+        for (Map.Entry<Peca, Integer> valor : quantidadePecas.entrySet()){
+            if (valor.getKey().getNome().equals(ordemCompra.getPeca().getNome())){
+                int qntdNova = ordemCompra.getQuantidade();
+                int qntdAtual = valor.getValue();
+                int qntdTotal = qntdNova + qntdAtual;
+                valor.getKey().setQuantidade(qntdTotal);
+                quantidadePecas.put(valor.getKey(), qntdTotal);
+                return;
+            }
         }
+        ordemCompra.getPeca().setQuantidade(ordemCompra.getQuantidade());
+        quantidadePecas.put(ordemCompra.getPeca(), ordemCompra.getQuantidade());
     }
     /**
      * Método que decrementa peça do estoque de acordo com a utilização em serviço;

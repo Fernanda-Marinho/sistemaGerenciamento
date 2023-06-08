@@ -99,16 +99,23 @@ public class EstoqueController {
     @FXML
     void btnRealizaOrdemCompra(ActionEvent event) {
         try {
-            //.getText() pega o texto em String do textfield.
-            Peca peca = new Peca(this.nomePeca.getText(), Double.parseDouble(this.valorPeca.getText()));
-            OrdemCompra ordemCompra = new OrdemCompra(peca, Integer.parseInt(this.quantidadePeca.getText()), Double.parseDouble(this.valorPeca.getText()));
-            DAO.getEstoque().addOrdemCompra(ordemCompra);
-            ObservableLists.pecasData.add(peca);
-            //Para limpar o conteúdo do textfield.
-            this.nomePeca.clear();
-            this.valorPeca.clear();
-            this.quantidadePeca.clear();
-            this.labelErro.setText("");
+            int quantidade = Integer.parseInt(this.quantidadePeca.getText());
+            double valor = Double.parseDouble(this.valorPeca.getText());
+            if (quantidade > 0 && valor > 0){
+                //.getText() pega o texto em String do textfield.
+                Peca peca = new Peca(this.nomePeca.getText(), valor);
+                OrdemCompra ordemCompra = new OrdemCompra(peca, quantidade, valor);
+                DAO.getEstoque().addOrdemCompra(ordemCompra);
+                ObservableLists.pecasData.clear();
+                ObservableLists.pecasData.addAll(DAO.getEstoque().findManyPecas());
+                //Para limpar o conteúdo do textfield.
+                this.nomePeca.clear();
+                this.valorPeca.clear();
+                this.quantidadePeca.clear();
+                this.labelErro.setText("");
+            } else {
+                labelErro.setText("Precisa ser maior que 0.");
+            }
         } catch (Exception e){
             //O setText no label carrega uma String na interface.
             this.labelErro.setText("Erro ao digitar os dados.");

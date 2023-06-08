@@ -1,0 +1,3 @@
+NOME	QNTD	VALOR UNI.
+RAM   	21   	128.0;
+HD   	234242   	218.5;
