@@ -37,7 +37,8 @@ public class ServicosDialogController {
 
     @FXML
     private Label labelErro;
-
+    @FXML
+    private Label tecnicoResponsavel;
     @FXML
     private TableView<Servico> tabelaServicos;
     public static Ordem ordemAbertaNoMomento;
@@ -49,6 +50,7 @@ public class ServicosDialogController {
         if (ordemAbertaNoMomento != null) {
             ObservableLists.servicosData = FXCollections.observableArrayList();
             ObservableLists.servicosData.addAll(ordemAbertaNoMomento.getServicos());
+            tecnicoResponsavel.setText(ordemAbertaNoMomento.getNomeTecnico());
 
             //Cria a coluna para usar na tabela, de maneira manual.
             TableColumn coluna1 = new TableColumn("CATEGORIA");

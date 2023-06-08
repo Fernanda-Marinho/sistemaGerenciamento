@@ -147,6 +147,7 @@ public class OrdemDAOImplementacao implements OrdemDAO{
         this.ordensEmEspera.remove(ordemID);
         this.ordensAberta.get(ordemID).setStatus(StatusOrdem.ABERTA);
         this.ordensAberta.get(ordemID).setTecnicoID(tecnicoID);
+        this.ordensAberta.get(ordemID).setNomeTecnico(DAO.getTecnico().findById(tecnicoID).getNome());
     }
     /**
      * Método que retorna o tempo médio de todas as ordens finalizadas;

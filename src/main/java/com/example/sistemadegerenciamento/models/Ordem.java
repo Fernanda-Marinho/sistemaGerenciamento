@@ -18,6 +18,7 @@ public class Ordem implements Serializable {
     private String nomeCliente;
     private String servicosEmString;
     private int tecnicoID;
+    private String nomeTecnico = "Ainda sem técnico";
     private int ordemID;
     private long tempoMedioDeServicos;
     private String avaliacaoFinal; //satisfação
@@ -190,5 +191,11 @@ public class Ordem implements Serializable {
     }
     public String getServicosEmString(){
         return this.servicosEmString;
+    }
+    public String getNomeTecnico(){
+        return this.nomeTecnico;
+    }
+    public void setNomeTecnico(String nome){
+        this.nomeTecnico = nome;
     }
 }

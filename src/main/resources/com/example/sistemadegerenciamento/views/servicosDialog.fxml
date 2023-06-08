@@ -15,7 +15,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TableView fx:id="tabelaServicos" layoutX="44.0" layoutY="63.0" prefHeight="228.0" prefWidth="512.0" />
+      <TableView fx:id="tabelaServicos" layoutX="44.0" layoutY="63.0" prefHeight="200.0" prefWidth="512.0" />
       <HBox alignment="CENTER" layoutX="23.0" layoutY="302.0" prefHeight="45.0" prefWidth="554.0" spacing="10.0">
          <children>
             <Button fx:id="btnFinalizarServico" mnemonicParsing="false" onAction="#btnFinalizaServico" text="FINALIZAR SERVIÇO" />
@@ -31,5 +31,7 @@
          <font>
             <Font size="14.0" />
          </font></Label>
+      <Label layoutX="150.0" layoutY="282.0" text="TÉCNICO RESPONSÁVEL:" />
+      <Label fx:id="tecnicoResponsavel" alignment="CENTER" contentDisplay="CENTER" layoutX="297.0" layoutY="282.0" prefHeight="14.0" prefWidth="123.0" textAlignment="CENTER" />
    </children>
 </AnchorPane>
