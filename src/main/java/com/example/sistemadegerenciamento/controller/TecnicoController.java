@@ -99,7 +99,7 @@ public class TecnicoController {
     void btnEditaTecnico(ActionEvent event) {
         //.getSelectionModel().getSelectedIndex() pega o índice do item selecionado da tabela.
         int selecionadoTabelaIndice = this.tabelaTecnico.getSelectionModel().getSelectedIndex();
-        if (selecionadoTabelaIndice>=0 && (this.userTecnicoAtual.getText() == "admin")) {
+        if (selecionadoTabelaIndice>=0 && (this.userTecnicoAtual.getText().equals("admin"))) {
             Tecnico selecionadoTabela = this.tabelaTecnico.getSelectionModel().getSelectedItem();
             int tecnicoID = selecionadoTabela.getTecnicoID();
             //.getText() pega o texto em String do textfield.
@@ -117,14 +117,17 @@ public class TecnicoController {
 
     @FXML
     void btnRemoveTecnico(ActionEvent event) throws Exception {
-        //.getSelectionModel().getSelectedIndex() pega o índice do item selecionado da tabela.
         int selecionadoTabelaIndice = this.tabelaTecnico.getSelectionModel().getSelectedIndex();
-        if (selecionadoTabelaIndice>=0 && (this.userTecnicoAtual.getText() == "admin")) {
+        if (selecionadoTabelaIndice>=0 && (this.userTecnicoAtual.getText().equals("admin"))) {
             Tecnico selecionadoTabela = this.tabelaTecnico.getSelectionModel().getSelectedItem();
-            int tecnicoID = selecionadoTabela.getTecnicoID();
-            DAO.getTecnico().delete(tecnicoID);
-            ObservableLists.tecnicosData.remove(selecionadoTabelaIndice);
-            this.labelErro.setText("");
+            if (selecionadoTabela.isComOrdem()){
+                labelErro.setText("O técnico possui ordem aberta.");
+            } else {
+                int tecnicoID = selecionadoTabela.getTecnicoID();
+                DAO.getTecnico().delete(tecnicoID);
+                ObservableLists.tecnicosData.remove(selecionadoTabelaIndice);
+                this.labelErro.setText("");
+            }
         } else {
             this.labelErro.setText("Somente o administrador pode deletar os técnicos.");
         }

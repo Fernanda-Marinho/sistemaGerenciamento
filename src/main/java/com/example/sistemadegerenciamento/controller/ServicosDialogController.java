@@ -68,15 +68,10 @@ public class ServicosDialogController {
 
     @FXML
     void btnCancelaOrdem(ActionEvent event) {
-        if (ordemAbertaNoMomento.getStatus() == StatusOrdem.ABERTA || ordemAbertaNoMomento.getStatus() == StatusOrdem.ESPERA){
+        if (ordemAbertaNoMomento.getStatus() == StatusOrdem.ESPERA){
             Ordem ordem = DAO.getOrdem().cancelarOrdem(ordemAbertaNoMomento.getOrdemID());
             if (ordem != null){
-                if (ordem.getStatus() == StatusOrdem.ABERTA){
-                    DAO.getTecnico().findById(ordem.getTecnicoID()).fechaOrdem();
-                    ObservableLists.ordensEmAbertoData.remove(ordem);
-                } else {
-                    ObservableLists.ordensEmEsperaData.remove(ordem);
-                }
+                ObservableLists.ordensEmEsperaData.remove(ordem);
                 ordem.setStatus(StatusOrdem.CANCELADA);
                 ObservableLists.ordensCanceladasData.add(ordem);
                 this.labelErro.setText("");
@@ -84,7 +79,7 @@ public class ServicosDialogController {
                 this.labelErro.setText("Houve um erro.");
             }
         } else {
-            this.labelErro.setText("Para ser cancelada, precisa estar aberta ou em espera.");
+            this.labelErro.setText("Para ser cancelada, precisa estar em espera.");
         }
     }
     @FXML
@@ -122,19 +117,23 @@ public class ServicosDialogController {
     @FXML
     void btnFinalizaServico(ActionEvent event) {
         int selecionadoTabelaIndice = this.tabelaServicos.getSelectionModel().getSelectedIndex();
-        if (selecionadoTabelaIndice>=0) {
-            Servico selecionadoTabela = this.tabelaServicos.getSelectionModel().getSelectedItem();
-            if (ordemAbertaNoMomento.getStatus() == StatusOrdem.ESPERA){
-                DAO.getOrdem().findById(ordemAbertaNoMomento.getOrdemID()).finalizarServico(selecionadoTabela, 0);
-                ObservableLists.servicosData.clear();
-                ObservableLists.servicosData.addAll(ordemAbertaNoMomento.getServicos());
-            } else if (ordemAbertaNoMomento.getStatus() == StatusOrdem.ABERTA){
-                DAO.getOrdem().findByIdAberta(ordemAbertaNoMomento.getOrdemID()).finalizarServico(selecionadoTabela, 0);
-                ObservableLists.servicosData.clear();
-                ObservableLists.servicosData.addAll(ordemAbertaNoMomento.getServicos());
-            }
+        if (ordemAbertaNoMomento.getStatus() == StatusOrdem.ABERTA){
+            if (selecionadoTabelaIndice>=0) {
+                Servico selecionadoTabela = this.tabelaServicos.getSelectionModel().getSelectedItem();
+                if (ordemAbertaNoMomento.getStatus() == StatusOrdem.ESPERA){
+                    DAO.getOrdem().findById(ordemAbertaNoMomento.getOrdemID()).finalizarServico(selecionadoTabela, 0);
+                    ObservableLists.servicosData.clear();
+                    ObservableLists.servicosData.addAll(ordemAbertaNoMomento.getServicos());
+                } else if (ordemAbertaNoMomento.getStatus() == StatusOrdem.ABERTA){
+                    DAO.getOrdem().findByIdAberta(ordemAbertaNoMomento.getOrdemID()).finalizarServico(selecionadoTabela, 0);
+                    ObservableLists.servicosData.clear();
+                    ObservableLists.servicosData.addAll(ordemAbertaNoMomento.getServicos());
+                }
 
-            this.labelErro.setText("");
+                this.labelErro.setText("");
+            }
+        } else {
+            labelErro.setText("A ordem precisa estar aberta.");
         }
     }
 

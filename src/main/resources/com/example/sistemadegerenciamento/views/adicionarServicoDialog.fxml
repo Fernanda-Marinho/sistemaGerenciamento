@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistemadegerenciamento.controller.AdicionarServicoDialogController">
    <children>
       <Label layoutX="223.0" layoutY="29.0" text="ADICIONAR SERVIÇO">
@@ -40,7 +39,7 @@
       <TextField fx:id="nomePeca" layoutX="205.0" layoutY="165.0" prefHeight="25.0" prefWidth="243.0" />
       <TextField fx:id="valor" layoutX="206.0" layoutY="123.0" prefHeight="25.0" prefWidth="243.0" />
       <Button fx:id="btnAdicionar" layoutX="267.0" layoutY="332.0" mnemonicParsing="false" onAction="#btnAdiciona" text="Adicionar" />
-      <Label fx:id="labelErro" layoutX="166.0" layoutY="369.0" prefHeight="14.0" prefWidth="284.0" textFill="RED">
+      <Label fx:id="labelErro" alignment="CENTER" layoutX="41.0" layoutY="369.0" prefHeight="18.0" prefWidth="521.0" textFill="RED">
          <font>
             <Font size="14.0" />
          </font>
