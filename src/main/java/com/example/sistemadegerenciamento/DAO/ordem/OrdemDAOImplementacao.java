@@ -167,9 +167,10 @@ public class OrdemDAOImplementacao implements OrdemDAO{
         String nomeCliente;
         double mediaCliente;
         for (Map.Entry<Integer, Ordem> valor : ordensFinalizadas.entrySet()){
+            System.out.println(valor.getValue().getNomeCliente());
             nomeCliente = valor.getValue().getNomeCliente();
             mediaCliente = valor.getValue().gerarMediaDeSatisfacaoDoCliente();
-            satisfacaoGeral = "Ordem ID: " + valor.getValue().getOrdemID() + " - Cliente: " + nomeCliente + " - Média da satisfação por serviços: " + mediaCliente + ";\n";
+            satisfacaoGeral = satisfacaoGeral + "Ordem ID: " + valor.getValue().getOrdemID() + " - Cliente: " + nomeCliente + " - Média da satisfação por serviços: " + mediaCliente + ";\n";
         }
         return satisfacaoGeral;
     }
