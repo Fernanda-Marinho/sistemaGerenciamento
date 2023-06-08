@@ -95,7 +95,7 @@ public class AdicionarServicoDialogController {
                 labelErro.setText("O valor precisa ser maior que 0.");
             }
         } catch (Exception e) {
-            labelErro.setText("Dados inválidos.");
+            labelErro.setText("Erro. Verifique os dados inseridos e as peças no estoque.");
         }
     }
 }
