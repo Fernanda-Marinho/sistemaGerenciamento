@@ -54,54 +54,48 @@ public class AdicionarServicoDialogController {
     @FXML
     void btnAdiciona(ActionEvent event) throws Exception {
         try {
-            String categoriaAtual = this.categoria.getSelectionModel().getSelectedItem();
-            if (categoriaAtual.equals("MONTAGEM")) {
-                Peca peca = new Peca(this.nomePeca.getText(), Double.parseDouble(this.valor.getText()));
-                Servico servico = new Servico(CategoriaServico.MONTAGEM, Double.parseDouble(this.valor.getText()),
-                        ServicosDialogController.ordemAbertaNoMomento.getOrdemID(), peca, this.descricao.getText());
-                if (ServicosDialogController.ordemAbertaNoMomento.getStatus() == StatusOrdem.ABERTA){
-                    DAO.getOrdem().findByIdAberta(ServicosDialogController.ordemAbertaNoMomento.getOrdemID()).addServico(servico);
-                } else if (ServicosDialogController.ordemAbertaNoMomento.getStatus() == StatusOrdem.ESPERA){
-                    DAO.getOrdem().findById(ServicosDialogController.ordemAbertaNoMomento.getOrdemID()).addServico(servico);
+            double valor = Double.parseDouble(this.valor.getText());
+            if (valor > 0){
+                String categoriaAtual = this.categoria.getSelectionModel().getSelectedItem();
+                Servico servico = null;
+                if (categoriaAtual.equals("MONTAGEM")) {
+                    if (this.nomePeca.getText() == null || this.nomePeca.getText().equals("")){
+                        labelErro.setText("Para ser montagem, adicione uma peça.");
+                    } else {
+                        Peca peca = new Peca(this.nomePeca.getText(), valor);
+                        servico = new Servico(CategoriaServico.MONTAGEM, valor,
+                                ServicosDialogController.ordemAbertaNoMomento.getOrdemID(), peca, this.descricao.getText());
+                    }
+                } else if (categoriaAtual.equals("LIMPEZA")) {
+                    servico = new Servico(CategoriaServico.LIMPEZA, valor,
+                            ServicosDialogController.ordemAbertaNoMomento.getOrdemID(), null, this.descricao.getText());
+                } else if (categoriaAtual.equals("FORMATACAO")) {
+                    servico = new Servico(CategoriaServico.FORMATACAO, valor,
+                            ServicosDialogController.ordemAbertaNoMomento.getOrdemID(), null, this.descricao.getText());
+                } else if (categoriaAtual.equals("MANUTENCAO")) {
+                    servico = new Servico(CategoriaServico.MANUTENCAO, valor,
+                            ServicosDialogController.ordemAbertaNoMomento.getOrdemID(), null, this.descricao.getText());
                 }
-                ObservableLists.servicosData.add(servico);
-            } else if (categoriaAtual.equals("LIMPEZA")) {
-                Servico servico = new Servico(CategoriaServico.LIMPEZA, Double.parseDouble(this.valor.getText()),
-                        ServicosDialogController.ordemAbertaNoMomento.getOrdemID(), null, this.descricao.getText());
-                if (ServicosDialogController.ordemAbertaNoMomento.getStatus() == StatusOrdem.ABERTA){
-                    DAO.getOrdem().findByIdAberta(ServicosDialogController.ordemAbertaNoMomento.getOrdemID()).addServico(servico);
-                } else if (ServicosDialogController.ordemAbertaNoMomento.getStatus() == StatusOrdem.ESPERA){
-                    DAO.getOrdem().findById(ServicosDialogController.ordemAbertaNoMomento.getOrdemID()).addServico(servico);
+                if (servico != null){
+                    if (ServicosDialogController.ordemAbertaNoMomento.getStatus() == StatusOrdem.ABERTA){
+                        DAO.getOrdem().findByIdAberta(ServicosDialogController.ordemAbertaNoMomento.getOrdemID()).addServico(servico);
+                    } else if (ServicosDialogController.ordemAbertaNoMomento.getStatus() == StatusOrdem.ESPERA){
+                        DAO.getOrdem().findById(ServicosDialogController.ordemAbertaNoMomento.getOrdemID()).addServico(servico);
+                    }
+                    ObservableLists.servicosData.add(servico);
+                    ObservableLists.pecasData.clear();
+                    ObservableLists.pecasData.addAll(DAO.getEstoque().findManyPecas());
+                    ObservableLists.ordensEmAbertoData.clear();
+                    ObservableLists.ordensEmEsperaData.clear();
+                    ObservableLists.ordensEmAbertoData.addAll(DAO.getOrdem().findManyEmAberto());
+                    ObservableLists.ordensEmEsperaData.addAll(DAO.getOrdem().findManyEmEspera());
+                    labelErro.setText("Serviço adicionado com sucesso.");
                 }
-                ObservableLists.servicosData.add(servico);
-            } else if (categoriaAtual.equals("FORMATACAO")) {
-                Servico servico = new Servico(CategoriaServico.FORMATACAO, Double.parseDouble(this.valor.getText()),
-                        ServicosDialogController.ordemAbertaNoMomento.getOrdemID(), null, this.descricao.getText());
-                if (ServicosDialogController.ordemAbertaNoMomento.getStatus() == StatusOrdem.ABERTA){
-                    DAO.getOrdem().findByIdAberta(ServicosDialogController.ordemAbertaNoMomento.getOrdemID()).addServico(servico);
-                } else if (ServicosDialogController.ordemAbertaNoMomento.getStatus() == StatusOrdem.ESPERA){
-                    DAO.getOrdem().findById(ServicosDialogController.ordemAbertaNoMomento.getOrdemID()).addServico(servico);
-                }
-                ObservableLists.servicosData.add(servico);
-            } else if (categoriaAtual.equals("MANUTENCAO")) {
-                Servico servico = new Servico(CategoriaServico.FORMATACAO, Double.parseDouble(this.valor.getText()),
-                        ServicosDialogController.ordemAbertaNoMomento.getOrdemID(), null, this.descricao.getText());
-                if (ServicosDialogController.ordemAbertaNoMomento.getStatus() == StatusOrdem.ABERTA){
-                    DAO.getOrdem().findByIdAberta(ServicosDialogController.ordemAbertaNoMomento.getOrdemID()).addServico(servico);
-                } else if (ServicosDialogController.ordemAbertaNoMomento.getStatus() == StatusOrdem.ESPERA){
-                    DAO.getOrdem().findById(ServicosDialogController.ordemAbertaNoMomento.getOrdemID()).addServico(servico);
-                }
-                ObservableLists.servicosData.add(servico);
+            } else {
+                labelErro.setText("O valor precisa ser maior que 0.");
             }
-            ObservableLists.pecasData.clear();
-            ObservableLists.pecasData.addAll(DAO.getEstoque().findManyPecas());
-            ObservableLists.ordensEmAbertoData.clear();
-            ObservableLists.ordensEmEsperaData.clear();
-            ObservableLists.ordensEmAbertoData.addAll(DAO.getOrdem().findManyEmAberto());
-            ObservableLists.ordensEmEsperaData.addAll(DAO.getOrdem().findManyEmEspera());
-            labelErro.setText("Serviço adicionado com sucesso.");
         } catch (Exception e) {
-            labelErro.setText(e.toString());
+            labelErro.setText("Dados inválidos.");
         }
     }
 }

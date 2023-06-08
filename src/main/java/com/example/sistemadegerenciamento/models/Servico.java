@@ -118,4 +118,7 @@ public class Servico implements Serializable {
     public String getNomePeca(){
         return this.nomePeca;
     }
+    public void setCategoria(CategoriaServico categoria){
+        this.categoria = categoria;
+    }
 }
