@@ -1,0 +1,7 @@
+Tempo médio de espera de ordens finalizadas: 3mins;
+Custo total de peças nas ordens de compras: R$0.0;
+Estoque atual:
+NOME	QNTD	VALOR UNI.
+RAM   	10   	128.0;
+HD   	8   	218.5;
+Ordem ID: 5 - Cliente: Fulano - Média da satisfação por serviços: NaN;

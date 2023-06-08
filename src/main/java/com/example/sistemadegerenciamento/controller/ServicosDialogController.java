@@ -7,10 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import  java.io.FileWriter;
@@ -20,9 +17,12 @@ import java.io.File;
 
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 public class ServicosDialogController {
 
+    @FXML
+    private TextField avaliacaoCliente;
     @FXML
     private Button btnCancelarOrdem;
 
@@ -84,9 +84,18 @@ public class ServicosDialogController {
             this.labelErro.setText("Para ser cancelada, precisa estar em espera.");
         }
     }
+    boolean verificaOrdensFinalizadas(){
+        ArrayList<Servico> servicos = ordemAbertaNoMomento.getServicos();
+        for (int i=0; i<servicos.size(); i++){
+            if (!(servicos.get(i).isFinalizado())){
+                return false;
+            }
+        }
+        return true;
+    }
     @FXML
     void btnFinalizaOrdem(ActionEvent event) {
-        if (ordemAbertaNoMomento.getStatus() == StatusOrdem.ABERTA){
+        if (ordemAbertaNoMomento.getStatus() == StatusOrdem.ABERTA && verificaOrdensFinalizadas()){
             Ordem ordem = DAO.getOrdem().finalizarOrdem(ordemAbertaNoMomento.getOrdemID());
             DAO.getTecnico().findById(ordem.getTecnicoID()).fechaOrdem();
             ordem.setStatus(StatusOrdem.FINALIZADA);
@@ -111,7 +120,7 @@ public class ServicosDialogController {
                 e.printStackTrace();
             }
         } else {
-            labelErro.setText("Para a ordem ser finalizada, precisa estar aberta.");
+            labelErro.setText("A ordem precisa estar aberta e com os serviços finalizados.");
         }
 
     }
@@ -121,18 +130,24 @@ public class ServicosDialogController {
         int selecionadoTabelaIndice = this.tabelaServicos.getSelectionModel().getSelectedIndex();
         if (ordemAbertaNoMomento.getStatus() == StatusOrdem.ABERTA){
             if (selecionadoTabelaIndice>=0) {
-                Servico selecionadoTabela = this.tabelaServicos.getSelectionModel().getSelectedItem();
-                if (ordemAbertaNoMomento.getStatus() == StatusOrdem.ESPERA){
-                    DAO.getOrdem().findById(ordemAbertaNoMomento.getOrdemID()).finalizarServico(selecionadoTabela, 0);
-                    ObservableLists.servicosData.clear();
-                    ObservableLists.servicosData.addAll(ordemAbertaNoMomento.getServicos());
-                } else if (ordemAbertaNoMomento.getStatus() == StatusOrdem.ABERTA){
-                    DAO.getOrdem().findByIdAberta(ordemAbertaNoMomento.getOrdemID()).finalizarServico(selecionadoTabela, 0);
-                    ObservableLists.servicosData.clear();
-                    ObservableLists.servicosData.addAll(ordemAbertaNoMomento.getServicos());
+                try {
+                    int avaliacao = Integer.parseInt(this.avaliacaoCliente.getText());
+                    if (avaliacao > 0 && avaliacao < 6){
+                        Servico selecionadoTabela = this.tabelaServicos.getSelectionModel().getSelectedItem();
+                        if (ordemAbertaNoMomento.getStatus() == StatusOrdem.ESPERA){
+                            DAO.getOrdem().findById(ordemAbertaNoMomento.getOrdemID()).finalizarServico(selecionadoTabela, avaliacao);
+                        } else if (ordemAbertaNoMomento.getStatus() == StatusOrdem.ABERTA){
+                            DAO.getOrdem().findByIdAberta(ordemAbertaNoMomento.getOrdemID()).finalizarServico(selecionadoTabela, avaliacao);
+                        }
+                        ObservableLists.servicosData.clear();
+                        ObservableLists.servicosData.addAll(ordemAbertaNoMomento.getServicos());
+                        this.labelErro.setText("");
+                    } else {
+                        labelErro.setText("A avaliação precisa ser um inteiro de 1 a 5.");
+                    }
+                } catch (Exception e){
+                    labelErro.setText("A avaliação precisa ser um inteiro de 1 a 5.");
                 }
-
-                this.labelErro.setText("");
             }
         } else {
             labelErro.setText("A ordem precisa estar aberta.");
