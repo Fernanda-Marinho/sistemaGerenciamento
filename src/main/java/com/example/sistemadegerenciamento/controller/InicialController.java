@@ -90,21 +90,19 @@ public class InicialController {
 
     @FXML
     void btnPegaOrdemServico(ActionEvent event) {
-        int selecionadoTabelaIndice = this.tabelaOrdensEmEspera.getSelectionModel().getSelectedIndex();
         try {
-            if (selecionadoTabelaIndice>=0) {
-                int tecnicoID = Integer.parseInt(this.idTecnico.getText());
-                Ordem selecionadoTabela = this.tabelaOrdensEmEspera.getSelectionModel().getSelectedItem();
-                if (!(DAO.getTecnico().findById(tecnicoID).isComOrdem())) {
-                    DAO.getOrdem().abrirOrdem(selecionadoTabela.getOrdemID(), tecnicoID);
-                    DAO.getTecnico().findById(tecnicoID).addOrdem(selecionadoTabela);
-                    ObservableLists.ordensEmEsperaData.remove(selecionadoTabelaIndice);
-                    ObservableLists.ordensEmAbertoData.add(selecionadoTabela);
-                    this.idTecnico.clear();
-                    this.labelErro.setText("");
-                } else {
-                    this.labelErro.setText("Você já está associado a uma ordem. Finalize primeiro.");
-                }
+            int tecnicoID = Integer.parseInt(this.idTecnico.getText());
+            //Pega a ordem da fila
+            Ordem selecionadoTabela = ObservableLists.ordensEmEsperaData.get(0);
+            if (!(DAO.getTecnico().findById(tecnicoID).isComOrdem())) {
+                DAO.getOrdem().abrirOrdem(selecionadoTabela.getOrdemID(), tecnicoID);
+                DAO.getTecnico().findById(tecnicoID).addOrdem(selecionadoTabela);
+                ObservableLists.ordensEmEsperaData.remove(0);
+                ObservableLists.ordensEmAbertoData.add(selecionadoTabela);
+                this.idTecnico.clear();
+                this.labelErro.setText("");
+            } else {
+                this.labelErro.setText("Você já está associado a uma ordem. Finalize primeiro.");
             }
         } catch (Exception e){
             this.labelErro.setText("Insira um ID válido e existente.");
