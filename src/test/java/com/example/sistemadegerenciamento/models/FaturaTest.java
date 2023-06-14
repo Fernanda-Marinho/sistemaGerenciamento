@@ -10,7 +10,7 @@ class FaturaTest {
 
     @Test
     void addPagamento() {
-        Ordem ordem = new Ordem(1);
+        Ordem ordem = new Ordem(new Cliente("Fulano", "Rua", "123"));
         Fatura fatura = ordem.gerarFatura();
         Pagamento pagamento = new Pagamento("Cartão", 123.9, fatura.getFaturaID());
         fatura.addPagamento(pagamento);
@@ -42,7 +42,7 @@ class FaturaTest {
     void getOrdemID() {
         int Id = 123;
         Fatura fatura = new Fatura(100,new Ordem(new Cliente("Fulano", "Rua", "123")));
-        assertEquals(Id, fatura.getOrdemID());
+        assertEquals(Id, fatura.getFaturaID());
     }
 
 

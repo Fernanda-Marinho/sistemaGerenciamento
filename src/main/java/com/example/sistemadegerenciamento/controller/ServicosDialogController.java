@@ -110,7 +110,7 @@ public class ServicosDialogController {
                 arquivo.createNewFile();
                 FileWriter fw = new FileWriter( arquivo );
                 BufferedWriter bw = new BufferedWriter( fw );
-                bw.write(ordem.gerarFatura().toString());
+                bw.write(ordem.gerarFatura().getFaturaFormatada());
                 bw.close();
                 fw.close();
                 ProcessBuilder processBuilder = new ProcessBuilder();

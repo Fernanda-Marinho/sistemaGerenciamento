@@ -2,6 +2,7 @@ package com.example.sistemadegerenciamento.models;
 import com.example.sistemadegerenciamento.DAO.DAO;
 
 import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 
@@ -63,7 +64,13 @@ public class Fatura implements Serializable {
         string = string + "FATURA ID: " + this.faturaID + "\n";
         string = string + "-----DADOS CLIENTE-----" + "\n";
         string = string + "NOME: " + this.ordem.getNomeCliente() + "\n";
-        string = string + "TELEFONE: " + this.ordem. + "\n";
+        string = string + "-----SERVIÇOS----- " + "\n";
+        ArrayList<Servico> servicos = this.ordem.getServicos();
+        for (int i=0; i<servicos.size(); i++){
+            string = string + servicos.get(i).getCategoriaEmString() + ": " + servicos.get(i).getNomePeca() + " - " + servicos.get(i).getValor() + "\n";
+        }
+        string = string + "-----VALOR TOTAL----- " + "\n";
+        string = string + "R$" + this.valorTotal + "\n";
         return string;
     }
 

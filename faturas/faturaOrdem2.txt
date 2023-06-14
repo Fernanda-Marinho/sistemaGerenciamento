@@ -1,1 +1,8 @@
-com.example.sistemadegerenciamento.models.Fatura@2f4ce52e
+ORDEM: 2
+FATURA ID: 1
+-----DADOS CLIENTE-----
+NOME: Ana
+-----SERVIÇOS----- 
+LIMPEZA: Sem Peça - 210.0
+-----VALOR TOTAL----- 
+R$210.0

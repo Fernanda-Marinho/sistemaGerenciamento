@@ -1,1 +1,11 @@
-com.example.sistemadegerenciamento.models.Fatura@2e061576
+ORDEM: 3
+FATURA ID: 2
+-----DADOS CLIENTE-----
+NOME: Jucicreia
+-----SERVIÇOS----- 
+MONTAGEM: RAM - 145.0
+LIMPEZA: Sem Peça - 70.0
+MANUTENCAO: Sem Peça - 150.0
+FORMATACAO: Sem Peça - 80.0
+-----VALOR TOTAL----- 
+R$445.0
