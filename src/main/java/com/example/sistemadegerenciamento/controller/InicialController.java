@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -48,6 +49,14 @@ public class InicialController {
     @FXML
     private Label labelErro;
     @FXML
+    private Label labelVerMais;
+    @FXML
+    private Label labelQntdOrdensAbertas;
+    @FXML
+    private Label labelAlertaEstoque;
+    @FXML
+    private Label labelQntdOrdensEmEspera;
+    @FXML
     private TextField idTecnico;
     @FXML
     private TableView<Ordem> tabelaOrdensEmAberto;
@@ -55,7 +64,6 @@ public class InicialController {
     private TableView<Ordem> tabelaOrdensEmEspera;
     @FXML
     private Label labelDate;
-
 
     @FXML
     void initialize() throws IOException, ClassNotFoundException {
@@ -86,6 +94,9 @@ public class InicialController {
         this.tabelaOrdensEmEspera.getColumns().addAll(coluna1EmEspera, coluna2EmEspera, coluna3EmEspera);
         this.tabelaOrdensEmEspera.setItems(ObservableLists.ordensEmEsperaData);
 
+        this.labelQntdOrdensEmEspera.setText(String.valueOf(ObservableLists.ordensEmEsperaData.size()));
+        this.labelQntdOrdensAbertas.setText(String.valueOf(ObservableLists.ordensEmAbertoData.size()));
+
     }
 
     @FXML
@@ -101,6 +112,8 @@ public class InicialController {
                 ObservableLists.ordensEmAbertoData.add(selecionadoTabela);
                 this.idTecnico.clear();
                 this.labelErro.setText("");
+                this.labelQntdOrdensEmEspera.setText(String.valueOf(ObservableLists.ordensEmEsperaData.size()));
+                this.labelQntdOrdensAbertas.setText(String.valueOf(ObservableLists.ordensEmAbertoData.size()));
             } else {
                 this.labelErro.setText("Você já está associado a uma ordem. Finalize primeiro.");
             }
@@ -154,6 +167,8 @@ public class InicialController {
             ServicosDialogController.ordemAbertaNoMomento = selecionadoTabela;
             HelloApplication.telaScreen("servicosDialog");
         }
+        this.labelQntdOrdensEmEspera.setText(String.valueOf(ObservableLists.ordensEmEsperaData.size()));
+        this.labelQntdOrdensAbertas.setText(String.valueOf(ObservableLists.ordensEmAbertoData.size()));
         this.tabelaOrdensEmEspera.getSelectionModel().clearSelection();
         this.tabelaOrdensEmAberto.getSelectionModel().clearSelection();
     }
@@ -184,6 +199,18 @@ public class InicialController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    void verMais(MouseEvent event) throws IOException {
+        HelloApplication.telaScreen("estoque");
+    }
+
+    public Label getLabelQntdOrdensAbertas(){
+        return labelQntdOrdensAbertas;
+    }
+    public Label getLabelQntdOrdensEmEspera() {
+        return labelQntdOrdensEmEspera;
     }
 
     @FXML

@@ -1,1 +1,7 @@
-com.example.sistemadegerenciamento.models.Fatura@51a3f79f
+ORDEM: 5
+FATURA ID: 1
+-----DADOS CLIENTE-----
+NOME: Fulano
+-----SERVIÇOS----- 
+-----VALOR TOTAL----- 
+R$0.0
