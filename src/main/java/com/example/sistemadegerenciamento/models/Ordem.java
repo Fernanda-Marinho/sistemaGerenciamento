@@ -100,7 +100,7 @@ public class Ordem implements Serializable {
      * Método que gera e retorna a fatura da ordem;
      * */
     public Fatura gerarFatura(){
-        Fatura fatura = new Fatura(gerarValorTotal(), this.getOrdemID());
+        Fatura fatura = new Fatura(gerarValorTotal(), this);
         this.fatura = fatura;
         return fatura;
     }

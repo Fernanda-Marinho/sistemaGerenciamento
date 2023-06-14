@@ -1,4 +1,6 @@
 package com.example.sistemadegerenciamento.models;
+import com.example.sistemadegerenciamento.DAO.DAO;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -11,15 +13,15 @@ public class Fatura implements Serializable {
     private double valorTotal;
 	//Definição da coleção de pagamentos.
 	private ArrayList<Pagamento> pagamentos = new ArrayList();
-    private int ordemID;
+    private Ordem ordem;
     private double valorPago;
     private static int ID = 1;
     private int faturaID;
 
 	//Para gerar a fatura, adiciona um pagamento. Se for adicionar mais pagamentos, chama um método para isso.
-    public Fatura(double valorTotal, int ordemID){
+    public Fatura(double valorTotal, Ordem ordem){
         this.valorTotal = valorTotal;
-        this.ordemID = ordemID;
+        this.ordem = ordem;
         this.faturaID = ID;
         this.ID++;
     }
@@ -41,12 +43,7 @@ public class Fatura implements Serializable {
     public ArrayList<Pagamento> getPagamentos() {
         return pagamentos;
     }
-    public int getOrdemID() {
-        return ordemID;
-    }
-    public void setOrdemID(int ordemID) {
-        this.ordemID = ordemID;
-    }
+
     public double getValorPago() {
         return valorPago;
     }
@@ -59,6 +56,15 @@ public class Fatura implements Serializable {
 
     public int getFaturaID() {
         return faturaID;
+    }
+    public String getFaturaFormatada(){
+        String string = new String();
+        string = "ORDEM: " + this.ordem.getOrdemID() + "\n";
+        string = string + "FATURA ID: " + this.faturaID + "\n";
+        string = string + "-----DADOS CLIENTE-----" + "\n";
+        string = string + "NOME: " + this.ordem.getNomeCliente() + "\n";
+        string = string + "TELEFONE: " + this.ordem. + "\n";
+        return string;
     }
 
 }
