@@ -106,7 +106,6 @@ public class InicialController {
                 peca = ObservableLists.pecasData.get(i);
             }
         }
-        System.out.println(menor);
         this.labelAlertaEstoque.setText("");
         if (menor <= 5){
             this.labelAlertaEstoque.setText(peca.getNome());

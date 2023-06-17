@@ -14,6 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="600.0" maxWidth="1000.0" minHeight="600.0" minWidth="1000.0" prefHeight="600.0" prefWidth="1000.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistemadegerenciamento.controller.InicialController">
    <children>
@@ -238,5 +239,48 @@
             <Font size="14.0" />
          </font>
       </Label>
+      <Text fill="WHITE" layoutX="288.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INSTRUÇÕES DE MANUSEIO">
+         <font>
+            <Font name="Britannic Bold" size="24.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Text>
+      <Text fill="WHITE" layoutX="243.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. Para criar, editar ou deletar cliente, basta ir em &quot;Clientes&quot; e preencher os dados." wrappingWidth="386.6194610595703">
+         <font>
+            <Font name="Britannic Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="243.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CLIENTE" wrappingWidth="358.61952209472656">
+         <font>
+            <Font name="Britannic Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="236.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. Para criar uma ordem, basta ir em &quot;Ordens&quot;, adicionar o ID do cliente e clicar em cadastrar. Após cadastrada, a ordem irá para a fila de espera." wrappingWidth="358.61952209472656">
+         <font>
+            <Font name="Britannic Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="236.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3. Para cancelar uma ordem, basta clicar na ordem presente na tabela e clicar em &quot;Cancelar&quot;. Para a ordem ser cancelada, precisa estar na fila de espera." wrappingWidth="358.61952209472656">
+         <font>
+            <Font name="Britannic Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="236.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4. Para finalizar uma ordem, é necessário finalizar todos os serviços da mesma, adicionando a nota de avaliação do cliente. Após finalizar, basta clicar em &quot;Finalizar Ordem&quot;." wrappingWidth="358.61952209472656">
+         <font>
+            <Font name="Britannic Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="236.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5. Para abrir uma ordem, é necessário que o técnico adicione seu ID e clique em &quot;Pegar Ordem de Serviço&quot;. O técnico precisa não estar vinculado a alguma ordem. A ordem relacionada será a primeira da fila de espera." wrappingWidth="358.61952209472656">
+         <font>
+            <Font name="Britannic Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="236.0" layoutY="376.0" strokeType="OUTSIDE" strokeWidth="0.0" text="6. Para gerenciar o técnico, o usuário atual precisa ser o &quot;admin&quot;." wrappingWidth="358.61952209472656">
+         <font>
+            <Font name="Britannic Bold" size="14.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

@@ -65,7 +65,6 @@ public class HelloApplication extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException, ClassNotFoundException {
-
         atualizaColecoesDosArquivosDAO();
 
         stage = primaryStage;
@@ -99,6 +98,9 @@ public class HelloApplication extends Application {
     public static void telaScreen(String nome) throws IOException {
         switch (nome) {
             case "inicial":
+                //A página inicial precisa ser carregada toda vez que for chamada para atualizar as labels.
+                Parent fxmlInicial = FXMLLoader.load(HelloApplication.class.getResource("views/inicial.fxml"));
+                inicialScene = new Scene(fxmlInicial);
                 stage.setScene(inicialScene);
                 stage.setResizable(false);
                 break;
