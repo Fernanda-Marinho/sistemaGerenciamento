@@ -202,44 +202,44 @@
       </Label>
       <Label fx:id="labelErro" alignment="CENTER" layoutX="665.0" layoutY="563.0" prefHeight="26.0" prefWidth="320.0" textFill="#b41313" />
       <FontAwesomeIconView glyphName="CLOSE" layoutX="980.0" layoutY="20.0" onMouseClicked="#btnClose" size="20" wrappingWidth="7.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8f9397" height="26.0" layoutX="254.0" layoutY="453.0" stroke="WHITE" strokeType="INSIDE" width="176.0" />
-      <Label layoutX="265.0" layoutY="455.0" prefHeight="22.0" prefWidth="157.0" text="ORDENS EM ESPERA">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8f9397" height="24.0" layoutX="294.0" layoutY="510.0" stroke="WHITE" strokeType="INSIDE" width="136.0" />
+      <Label layoutX="302.0" layoutY="511.0" prefHeight="22.0" prefWidth="121.0" text="ORDENS EM ESPERA">
          <font>
-            <Font name="FontAwesome" size="18.0" />
+            <Font name="FontAwesome" size="14.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8f9397" height="26.0" layoutX="449.0" layoutY="453.0" stroke="WHITE" strokeType="INSIDE" width="106.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8f9397" height="26.0" layoutX="254.0" layoutY="489.0" stroke="WHITE" strokeType="INSIDE" width="176.0" />
-      <Label layoutX="265.0" layoutY="491.0" prefHeight="22.0" prefWidth="157.0" text="ORDENS EM ABERTO">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8f9397" height="24.0" layoutX="434.0" layoutY="510.0" stroke="WHITE" strokeType="INSIDE" width="92.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8f9397" height="24.0" layoutX="294.0" layoutY="536.0" stroke="WHITE" strokeType="INSIDE" width="136.0" />
+      <Label layoutX="301.0" layoutY="537.0" prefHeight="22.0" prefWidth="122.0" text="ORDENS EM ABERTO">
          <font>
-            <Font name="FontAwesome" size="18.0" />
+            <Font name="FontAwesome" size="14.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8f9397" height="26.0" layoutX="449.0" layoutY="489.0" stroke="WHITE" strokeType="INSIDE" width="106.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8f9397" height="26.0" layoutX="254.0" layoutY="525.0" stroke="WHITE" strokeType="INSIDE" width="176.0" />
-      <Label layoutX="265.0" layoutY="527.0" prefHeight="22.0" prefWidth="157.0" text="ALERTA DE ESTOQUE" textFill="#a43737">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8f9397" height="24.0" layoutX="434.0" layoutY="536.0" stroke="WHITE" strokeType="INSIDE" width="92.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8f9397" height="24.0" layoutX="294.0" layoutY="562.0" stroke="WHITE" strokeType="INSIDE" width="136.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8f9397" height="24.0" layoutX="434.0" layoutY="562.0" stroke="WHITE" strokeType="INSIDE" width="92.0" />
+      <Label layoutX="300.0" layoutY="563.0" prefHeight="22.0" prefWidth="122.0" text="ALERTA DE ESTOQUE" textFill="#a43737">
          <font>
-            <Font name="FontAwesome" size="18.0" />
+            <Font name="FontAwesome" size="14.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8f9397" height="26.0" layoutX="449.0" layoutY="525.0" stroke="WHITE" strokeType="INSIDE" width="106.0" />
-      <Label fx:id="labelVerMais" layoutX="561.0" layoutY="533.0" onMouseClicked="#verMais" text="VER MAIS" underline="true" />
-      <Label fx:id="labelQntdOrdensEmEspera" layoutX="498.0" layoutY="458.0">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="labelQntdOrdensAbertas" layoutX="498.0" layoutY="494.0">
+      <Label fx:id="labelVerMais" layoutX="533.0" layoutY="566.0" onMouseClicked="#verMais" text="VER MAIS" underline="true" />
+      <Label fx:id="labelQntdOrdensEmEspera" alignment="CENTER" contentDisplay="CENTER" layoutX="438.0" layoutY="514.0" prefHeight="18.0" prefWidth="84.0">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="labelAlertaEstoque" layoutX="488.0" layoutY="530.0">
+      <Label fx:id="labelQntdOrdensAbertas" alignment="CENTER" contentDisplay="CENTER" layoutX="438.0" layoutY="539.0" prefHeight="18.0" prefWidth="84.0">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Text fill="WHITE" layoutX="288.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INSTRUÇÕES DE MANUSEIO">
+      <Label fx:id="labelAlertaEstoque" alignment="CENTER" contentDisplay="CENTER" layoutX="433.0" layoutY="565.0" prefHeight="18.0" prefWidth="92.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Text fill="WHITE" layoutX="288.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INSTRUÇÕES DE MANUSEIO">
          <font>
             <Font name="Britannic Bold" size="24.0" />
          </font>
@@ -247,37 +247,87 @@
             <DropShadow />
          </effect>
       </Text>
-      <Text fill="WHITE" layoutX="243.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. Para criar, editar ou deletar cliente, basta ir em &quot;Clientes&quot; e preencher os dados." wrappingWidth="386.6194610595703">
+      <Text fill="WHITE" layoutX="235.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. Para criar, editar ou deletar cliente, basta ir em &quot;Clientes&quot; e preencher os dados." textAlignment="JUSTIFY" wrappingWidth="386.6194610595703">
          <font>
             <Font name="Britannic Bold" size="14.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="243.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CLIENTE" wrappingWidth="358.61952209472656">
+      <Text fill="WHITE" layoutX="235.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CLIENTE" wrappingWidth="358.61952209472656">
+         <font>
+            <Font name="Britannic Bold" size="14.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Text>
+      <Text fill="WHITE" layoutX="234.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2. Para criar uma ordem, basta ir em &quot;Ordens&quot;, adicionar o ID do cliente e clicar em cadastrar. Após cadastrada, a ordem irá para a fila de espera." textAlignment="JUSTIFY" wrappingWidth="386.6194610595703">
          <font>
             <Font name="Britannic Bold" size="14.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="236.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. Para criar uma ordem, basta ir em &quot;Ordens&quot;, adicionar o ID do cliente e clicar em cadastrar. Após cadastrada, a ordem irá para a fila de espera." wrappingWidth="358.61952209472656">
+      <Text fill="WHITE" layoutX="234.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3. Para cancelar uma ordem, basta clicar na ordem presente na tabela e clicar em &quot;Cancelar&quot;. Para a ordem ser cancelada, precisa estar na fila de espera." textAlignment="JUSTIFY" wrappingWidth="386.6194610595703">
          <font>
             <Font name="Britannic Bold" size="14.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="236.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3. Para cancelar uma ordem, basta clicar na ordem presente na tabela e clicar em &quot;Cancelar&quot;. Para a ordem ser cancelada, precisa estar na fila de espera." wrappingWidth="358.61952209472656">
+      <Text fill="WHITE" layoutX="234.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4. Para finalizar uma ordem, é necessário finalizar todos os serviços da mesma, adicionando a nota de avaliação do cliente. Após finalizar os serviços, basta clicar em &quot;Finalizar Ordem&quot;." textAlignment="JUSTIFY" wrappingWidth="386.6194610595703">
          <font>
             <Font name="Britannic Bold" size="14.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="236.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4. Para finalizar uma ordem, é necessário finalizar todos os serviços da mesma, adicionando a nota de avaliação do cliente. Após finalizar, basta clicar em &quot;Finalizar Ordem&quot;." wrappingWidth="358.61952209472656">
+      <Text fill="WHITE" layoutX="234.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5. Para abrir uma ordem, é necessário que o técnico adicione seu ID e clique em &quot;Pegar Ordem de Serviço&quot;. O técnico precisa não estar vinculado a alguma ordem. A ordem relacionada será a primeira da fila de espera." textAlignment="JUSTIFY" wrappingWidth="386.6194610595703">
          <font>
             <Font name="Britannic Bold" size="14.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="236.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5. Para abrir uma ordem, é necessário que o técnico adicione seu ID e clique em &quot;Pegar Ordem de Serviço&quot;. O técnico precisa não estar vinculado a alguma ordem. A ordem relacionada será a primeira da fila de espera." wrappingWidth="358.61952209472656">
+      <Text fill="WHITE" layoutX="235.0" layoutY="439.0" strokeType="OUTSIDE" strokeWidth="0.0" text="8. Para gerenciar o técnico na páginas &quot;Tecnicos&quot;, o usuário atual precisa ser o &quot;admin&quot;." textAlignment="JUSTIFY" wrappingWidth="386.61946105957026">
          <font>
             <Font name="Britannic Bold" size="14.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="236.0" layoutY="376.0" strokeType="OUTSIDE" strokeWidth="0.0" text="6. Para gerenciar o técnico, o usuário atual precisa ser o &quot;admin&quot;." wrappingWidth="358.61952209472656">
+      <Text fill="WHITE" layoutX="235.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ORDEM DE SERVIÇOS" wrappingWidth="358.61952209472656">
+         <font>
+            <Font name="Britannic Bold" size="14.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Text>
+      <Text fill="WHITE" layoutX="234.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SERVIÇOS" wrappingWidth="358.61952209472656">
+         <font>
+            <Font name="Britannic Bold" size="14.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Text>
+      <Text fill="WHITE" layoutX="234.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" text="6. Para criar um serviço, basta clicar em uma ordem aberta ou em espera na tabela, clicar em &quot;Abrir Ordem&quot; e em &quot;Adicionar Serviço&quot;. Depois de preencher todos os dados e clicar em &quot;Adicionar&quot; a página pode ser fechada. " textAlignment="JUSTIFY" wrappingWidth="386.6194610595703">
+         <font>
+            <Font name="Britannic Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="234.0" layoutY="383.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7. Para finalizar o serviço, basta clicar abrir a ordem e clicar em &quot;Finalizar Serviço&quot;. O serviço só pode ser finalizado caso a ordem esteja aberta. " textAlignment="JUSTIFY" wrappingWidth="386.6194610595703">
+         <font>
+            <Font name="Britannic Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="235.0" layoutY="426.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TÉCNICO" wrappingWidth="358.61952209472656">
+         <font>
+            <Font name="Britannic Bold" size="14.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Text>
+      <Text fill="WHITE" layoutX="234.0" layoutY="469.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ESTOQUE" wrappingWidth="358.61952209472656">
+         <font>
+            <Font name="Britannic Bold" size="14.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Text>
+      <Text fill="WHITE" layoutX="234.0" layoutY="487.0" strokeType="OUTSIDE" strokeWidth="0.0" text="9. Na página &quot;Estoque&quot;, basta o técnico adicionar os dados e clicar em &quot;Realizar Ordem de Compra&quot;." textAlignment="JUSTIFY" wrappingWidth="386.61946105957026">
          <font>
             <Font name="Britannic Bold" size="14.0" />
          </font>
