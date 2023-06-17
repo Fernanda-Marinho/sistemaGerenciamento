@@ -329,48 +329,10 @@ public class MainController {
      * Main do MainController. O técnico "admin" já deve ser criado na primeira instância do técnico.
      */
     public static void main(String[] args) throws Exception {
-        //Primeiro passo é realizar login
-        //Técnico ADM: login = Admin, senha = Admin
         MainController mainC = new MainController();
-        /*mainC.criaTecnico(true, "Admin", "Admin");
-        System.out.println(mainC.geraRelatorio());
-        mainC.salvarArquivoEstoque();*/
-        Peca peca = new Peca("RAM", 128.0);
-        mainC.realizaOrdemCompra(peca, 10, peca.getValor());
-        mainC.realizaOrdemCompra(new Peca("HD", 218.50), 8, 329.4);
-        DAO.getTecnico().create(new Tecnico(false, "Jorge", "12345"));
-        DAO.getOrdem().create(new Ordem(new Cliente("Douglas", "Rua Calumbi", "75894564185")));
-        mainC.relacionaOrdemATecnico(1, 1);
-        mainC.addServico(1, CategoriaServico.LIMPEZA, 210.0, null, "sem descrição");
-        mainC.finalizaServico(1, DAO.getOrdem().findManyEmAberto().get(0).getServicos().get(0), 5);
-        mainC.finalizaOrdem(1);
-        DAO.getOrdem().create(new Ordem(new Cliente("Ana", "Feira V", "758977864185")));
-        DAO.getOrdem().create(new Ordem(new Cliente("Jucicreia", "Feira V", "758977864185")));
-        DAO.getOrdem().create(new Ordem(new Cliente("Jordana", "Feira V", "758977864185")));
-        DAO.getOrdem().create(new Ordem(new Cliente("Fulano", "Feira V", "758977864185")));
-        DAO.getOrdem().create(new Ordem(new Cliente("Pariceira", "Feira V", "758977864185")));
-        mainC.relacionaOrdemATecnico(2, 1);
-        mainC.relacionaOrdemATecnico(3, 1);
-        mainC.addServico(2, CategoriaServico.LIMPEZA, 210.0, null, "sem descrição");
-        DAO.getOrdem().cancelarOrdem(4);
         mainC.salvarArquivoTecnico();
         mainC.salvarArquivoOrdem();
         mainC.salvarArquivoEstoque();
-        System.out.println(DAO.getOrdem().findManyEmAberto().get(0).getClienteID());
-        Date date = new Date();
-        String dateModified = date.toString().replace(" ", "_");
-        dateModified = dateModified.replace(":", "_");
-        System.out.println(dateModified);
-
-
-        /*HashMap<Integer, Ordem> ordem = mainC.lerArquivoOrdemFinalizadas();
-        if (ordem.isEmpty()){
-            System.out.println("vazio!");
-        } else {
-            System.out.println("ta vazia nao");
-        }*/
-
-
-
+        mainC.salvarArquivoClienteDAO();
     }
 }

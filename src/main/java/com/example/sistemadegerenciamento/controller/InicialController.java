@@ -98,18 +98,21 @@ public class InicialController {
         this.labelQntdOrdensEmEspera.setText(String.valueOf(ObservableLists.ordensEmEsperaData.size()));
         this.labelQntdOrdensAbertas.setText(String.valueOf(ObservableLists.ordensEmAbertoData.size()));
 
-        int menor = ObservableLists.pecasData.get(0).getQuantidade();
-        Peca peca = ObservableLists.pecasData.get(0);
-        for (int i=0; i<ObservableLists.pecasData.size(); i++){
-            if (ObservableLists.pecasData.get(i).getQuantidade() < menor){
-                menor = ObservableLists.pecasData.get(i).getQuantidade();
-                peca = ObservableLists.pecasData.get(i);
+        if (ObservableLists.pecasData.size() > 0) {
+            int menor = ObservableLists.pecasData.get(0).getQuantidade();
+            Peca peca = ObservableLists.pecasData.get(0);
+            for (int i=0; i<ObservableLists.pecasData.size(); i++){
+                if (ObservableLists.pecasData.get(i).getQuantidade() < menor){
+                    menor = ObservableLists.pecasData.get(i).getQuantidade();
+                    peca = ObservableLists.pecasData.get(i);
+                }
+            }
+            this.labelAlertaEstoque.setText("");
+            if (menor <= 5){
+                this.labelAlertaEstoque.setText(peca.getNome());
             }
         }
-        this.labelAlertaEstoque.setText("");
-        if (menor <= 5){
-            this.labelAlertaEstoque.setText(peca.getNome());
-        }
+
     }
 
     @FXML
